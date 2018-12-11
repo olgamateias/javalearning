@@ -18,7 +18,7 @@ public class ValidatorFunctions {
 		String extension = "";
 		boolean validUsername = true;
 		boolean validDomain = true;
-		
+		System.out.println("test git");
 		if(email.isEmpty()) {
 			System.out.println("No email entered");
 			return false;
