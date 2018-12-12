@@ -98,17 +98,61 @@ public class ValidatorFunctions {
 	 *  Invalid: 49+123 3456 1234
 	 */
 	public static boolean validatePhoneNumber(String phoneNumber) {
-		return false;
+		phoneNumber = phoneNumber.replaceAll("\\s", "");
+		
+		
+		if(phoneNumber.isEmpty() || phoneNumber.length()<12 || phoneNumber.length()>15) {
+			
+			return false;
+		} else {
+
+			if(phoneNumber.startsWith("+")) {
+				phoneNumber = phoneNumber.substring(1, phoneNumber.length());
+				
+			}
+			for(int i=0; i<phoneNumber.length(); i++) {
+				if(!(phoneNumber.charAt(i) >=48 && phoneNumber.charAt(i) <= 57)) {
+					return false;
+				} 
+			}
+		}
+		
+		return true;
 	}
 	
 	/**
-	 *	A password is strong enough it it has at least 8 characters and contains at 
+	 *	A password is strong enough if it has at least 8 characters and contains at 
 	 *	least one Capital Letter, one number and one special character (anything that is not a letter or number, excluding spaces).
 	 *	A password cannot contain spaces.
 	 *	E.g.: Strong: Ih@veAnOr1g1nalPassword9, , !paS$w0rd!
 	 *	Not Strong: password, password123, Password, !Password
 	 */
 	public static boolean validatePasswordIsStrong(String password) {
+		int specialChar = 0;
+		int capitalLetter = 0;
+		int number = 0;
+		
+		if(password.length()<8 || password.isEmpty()) {
+			return false;
+		} else {
+			for(int i=0; i<password.length(); i++) {
+				if(password.charAt(i) == 32) {
+					return false;
+				} else if ((password.charAt(i) >= 33 && password.charAt(i) <= 47) || (password.charAt(i) >=58 &&  password.charAt(i) <= 64) || 
+						(password.charAt(i) >=91 && password.charAt(i) <=96) ||
+						(password.charAt(i) >=123 && password.charAt(i) <=126)) {
+					specialChar++;
+				} else if ((password.charAt(i) >= 65 && password.charAt(i) <= 90)) {
+					capitalLetter++;
+				} else if ((password.charAt(i) >= 48 && password.charAt(i) <= 57)) {
+					number++;
+				} 
+			}
+			if(specialChar>=1 && capitalLetter>=1 && number >=1) {
+				return true;
+			}
+		}
+		System.out.println("test");
 		return false;
 	}
 
