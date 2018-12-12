@@ -4,12 +4,10 @@ package com.java.learning.v6.onlineshop;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 
-public class OnlineShopTest {
+public class OnlineShopTest extends OnlineShopTestSupport {
 
 	private IOnlineShop onlineShop;
 	
@@ -57,38 +55,5 @@ public class OnlineShopTest {
 		IProduct theMostExpensiveProduct = this.onlineShop.getTheMostExpensiveProduct(createGoodOrder());
 		assertEquals(theMostExpensiveProduct.getName(), "closet");
 		assertEquals(theMostExpensiveProduct.getPrice(), 110);
-	}
-
-	private IOrder createGoodOrder() {
-		IOrder order = new Order();
-		IOrderItem closet = createOrderItem("closet", 110, 1);
-		IOrderItem table1 = createOrderItem("table", 60, 1);
-		IOrderItem table2 = createOrderItem("table", 90, 1);
-		IOrderItem chairs = createOrderItem("chair", 30, 4);
-		order.setItems(Arrays.asList(chairs, table1, table2, closet));
-		return order;
-	}
-	
-	private IOrder createBadOrder() {
-		return new Order();
-	}
-	
-	private IOnlineShop createOnlineShop() {
-		return new OnlineShop();
-	}
-	
-	private IOrderItem createOrderItem(String name, double price, int qty) {
-		IOrderItem orderItem = new OrderItem();
-		IProduct prod = createProduct(name, price);
-		orderItem.setProduct(prod);
-		orderItem.setQuantity(qty);
-		return orderItem;
-	}
-	
-	private IProduct createProduct(String name, double price) {
-		IProduct product = new Product();
-		product.setName(name);
-		product.setPrice(price);
-		return product;
 	}
 }

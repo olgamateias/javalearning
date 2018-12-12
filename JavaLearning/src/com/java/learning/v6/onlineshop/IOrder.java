@@ -8,7 +8,7 @@ public interface IOrder {
 	
 	public void setItems(List<IOrderItem> items);
 	
-	public void getItems();
+	public List<IOrderItem> getItems();
 	
 	public void addItem(IOrderItem item);
 }
