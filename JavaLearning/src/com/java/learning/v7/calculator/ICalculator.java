@@ -10,7 +10,7 @@ public interface ICalculator {
 	
 	public double multiply(double a, double b);
 	
-	public double divide(double a, double b);
+	public double divide(double a, double b) throws IllegalArgumentException;
 	
 	public double addMultiple(List<Double> list);
 	

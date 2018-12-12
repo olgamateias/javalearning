@@ -3,5 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="lib/mockito-all-1.10.19.jar" sourcepath="C:/Users/cmateias/.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

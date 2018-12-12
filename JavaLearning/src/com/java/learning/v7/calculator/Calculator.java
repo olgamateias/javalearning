@@ -5,42 +5,45 @@ import java.util.List;
 public class Calculator implements ICalculator{
 
 	public Calculator() {
-		// TODO Auto-generated constructor stub
+		// 
 	}
 
 	@Override
 	public double add(double a, double b) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public double substract(double a, double b) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public double multiply(double a, double b) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/* 
+	 * When b is zero you need to throw an exception
+	 */
 	@Override
-	public double divide(double a, double b) {
-		// TODO Auto-generated method stub
+	public double divide(double a, double b) throws IllegalArgumentException {
 		return 0;
 	}
 
+	/* 
+	 * You must call add method
+	 */
 	@Override
 	public double addMultiple(List<Double> list) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/* 
+	 * You must call multiply method
+	 */
 	@Override
 	public double multiplyMultiple(List<Double> list) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
