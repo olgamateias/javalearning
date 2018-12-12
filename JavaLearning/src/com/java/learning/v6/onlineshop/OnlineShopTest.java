@@ -1,78 +1,94 @@
 package com.java.learning.v6.onlineshop;
 
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Arrays;
+
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class OnlineShopTest {
+public class OnlineShopTest {
 
-	private IOrder orderGood;
-	private IOrder orderBad;
 	private IOnlineShop onlineShop;
 	
 	@Before
 	public void setupOrder() {
-		this.orderGood = createGoodOrder();
-		this.orderBad = createBadOrder();
 		this.onlineShop = createOnlineShop();
 	}
 	
 	@Test
-	void testValidateOrder() {
-		this.onlineShop.validateOrder(this.orderGood);
-		this.onlineShop.validateOrder(this.orderBad);
+	public void testValidateOrder() {
+		assertEquals(this.onlineShop.validateOrder(createGoodOrder()), true);
+		assertEquals(this.onlineShop.validateOrder(createBadOrder()), false);
 	}
 
 	@Test
-	void testGetOrderItemPrice() {
-		IOrderItem item = createOrderItem();
-		IProduct product = createProduct();
-		item.setProduct(product);
-		item.setQuantity(2);
-		this.onlineShop.getOrderItemPrice(item);
+	public void testGetOrderItemPrice() {
+		IOrderItem item = createOrderItem("chair", 30, 3);
+		assertEquals(this.onlineShop.getOrderItemPrice(item), 90);
 	}
 
 	@Test
-	void testGetTotalPrice() {
-		this.onlineShop.getTotalPrice(createGoodOrder());
+	public void testGetTotalPrice() {
+		assertEquals(this.onlineShop.getTotalPrice(createGoodOrder()), 380);
 	}
 
 	@Test
-	void testGetTheCheapestOrderItem() {
-		this.onlineShop.getTheCheapestOrderItem(createGoodOrder());
+	public void testGetTheCheapestOrderItem() {
+		IOrderItem theCheapestOrderItem = this.onlineShop.getTheCheapestOrderItem(createGoodOrder());
+		assertEquals(theCheapestOrderItem.getProduct().getName(), "table");
+		assertEquals(theCheapestOrderItem.getProduct().getPrice(), 60);
+		assertEquals(theCheapestOrderItem.getQuantity(), 1);
 	}
 
 	@Test
-	void testGetTheMostExpensiveOrderItem() {
-		this.onlineShop.getTheMostExpensiveOrderItem(createGoodOrder());
+	public void testGetTheMostExpensiveOrderItem() {
+		IOrderItem theMostExpensiveOrderItem = this.onlineShop.getTheMostExpensiveOrderItem(createGoodOrder());
+		assertEquals(theMostExpensiveOrderItem.getProduct().getName(), "chair");
+		assertEquals(theMostExpensiveOrderItem.getProduct().getPrice(), 30);
+		assertEquals(theMostExpensiveOrderItem.getQuantity(), 4);
+		
 	}
 
 	@Test
-	void testGetTheMostExpensiveProduct() {
-		this.onlineShop.getTheMostExpensiveProduct(createGoodOrder());
+	public void testGetTheMostExpensiveProduct() {
+		IProduct theMostExpensiveProduct = this.onlineShop.getTheMostExpensiveProduct(createGoodOrder());
+		assertEquals(theMostExpensiveProduct.getName(), "closet");
+		assertEquals(theMostExpensiveProduct.getPrice(), 110);
 	}
 
 	private IOrder createGoodOrder() {
-		// TODO Claudiu
-		return null;
+		IOrder order = new Order();
+		IOrderItem closet = createOrderItem("closet", 110, 1);
+		IOrderItem table1 = createOrderItem("table", 60, 1);
+		IOrderItem table2 = createOrderItem("table", 90, 1);
+		IOrderItem chairs = createOrderItem("chair", 30, 4);
+		order.setItems(Arrays.asList(chairs, table1, table2, closet));
+		return order;
 	}
 	
 	private IOrder createBadOrder() {
-		// TODO Claudiu
-		return null;
+		return new Order();
 	}
 	
 	private IOnlineShop createOnlineShop() {
-		// TODO Claudiu
-		return null;
+		return new OnlineShop();
 	}
 	
-	private IOrderItem createOrderItem() {
-		// TODO Claudiu
-		return null;
+	private IOrderItem createOrderItem(String name, double price, int qty) {
+		IOrderItem orderItem = new OrderItem();
+		IProduct prod = createProduct(name, price);
+		orderItem.setProduct(prod);
+		orderItem.setQuantity(qty);
+		return orderItem;
 	}
 	
-	private IProduct createProduct() {
-		// TODO Claudiu
-		return null;
+	private IProduct createProduct(String name, double price) {
+		IProduct product = new Product();
+		product.setName(name);
+		product.setPrice(price);
+		return product;
 	}
 }
