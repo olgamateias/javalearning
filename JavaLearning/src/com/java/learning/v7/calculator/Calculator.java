@@ -10,17 +10,20 @@ public class Calculator implements ICalculator{
 
 	@Override
 	public double add(double a, double b) {
-		return 0;
+		double sum = a + b;
+		return sum;
 	}
 
 	@Override
 	public double substract(double a, double b) {
-		return 0;
+		double result = a - b;
+		return result;
 	}
 
 	@Override
 	public double multiply(double a, double b) {
-		return 0;
+		double result = a * b;
+		return result;
 	}
 
 	/* 
@@ -28,7 +31,16 @@ public class Calculator implements ICalculator{
 	 */
 	@Override
 	public double divide(double a, double b) throws IllegalArgumentException {
-		return 0;
+		double result = 0;
+		IllegalArgumentException message = new IllegalArgumentException("b cannot be 0 (zero)!");
+
+		
+		if(b == 0) {
+			throw message;
+		} else {
+			result = a / b;
+		}
+		return result;
 	}
 
 	/* 
@@ -36,7 +48,11 @@ public class Calculator implements ICalculator{
 	 */
 	@Override
 	public double addMultiple(List<Double> list) {
-		return 0;
+		double sum = 0;
+		for(int i = 0; i < list.size(); i++) {
+			sum = add(sum, list.get(i));
+		}
+		return sum;
 	}
 
 	/* 
@@ -44,7 +60,11 @@ public class Calculator implements ICalculator{
 	 */
 	@Override
 	public double multiplyMultiple(List<Double> list) {
-		return 0;
+		double result = 1;
+		for(int i = 0; i < list.size(); i++) {
+			result = multiply(result, list.get(i));
+		}
+		return result;
 	}
 
 }
