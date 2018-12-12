@@ -2,16 +2,25 @@ package com.java.learning.v6.onlineshop;
 
 import java.util.List;
 
-public class Order {
-	List<OrderItem> items;
+public class Order implements IOrder {
+	private List<OrderItem> items;
 
-	public List<OrderItem> getItems() {
-		return items;
+
+	public void setItems(List<IOrderItem> items) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void setItems(List<OrderItem> items) {
-		this.items = items;
+	public void getItems() {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
+	public void addItem(IOrderItem item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }

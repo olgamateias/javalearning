@@ -1,6 +1,6 @@
 package com.java.learning.v6.onlineshop;
 
-public class Product {
+public class Product implements IProduct {
 	
 	private String name;
 	private double price;
