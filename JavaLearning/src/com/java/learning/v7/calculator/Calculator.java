@@ -10,20 +10,17 @@ public class Calculator implements ICalculator{
 
 	@Override
 	public double add(double a, double b) {
-		double sum = a + b;
-		return sum;
+		return a + b;
 	}
 
 	@Override
 	public double substract(double a, double b) {
-		double result = a - b;
-		return result;
+		return a - b;
 	}
 
 	@Override
 	public double multiply(double a, double b) {
-		double result = a * b;
-		return result;
+		return a * b;
 	}
 
 	/* 
@@ -31,16 +28,11 @@ public class Calculator implements ICalculator{
 	 */
 	@Override
 	public double divide(double a, double b) throws IllegalArgumentException {
-		double result = 0;
-		IllegalArgumentException message = new IllegalArgumentException("b cannot be 0 (zero)!");
-
 		
 		if(b == 0) {
-			throw message;
-		} else {
-			result = a / b;
-		}
-		return result;
+			throw new IllegalArgumentException("b cannot be 0 (zero)!");
+		} 
+		return a / b;
 	}
 
 	/* 
