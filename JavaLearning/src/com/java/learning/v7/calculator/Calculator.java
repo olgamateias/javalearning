@@ -41,9 +41,12 @@ public class Calculator implements ICalculator{
 	@Override
 	public double addMultiple(List<Double> list) {
 		double sum = 0;
-		for(int i = 0; i < list.size(); i++) {
-			sum = add(sum, list.get(i));
+		for(double i:list) {
+			sum = add(sum, i);
 		}
+//		for(int i = 0; i < list.size(); i++) {
+//			sum = add(sum, list.get(i));
+//		}
 		return sum;
 	}
 
