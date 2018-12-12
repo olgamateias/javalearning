@@ -3,11 +3,21 @@ package com.java.learning.v6.onlineshop;
 import java.util.List;
 
 public class Order implements IOrder {
-	private List<OrderItem> items;
+	private List<IOrderItem> items;
+	private IOrderItem item;
 
+
+	public IOrderItem getItem() {
+		return item;
+	}
+
+	public void setItem(OrderItem item) {
+		this.item = item;
+	}
 
 	public void setItems(List<IOrderItem> items) {
 		// TODO Auto-generated method stub
+		this.items = items;
 		
 	}
 
