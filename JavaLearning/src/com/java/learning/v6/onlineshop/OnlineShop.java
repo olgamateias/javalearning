@@ -1,4 +1,4 @@
-package com.java.learning.v6;
+package com.java.learning.v6.onlineshop;
 
 public class OnlineShop {
 
