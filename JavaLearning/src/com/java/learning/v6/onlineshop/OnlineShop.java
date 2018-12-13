@@ -39,8 +39,9 @@ public class OnlineShop implements IOnlineShop {
 	 */
 	@Override
 	public double getOrderItemPrice(IOrderItem item) {
-
-		return 0;
+		double orderItemPrice = item.getQuantity() * item.getProduct()
+				.getPrice();
+		return orderItemPrice;
 	}
 
 	/**
@@ -48,7 +49,12 @@ public class OnlineShop implements IOnlineShop {
 	 */
 	@Override
 	public double getTotalPrice(IOrder order) {
-		return 0;
+		List<IOrderItem> items = order.getItems();
+		double totalAmount = 0;
+		for (IOrderItem item : items) {
+			totalAmount = totalAmount + getOrderItemPrice(item);
+		}
+		return totalAmount;
 	}
 
 	/**
