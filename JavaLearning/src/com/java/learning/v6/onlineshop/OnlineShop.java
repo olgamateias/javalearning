@@ -19,16 +19,13 @@ public class OnlineShop implements IOnlineShop {
 			return false;
 		}
 
-		for (int i = 0; i < items.size(); i++) {
-			if (items.get(i)
-					.getProduct()
+		for (IOrderItem i : items) {
+			if (i.getProduct()
 					.getName()
 					.isEmpty()
-					&& items.get(i)
-							.getProduct()
+					&& i.getProduct()
 							.getPrice() == 0
-					&& items.get(i)
-							.getQuantity() >= 1) {
+					&& i.getQuantity() < 1) {
 				return false;
 			}
 		}
