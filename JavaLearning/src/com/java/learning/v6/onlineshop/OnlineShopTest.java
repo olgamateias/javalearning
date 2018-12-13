@@ -2,6 +2,8 @@ package com.java.learning.v6.onlineshop;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,8 +18,28 @@ public class OnlineShopTest extends OnlineShopTestSupport {
 
 	@Test
 	public void testValidateOrder() {
+		IOrder badOrder2 = createBadOrder();
+		IOrderItem itemWithoutProduct = new OrderItem();
+		itemWithoutProduct.setProduct(null);
+		itemWithoutProduct.setQuantity(2);
+		badOrder2.setItems(Arrays.asList(itemWithoutProduct));
+
+		IOrder badOrder3 = createBadOrder();
+		IOrderItem itemWithoutQty = new OrderItem();
+		itemWithoutQty.setProduct(createProduct("stuff", 10));
+		badOrder3.setItems(Arrays.asList(itemWithoutQty));
+
+		IOrder badOrder4 = createBadOrder();
+		IOrderItem itemWithProductWithoutName = new OrderItem();
+		itemWithoutProduct.setProduct(createProduct(null, 0));
+		itemWithoutProduct.setQuantity(2);
+		badOrder4.setItems(Arrays.asList(itemWithProductWithoutName));
+
 		assertEquals(this.onlineShop.validateOrder(createGoodOrder()), true);
 		assertEquals(this.onlineShop.validateOrder(createBadOrder()), false);
+		assertEquals(this.onlineShop.validateOrder(badOrder2), false);
+		assertEquals(this.onlineShop.validateOrder(badOrder3), false);
+		assertEquals(this.onlineShop.validateOrder(badOrder4), false);
 	}
 	/*
 	 * @Test public void testGetOrderItemPrice() { IOrderItem item = createOrderItem("chair", 30,
