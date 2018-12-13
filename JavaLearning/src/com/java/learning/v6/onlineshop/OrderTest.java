@@ -7,15 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-public class OrderTest extends OnlineShopTestSupport{
+public class OrderTest extends OnlineShopTestSupport {
 
 	private IOrder order;
-	
+
 	@Before
 	public void setup() {
 		this.order = createGoodOrder();
 	}
-	
+
 	@Test
 	public void testGetItems() {
 		assertNotNull(this.order.getItems(), "Items should not be null");
@@ -25,9 +25,9 @@ public class OrderTest extends OnlineShopTestSupport{
 	@Test
 	public void testAddItem() {
 		IOrder orderLocal = createBadOrder();
-		
+
 		orderLocal.addItem(createOrderItem("hanger", 12, 1));
-		assertEquals(0l, orderLocal.getItems().stream().filter(item -> "hanger".equals(item.getProduct().getName())).count());
+		assertEquals(1l, orderLocal.getItems().stream().filter(item -> "hanger".equals(item.getProduct().getName())).count());
 	}
 
 }
