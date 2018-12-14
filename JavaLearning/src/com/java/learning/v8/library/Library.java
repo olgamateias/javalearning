@@ -9,6 +9,7 @@ public class Library implements ILibrary {
 	private List<IBook> booksDatabase = new ArrayList<>();
 	private List<IAuthor> authorsDatabase = new ArrayList<>();
 	private List<IPublisher> publishersDatabase = new ArrayList<>();
+	private String test;
 
 	@Override
 	public IBook getBookById(int bookId) {
