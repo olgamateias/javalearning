@@ -22,12 +22,12 @@ public class OnlineShop implements IOnlineShop {
 			try {
 				i.getProduct().getName().equals(null);
 			} catch (Exception e) {
-				i.getProduct().setName("");
-				System.out.println("The name of the product is null, therefore was set to an empty string");
+				System.out.println("The name of the product is null, therefore the order is invalid");
+				return false;
 			}
 			if (i.getProduct().getName().isEmpty() || i.getProduct().getPrice() == 0 || i.getQuantity() < 1) {
-				System.out.println(
-						"Some of the elements are 0 or null." + "Name " + i.getProduct().getName() + ". Price " + i.getProduct().getPrice() + ". Quantity " + i.getQuantity());
+				System.out.println("Some of the elements are 0 or null, therefore the order is invalid. " + "Name " + i.getProduct().getName() + ". Price "
+						+ i.getProduct().getPrice() + ". Quantity " + i.getQuantity());
 				return false;
 			}
 		}
