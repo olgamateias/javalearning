@@ -19,6 +19,12 @@ public class OnlineShop implements IOnlineShop {
 		}
 
 		for (IOrderItem i : items) {
+			try {
+				i.getProduct().getName().equals(null);
+			} catch (Exception e) {
+				i.getProduct().setName("");
+				System.out.println("The name of the product is null, therefore was set to an empty string");
+			}
 			if (i.getProduct().getName().isEmpty() || i.getProduct().getPrice() == 0 || i.getQuantity() < 1) {
 				System.out.println(
 						"Some of the elements are 0 or null." + "Name " + i.getProduct().getName() + ". Price " + i.getProduct().getPrice() + ". Quantity " + i.getQuantity());
