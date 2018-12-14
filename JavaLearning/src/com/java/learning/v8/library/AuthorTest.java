@@ -10,7 +10,7 @@ public class AuthorTest {
 
 	@Test
 	public void testAuthor() {
-		IAuthor author = null; // new Author();
+		IAuthor author = new BookAuthor();
 		author.setFirstName("Mihai");
 		author.setLastName("Eminescu");
 		author.setBirthDate(LocalDate.of(1850, 1, 15));

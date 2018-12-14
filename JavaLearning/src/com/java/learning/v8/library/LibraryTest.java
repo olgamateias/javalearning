@@ -13,49 +13,49 @@ public class LibraryTest {
 
 	@Before
 	public void setUp() throws Exception {
-		IAuthor authEminescu = null;// new Author();
+		IAuthor authEminescu = new BookAuthor();
 		authEminescu.setLastName("Mihai");
 		authEminescu.setLastName("Eminescu");
 		authEminescu.setBirthDate(LocalDate.of(1850, 1, 15));
 		authEminescu.setDeathDate(LocalDate.of(1889, 6, 15));
 		authEminescu.setId(1);
 
-		IAuthor authCaragiale = null; // new Author();
+		IAuthor authCaragiale = new BookAuthor();
 		authCaragiale.setFirstName("Ion Luca");
 		authCaragiale.setLastName("Caragiale");
 		authCaragiale.setBirthDate(LocalDate.of(0, 0, 0));
 		authCaragiale.setDeathDate(LocalDate.of(0, 0, 0));
 		authCaragiale.setId(2);
 
-		IAuthor authCioran = null; // new Author();
+		IAuthor authCioran = new BookAuthor();
 		authCioran.setFirstName("Emil");
 		authCioran.setLastName("Cioran");
 		authCioran.setBirthDate(LocalDate.of(0, 0, 0));
 		authCioran.setDeathDate(LocalDate.of(0, 0, 0));
 		authCioran.setId(3);
 
-		IAuthor authCartarescu = null; // new Author();
+		IAuthor authCartarescu = new BookAuthor();
 		authCartarescu.setFirstName("Mircea");
 		authCartarescu.setLastName("Cartarescu");
 		authCartarescu.setBirthDate(LocalDate.of(0, 0, 0));
 		authCartarescu.setId(4);
 
-		IPublisher pubTeora = null; // new Publisher();
+		IPublisher pubTeora = new Publisher();
 		pubTeora.setName("Teora");
 		pubTeora.setCity("Iasi");
 		pubTeora.setId(1);
 
-		IPublisher pubTrei = null; // new Publisher();
+		IPublisher pubTrei = new Publisher();
 		pubTrei.setName("Trei");
 		pubTrei.setCity("Brasov");
 		pubTrei.setId(2);
 
-		IPublisher pubEnigma = null; // new Publisher();
+		IPublisher pubEnigma = new Publisher();
 		pubEnigma.setName("Enigma");
 		pubEnigma.setCity("Bucuresti");
 		pubEnigma.setId(3);
 
-		IBook bookPoezii = null; // new Book();
+		IBook bookPoezii = new Book();
 		bookPoezii.setAuthor(authEminescu);
 		bookPoezii.setPublisher(pubTeora);
 		bookPoezii.setGenre("poezie");
@@ -63,7 +63,7 @@ public class LibraryTest {
 		bookPoezii.setPublishDate(LocalDate.of(0, 0, 0));
 		bookPoezii.setId(1);
 
-		IBook bookScrisoarePierduta = null; // new Book();
+		IBook bookScrisoarePierduta = new Book();
 		bookScrisoarePierduta.setAuthor(authCaragiale);
 		bookScrisoarePierduta.setPublisher(pubTrei);
 		bookScrisoarePierduta.setGenre("teatru");
@@ -71,7 +71,7 @@ public class LibraryTest {
 		bookScrisoarePierduta.setPublishDate(LocalDate.of(0, 0, 0));
 		bookScrisoarePierduta.setId(2);
 
-		IBook bookDeCe = null; // new Book();
+		IBook bookDeCe = new Book();
 		bookDeCe.setAuthor(authCartarescu);
 		bookDeCe.setPublisher(pubEnigma);
 		bookDeCe.setGenre("romantic");
@@ -79,7 +79,7 @@ public class LibraryTest {
 		bookDeCe.setPublishDate(LocalDate.of(2004, 4, 21));
 		bookDeCe.setId(3);
 
-		IBook bookIstoria = null; // new Book();
+		IBook bookIstoria = new Book();
 		bookIstoria.setAuthor(authCioran);
 		bookIstoria.setPublisher(pubEnigma);
 		bookIstoria.setGenre("filisofie");
@@ -87,7 +87,7 @@ public class LibraryTest {
 		bookIstoria.setPublishDate(LocalDate.of(1937, 4, 17));
 		bookIstoria.setId(4);
 
-		IBook bookPeCulmi = null; // new Book();
+		IBook bookPeCulmi = new Book();
 		bookPeCulmi.setAuthor(authCioran);
 		bookPeCulmi.setPublisher(pubTrei);
 		bookIstoria.setGenre("filosofie");

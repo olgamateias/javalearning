@@ -8,7 +8,7 @@ public class PublisherTest {
 
 	@Test
 	public void testPublisher() {
-		IPublisher publisher = null;// new Publisher();
+		IPublisher publisher = new Publisher();
 		publisher.setCity("Iasi");
 		publisher.setName("Teora");
 		publisher.setId(1);
