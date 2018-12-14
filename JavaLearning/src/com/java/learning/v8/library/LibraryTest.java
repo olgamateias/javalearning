@@ -1,6 +1,9 @@
 package com.java.learning.v8.library;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
 
@@ -23,21 +26,21 @@ public class LibraryTest {
 		IAuthor authCaragiale = new BookAuthor();
 		authCaragiale.setFirstName("Ion Luca");
 		authCaragiale.setLastName("Caragiale");
-		authCaragiale.setBirthDate(LocalDate.of(0, 0, 0));
-		authCaragiale.setDeathDate(LocalDate.of(0, 0, 0));
+		authCaragiale.setBirthDate(LocalDate.of(1852, 2, 13));
+		authCaragiale.setDeathDate(LocalDate.of(1912, 6, 9));
 		authCaragiale.setId(2);
 
 		IAuthor authCioran = new BookAuthor();
 		authCioran.setFirstName("Emil");
 		authCioran.setLastName("Cioran");
-		authCioran.setBirthDate(LocalDate.of(0, 0, 0));
-		authCioran.setDeathDate(LocalDate.of(0, 0, 0));
+		authCioran.setBirthDate(LocalDate.of(1911, 4, 8));
+		authCioran.setDeathDate(LocalDate.of(1995, 6, 20));
 		authCioran.setId(3);
 
 		IAuthor authCartarescu = new BookAuthor();
 		authCartarescu.setFirstName("Mircea");
 		authCartarescu.setLastName("Cartarescu");
-		authCartarescu.setBirthDate(LocalDate.of(0, 0, 0));
+		authCartarescu.setBirthDate(LocalDate.of(1956, 6, 1));
 		authCartarescu.setId(4);
 
 		IPublisher pubTeora = new Publisher();
@@ -60,7 +63,7 @@ public class LibraryTest {
 		bookPoezii.setPublisher(pubTeora);
 		bookPoezii.setGenre("poezie");
 		bookPoezii.setTitle("Poezii");
-		bookPoezii.setPublishDate(LocalDate.of(0, 0, 0));
+		bookPoezii.setPublishDate(LocalDate.of(1880, 3, 27));
 		bookPoezii.setId(1);
 
 		IBook bookScrisoarePierduta = new Book();
@@ -68,7 +71,7 @@ public class LibraryTest {
 		bookScrisoarePierduta.setPublisher(pubTrei);
 		bookScrisoarePierduta.setGenre("teatru");
 		bookScrisoarePierduta.setTitle("O scrisoare pierduta");
-		bookScrisoarePierduta.setPublishDate(LocalDate.of(0, 0, 0));
+		bookScrisoarePierduta.setPublishDate(LocalDate.of(1900, 3, 13));
 		bookScrisoarePierduta.setId(2);
 
 		IBook bookDeCe = new Book();
@@ -95,26 +98,68 @@ public class LibraryTest {
 		bookIstoria.setPublishDate(LocalDate.of(1934, 6, 30));
 		bookIstoria.setId(5);
 
+		this.library.addBook(bookPeCulmi);
+		this.library.addBook(bookIstoria);
+		this.library.addBook(bookDeCe);
+		this.library.addBook(bookScrisoarePierduta);
+		this.library.addBook(bookPoezii);
+
 	}
 
 	@Test
 	public void testGetBookById() {
-		fail("Not yet implemented");
+		IBook book = this.library.getBookById(1);
+		assertNotNull(book);
+		assertEquals("Poezii", book.getTitle());
+		assertEquals(1, book.getId());
+
+		book = this.library.getBookById(99);
+		assertNull(book);
 	}
 
 	@Test
 	public void testGetAuthorById() {
-		fail("Not yet implemented");
+		IAuthor author = this.library.getAuthorById(1);
+		assertNotNull(author);
+		assertEquals(1, author.getId());
+		assertEquals("Mihai", author.getFirstName());
+
+		author = this.library.getAuthorById(99);
+		assertNull(author);
 	}
 
 	@Test
 	public void testGetPublisherById() {
-		fail("Not yet implemented");
+		IPublisher publisher = this.library.getPublisherById(1);
+		assertNotNull(publisher);
+		assertEquals(1, publisher.getId(), 1);
+		assertEquals("Teora", publisher.getName());
+
+		publisher = this.library.getPublisherById(99);
+		assertNull(publisher);
 	}
 
 	@Test
 	public void testValidateBook() {
-		fail("Not yet implemented");
+		IAuthor invalidAuthor = createDummyValidAuthor();
+		invalidAuthor.setFirstName(null);
+		invalidAuthor.setLastName(null);
+
+		IPublisher invalidPublisher = createDumyValidPublisher();
+		invalidPublisher.setName(null);
+
+		IBook invalidBook1 = null; // new Book();
+		IBook invalidBook2 = createDummyValidBook();
+
+		invalidBook2.setAuthor(invalidAuthor);
+		invalidBook2.setPublisher(invalidPublisher);
+
+		IBook invalidBook3 = createDummyValidBook();
+		invalidBook3.setTitle(null);
+
+		assertEquals(false, this.library.validateBook(invalidBook1));
+		assertEquals(false, this.library.validateBook(invalidBook2));
+		assertEquals(false, this.library.validateBook(invalidBook3));
 	}
 
 	@Test
@@ -202,4 +247,35 @@ public class LibraryTest {
 		fail("Not yet implemented");
 	}
 
+	private IAuthor createDummyValidAuthor() {
+		IAuthor author = null; // new Author();
+		author.setFirstName("First");
+		author.setLastName("Last");
+		author.setBirthDate(LocalDate.of(2000, 1, 1));
+		author.setDeathDate(LocalDate.of(2018, 12, 12));
+		author.setId(100);
+
+		return author;
+	}
+
+	private IPublisher createDumyValidPublisher() {
+		IPublisher publisher = null; // new Publisher();
+		publisher.setName("Publisher");
+		publisher.setCity("City");
+		publisher.setId(100);
+
+		return publisher;
+	}
+
+	private IBook createDummyValidBook() {
+		IBook book = null; // new Book();
+		book.setAuthor(createDummyValidAuthor());
+		book.setPublisher(createDumyValidPublisher());
+		book.setGenre("genre");
+		book.setPublishDate(LocalDate.of(2018, 1, 1));
+		book.setTitle("Book");
+		book.setId(100);
+
+		return book;
+	}
 }
