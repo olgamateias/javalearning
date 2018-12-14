@@ -69,19 +69,24 @@ public class OnlineShop implements IOnlineShop {
 		double price = Integer.MAX_VALUE;
 		IOrderItem itemWithLowPrice = new OrderItem();
 
-		for (int i = 0; i < items.size(); i++) {
-			double value = items.get(i).getProduct().getPrice() * items.get(i).getQuantity();
+//		for (int i = 0; i < items.size(); i++) {
+//			double value = items.get(i).getProduct().getPrice() * items.get(i).getQuantity();
+//			if (value < price) {
+//				price = value;
+//				itemWithLowPrice = items.get(i);
+//
+//			}
+//
+//		}
+
+		for (IOrderItem item : items) {
+			double value = getOrderItemPrice(item);
 			if (value < price) {
 				price = value;
-				itemWithLowPrice = items.get(i);
-
+				itemWithLowPrice = item;
 			}
 
 		}
-
-//		for(IOrderItem theLowestPrice : items) {
-//			if(theLowestPrice.getProduct().getPrice())
-//		}
 		return itemWithLowPrice;
 	}
 
