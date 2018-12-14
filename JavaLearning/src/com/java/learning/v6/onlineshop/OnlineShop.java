@@ -95,7 +95,18 @@ public class OnlineShop implements IOnlineShop {
 	 */
 	@Override
 	public IOrderItem getTheMostExpensiveOrderItem(IOrder order) {
-		return null;
+		List<IOrderItem> items = order.getItems();
+		double value = Integer.MIN_VALUE;
+		IOrderItem itemWithHighPrice = new OrderItem();
+
+		for (IOrderItem item : items) {
+			double totalPrice = getOrderItemPrice(item);
+			if (totalPrice > value) {
+				value = totalPrice;
+				itemWithHighPrice = item;
+			}
+		}
+		return itemWithHighPrice;
 	}
 
 	/**
