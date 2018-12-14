@@ -30,6 +30,18 @@ public class Library implements ILibrary {
 	}
 
 	@Override
+	public boolean validatePublisher(IPublisher publisher) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean validateAuthor(IAuthor author) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public boolean validateBook(IBook book) {
 		// TODO Auto-generated method stub
 		return false;
