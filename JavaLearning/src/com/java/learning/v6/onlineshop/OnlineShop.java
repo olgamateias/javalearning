@@ -67,7 +67,7 @@ public class OnlineShop implements IOnlineShop {
 	public IOrderItem getTheCheapestOrderItem(IOrder order) {
 		List<IOrderItem> items = order.getItems();
 		double price = Integer.MAX_VALUE;
-		IOrderItem itemWithLowPrice = new OrderItem();
+		IOrderItem itemWithLowPrice = null;
 
 //		for (int i = 0; i < items.size(); i++) {
 //			double value = items.get(i).getProduct().getPrice() * items.get(i).getQuantity();
@@ -97,7 +97,7 @@ public class OnlineShop implements IOnlineShop {
 	public IOrderItem getTheMostExpensiveOrderItem(IOrder order) {
 		List<IOrderItem> items = order.getItems();
 		double value = Integer.MIN_VALUE;
-		IOrderItem itemWithHighPrice = new OrderItem();
+		IOrderItem itemWithHighPrice = null;
 
 		for (IOrderItem item : items) {
 			double totalPrice = getOrderItemPrice(item);
@@ -117,7 +117,7 @@ public class OnlineShop implements IOnlineShop {
 	public IProduct getTheMostExpensiveProduct(IOrder order) {
 		List<IOrderItem> items = order.getItems();
 		double price = Integer.MIN_VALUE;
-		IProduct highestPrice = new Product();
+		IProduct highestPrice = null;
 
 		for (IOrderItem item : items) {
 			double itemPrice = item.getProduct().getPrice();
