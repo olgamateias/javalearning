@@ -2,8 +2,8 @@ package com.java.learning.v6.onlineshop;
 
 public class OrderItem implements IOrderItem {
 
-	private IProduct product;
-	private int quantity;
+	private IProduct product = new Product();
+	private int quantity = 0;;
 
 	@Override
 	public IProduct getProduct() {

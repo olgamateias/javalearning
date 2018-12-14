@@ -18,6 +18,7 @@ public class OnlineShopTest extends OnlineShopTestSupport {
 
 	@Test
 	public void testValidateOrder() {
+
 		IOrder badOrder2 = createBadOrder();
 		IOrderItem itemWithoutProduct = new OrderItem();
 		itemWithoutProduct.setProduct(null);
@@ -31,7 +32,7 @@ public class OnlineShopTest extends OnlineShopTestSupport {
 
 		IOrder badOrder4 = createBadOrder();
 		IOrderItem itemWithProductWithoutName = new OrderItem();
-		itemWithoutProduct.setProduct(createProduct(null, 0));
+		itemWithoutProduct.setProduct(createProduct(null, 10));
 		itemWithoutProduct.setQuantity(2);
 		badOrder4.setItems(Arrays.asList(itemWithProductWithoutName));
 
@@ -52,17 +53,13 @@ public class OnlineShopTest extends OnlineShopTestSupport {
 	public void testGetTotalPrice() {
 		assertEquals(this.onlineShop.getTotalPrice(createGoodOrder()), 380);
 	}
-
-	@Test
-	public void testGetTheCheapestOrderItem() {
-		IOrderItem theCheapestOrderItem = this.onlineShop.getTheCheapestOrderItem(createGoodOrder());
-		assertEquals(theCheapestOrderItem.getProduct()
-				.getName(), "table");
-		assertEquals(theCheapestOrderItem.getProduct()
-				.getPrice(), 60);
-		assertEquals(theCheapestOrderItem.getQuantity(), 1);
-	}
 	/*
+	 * @Test public void testGetTheCheapestOrderItem() { IOrderItem theCheapestOrderItem =
+	 * this.onlineShop.getTheCheapestOrderItem(createGoodOrder());
+	 * assertEquals(theCheapestOrderItem.getProduct() .getName(), "table");
+	 * assertEquals(theCheapestOrderItem.getProduct() .getPrice(), 60);
+	 * assertEquals(theCheapestOrderItem.getQuantity(), 1); }
+	 * 
 	 * @Test public void testGetTheMostExpensiveOrderItem() { IOrderItem theMostExpensiveOrderItem =
 	 * this.onlineShop.getTheMostExpensiveOrderItem(createGoodOrder());
 	 * assertEquals(theMostExpensiveOrderItem.getProduct().getName(), "chair");

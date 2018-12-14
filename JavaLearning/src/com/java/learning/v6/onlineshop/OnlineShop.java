@@ -13,19 +13,15 @@ public class OnlineShop implements IOnlineShop {
 	public boolean validateOrder(IOrder order) {
 		List<IOrderItem> items = order.getItems();
 
-		if (order.getItems()
-				.isEmpty()) {
+		if (order.getItems().isEmpty()) {
 			System.out.println("The order is empty");
 			return false;
 		}
 
 		for (IOrderItem i : items) {
-			if (i.getProduct()
-					.getName()
-					.isEmpty()
-					&& i.getProduct()
-							.getPrice() == 0
-					&& i.getQuantity() < 1) {
+			if (i.getProduct().getName().isEmpty() || i.getProduct().getPrice() == 0 || i.getQuantity() < 1) {
+				System.out.println(
+						"Some of the elements are 0 or null." + "Name " + i.getProduct().getName() + ". Price " + i.getProduct().getPrice() + ". Quantity " + i.getQuantity());
 				return false;
 			}
 		}
@@ -39,8 +35,7 @@ public class OnlineShop implements IOnlineShop {
 	 */
 	@Override
 	public double getOrderItemPrice(IOrderItem item) {
-		double orderItemPrice = item.getQuantity() * item.getProduct()
-				.getPrice();
+		double orderItemPrice = item.getQuantity() * item.getProduct().getPrice();
 		return orderItemPrice;
 	}
 
