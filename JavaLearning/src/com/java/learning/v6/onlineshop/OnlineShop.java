@@ -14,7 +14,7 @@ public class OnlineShop implements IOnlineShop {
 		List<IOrderItem> items = order.getItems();
 
 		if (order.getItems().isEmpty()) {
-			System.out.println("The order is empty");
+			// System.out.println("The order is empty");
 			return false;
 		}
 
@@ -22,17 +22,19 @@ public class OnlineShop implements IOnlineShop {
 			try {
 				i.getProduct().getName().equals(null);
 			} catch (Exception e) {
-				System.out.println("The name of the product is null, therefore the order is invalid");
+				// System.out.println("The name of the product is null, therefore the order is
+				// invalid");
 				return false;
 			}
 			if (i.getProduct().getName().isEmpty() || i.getProduct().getPrice() == 0 || i.getQuantity() < 1) {
-				System.out.println("Some of the elements are 0 or null, therefore the order is invalid. " + "Name " + i.getProduct().getName() + ". Price "
-						+ i.getProduct().getPrice() + ". Quantity " + i.getQuantity());
+				// System.out.println("Some of the elements are 0 or null, therefore the order is
+				// invalid. " + "Name " + i.getProduct().getName() + ". Price "
+				// + i.getProduct().getPrice() + ". Quantity " + i.getQuantity());
 				return false;
 			}
 		}
 
-		System.out.println("The order is valid");
+		// System.out.println("The order is valid");
 		return true;
 	}
 
@@ -59,11 +61,28 @@ public class OnlineShop implements IOnlineShop {
 	}
 
 	/**
-	 * Return the order item that has the lowest price among all order items from the order
+	 * Return the order item that has the lowest value among all order items from the order
 	 */
 	@Override
 	public IOrderItem getTheCheapestOrderItem(IOrder order) {
-		return null;
+		List<IOrderItem> items = order.getItems();
+		double price = Integer.MAX_VALUE;
+		IOrderItem itemWithLowPrice = new OrderItem();
+
+		for (int i = 0; i < items.size(); i++) {
+			double value = items.get(i).getProduct().getPrice() * items.get(i).getQuantity();
+			if (value < price) {
+				price = value;
+				itemWithLowPrice = items.get(i);
+
+			}
+
+		}
+
+//		for(IOrderItem theLowestPrice : items) {
+//			if(theLowestPrice.getProduct().getPrice())
+//		}
+		return itemWithLowPrice;
 	}
 
 	/**

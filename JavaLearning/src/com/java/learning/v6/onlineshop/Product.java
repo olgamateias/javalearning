@@ -3,7 +3,7 @@ package com.java.learning.v6.onlineshop;
 public class Product implements IProduct {
 
 	private String name;
-	private double price;
+	private double price = 0;
 
 	@Override
 	public String getName() {
