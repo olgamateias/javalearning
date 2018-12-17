@@ -60,16 +60,15 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public boolean validatePublisher(IPublisher publisher) {
-		try {
-			publisher.getCity().equals(null);
-			publisher.getName().equals(null);
-		} catch (Exception e) {
-			System.out.println("Publisher's city or name is null");
-			return false;
-		}
-
-		if (publisher.getCity().isEmpty() || publisher.getName().isEmpty() || publisher.getId() == 0) {
-			System.out.println("Invalid publisher. Something is empty or equal to 0");
+//		try {
+//			publisher.getCity().equals(null);
+//			publisher.getName().equals(null);
+//		} catch (Exception e) {
+//			System.out.println("Publisher's city or name is null");
+//			return false;
+//		}
+		if (publisher.getCity() == null || publisher.getName() == null || publisher.getCity().isEmpty() || publisher.getName().isEmpty() || publisher.getId() == 0) {
+			System.out.println("Invalid publisher. Something is null, empty or equal to 0");
 			return false;
 		}
 		System.out.println("Valid publisher.");
@@ -78,16 +77,15 @@ public class Library implements ILibrary {
 
 	@Override
 	public boolean validateAuthor(IAuthor author) {
-		try {
-			author.getFirstName().equals(null);
-			author.getLastName().equals(null);
-		} catch (Exception e) {
-			System.out.println("Author's first name & last name is null");
-			return false;
-		}
-
-		if (author.getFirstName().isEmpty() || author.getLastName().isEmpty() || author.getId() == 0) {
-			System.out.println("Invalid author. Something is empty or equal to 0");
+//		try {
+//			author.getFirstName().equals(null);
+//			author.getLastName().equals(null);
+//		} catch (Exception e) {
+//			System.out.println("Author's first name & last name is null");
+//			return false;
+//		}
+		if (author.getFirstName() == null || author.getLastName() == null || author.getFirstName().isEmpty() || author.getLastName().isEmpty() || author.getId() == 0) {
+			System.out.println("Invalid author. Something is null, empty or equal to 0");
 			return false;
 		}
 		System.out.println("Valid author.");
@@ -96,20 +94,23 @@ public class Library implements ILibrary {
 
 	@Override
 	public boolean validateBook(IBook book) {
-		try {
-			book.getTitle().equals(null);
-		} catch (Exception e) {
-			System.out.println("Book's title is null");
-			return false;
-		}
-		if (book.getId() == 0 || book.getTitle().isEmpty() || book.getGenre().isEmpty()) {
-			System.out.println("Invalid book. Something is empty or equal to 0");
+//		if(book == null) {
+//			return false;
+//		}
+//		try {
+//			book.getTitle().equals(null);
+//		} catch (Exception e) {
+//			System.out.println("Book's title is null");
+//			return false;
+//		}
+		if (book.getGenre() == null || book.getTitle() == null || book.getId() == 0 || book.getTitle().isEmpty() || book.getGenre().isEmpty()) {
+			System.out.println("Invalid book. Something is null, empty or equal to 0");
 			return false;
 		} else if (validateAuthor(book.getAuthor()) && validatePublisher(book.getPublisher())) {
 			System.out.println("Valid book.");
 			return true;
 		}
-		System.out.println("Invalid book.");
+		// System.out.println("Invalid book.");
 		return false;
 	}
 
