@@ -127,13 +127,18 @@ public class LibraryTest {
 		assertNull(author);
 	}
 
+	@Test
+	public void testGetPublisherById() {
+		IPublisher publisher = this.library.getPublisherById(1);
+		assertNotNull(publisher);
+		assertEquals(1, publisher.getId(), 1);
+		assertEquals("Teora", publisher.getName());
+
+		publisher = this.library.getPublisherById(99);
+		assertNull(publisher);
+	}
+
 	/*
-	 * @Test public void testGetPublisherById() { IPublisher publisher =
-	 * this.library.getPublisherById(1); assertNotNull(publisher); assertEquals(1,
-	 * publisher.getId(), 1); assertEquals("Teora", publisher.getName());
-	 * 
-	 * publisher = this.library.getPublisherById(99); assertNull(publisher); }
-	 * 
 	 * @Test public void testValidateBook() { IAuthor invalidAuthor = createDummyValidAuthor();
 	 * invalidAuthor.setFirstName(null); invalidAuthor.setLastName(null);
 	 * 

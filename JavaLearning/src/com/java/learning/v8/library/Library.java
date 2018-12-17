@@ -43,6 +43,15 @@ public class Library implements ILibrary {
 
 	@Override
 	public IPublisher getPublisherById(int publisherId) {
+		if (publisherId <= 0) {
+			return null;
+		}
+		for (IPublisher publisher : this.publishersDatabase) {
+			if (publisherId == publisher.getId()) {
+				System.out.println("Publisher " + publisher.getName());
+				return publisher;
+			}
+		}
 		return null;
 	}
 
