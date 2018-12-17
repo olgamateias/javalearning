@@ -28,6 +28,16 @@ public class Library implements ILibrary {
 
 	@Override
 	public IAuthor getAuthorById(int authorId) {
+		if (authorId <= 0) {
+			return null;
+		}
+		for (IAuthor author : this.authorsDatabase) {
+			if (authorId == author.getId()) {
+				System.out.println("author " + author.getFirstName() + " " + author.getLastName());
+				return author;
+			}
+
+		}
 		return null;
 	}
 
@@ -54,6 +64,8 @@ public class Library implements ILibrary {
 	@Override
 	public void addBook(IBook book) {
 		this.booksDatabase.add(book);
+		this.authorsDatabase.add(book.getAuthor());
+		this.publishersDatabase.add(book.getPublisher());
 	}
 
 	@Override
