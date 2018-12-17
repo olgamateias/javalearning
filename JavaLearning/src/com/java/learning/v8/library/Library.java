@@ -55,18 +55,61 @@ public class Library implements ILibrary {
 		return null;
 	}
 
+	/**
+	 * Validate that all fields are set
+	 */
 	@Override
 	public boolean validatePublisher(IPublisher publisher) {
-		return false;
+		try {
+			publisher.getCity().equals(null);
+			publisher.getName().equals(null);
+		} catch (Exception e) {
+			System.out.println("Publisher's city or name is null");
+			return false;
+		}
+
+		if (publisher.getCity().isEmpty() || publisher.getName().isEmpty() || publisher.getId() == 0) {
+			System.out.println("Invalid publisher. Something is empty or equal to 0");
+			return false;
+		}
+		System.out.println("Valid publisher.");
+		return true;
 	}
 
 	@Override
 	public boolean validateAuthor(IAuthor author) {
-		return false;
+		try {
+			author.getFirstName().equals(null);
+			author.getLastName().equals(null);
+		} catch (Exception e) {
+			System.out.println("Author's first name & last name is null");
+			return false;
+		}
+
+		if (author.getFirstName().isEmpty() || author.getLastName().isEmpty() || author.getId() == 0) {
+			System.out.println("Invalid author. Something is empty or equal to 0");
+			return false;
+		}
+		System.out.println("Valid author.");
+		return true;
 	}
 
 	@Override
 	public boolean validateBook(IBook book) {
+		try {
+			book.getTitle().equals(null);
+		} catch (Exception e) {
+			System.out.println("Book's title is null");
+			return false;
+		}
+		if (book.getId() == 0 || book.getTitle().isEmpty() || book.getGenre().isEmpty()) {
+			System.out.println("Invalid book. Something is empty or equal to 0");
+			return false;
+		} else if (validateAuthor(book.getAuthor()) && validatePublisher(book.getPublisher())) {
+			System.out.println("Valid book.");
+			return true;
+		}
+		System.out.println("Invalid book.");
 		return false;
 	}
 

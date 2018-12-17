@@ -1,8 +1,6 @@
 package com.java.learning.v8.library;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
 
@@ -84,7 +82,7 @@ public class LibraryTest {
 		IBook bookIstoria = new Book();
 		bookIstoria.setAuthor(authCioran);
 		bookIstoria.setPublisher(pubEnigma);
-		bookIstoria.setGenre("filisofie");
+		bookIstoria.setGenre("filosofie");
 		bookIstoria.setTitle("Lacrimi si sfinti");
 		bookIstoria.setPublishDate(LocalDate.of(1937, 4, 17));
 		bookIstoria.setId(4);
@@ -92,10 +90,10 @@ public class LibraryTest {
 		IBook bookPeCulmi = new Book();
 		bookPeCulmi.setAuthor(authCioran);
 		bookPeCulmi.setPublisher(pubTrei);
-		bookIstoria.setGenre("filosofie");
-		bookIstoria.setTitle("Pe culmile disperarii");
-		bookIstoria.setPublishDate(LocalDate.of(1934, 6, 30));
-		bookIstoria.setId(5);
+		bookPeCulmi.setGenre("filosofie");
+		bookPeCulmi.setTitle("Pe culmile disperarii");
+		bookPeCulmi.setPublishDate(LocalDate.of(1934, 6, 30));
+		bookPeCulmi.setId(5);
 
 		this.library.addBook(bookPeCulmi);
 		this.library.addBook(bookIstoria);
@@ -105,55 +103,48 @@ public class LibraryTest {
 
 	}
 
+	/*
+	 * @Test public void testGetBookById() { IBook book = this.library.getBookById(1);
+	 * assertNotNull(book); assertEquals("Poezii", book.getTitle()); assertEquals(1, book.getId());
+	 * 
+	 * book = this.library.getBookById(99); assertNull(book); }
+	 * 
+	 * @Test public void testGetAuthorById() { IAuthor author = this.library.getAuthorById(1);
+	 * assertNotNull(author); assertEquals(1, author.getId()); assertEquals("Mihai",
+	 * author.getFirstName());
+	 * 
+	 * author = this.library.getAuthorById(99); assertNull(author); }
+	 * 
+	 * @Test public void testGetPublisherById() { IPublisher publisher =
+	 * this.library.getPublisherById(1); assertNotNull(publisher); assertEquals(1,
+	 * publisher.getId(), 1); assertEquals("Teora", publisher.getName());
+	 * 
+	 * publisher = this.library.getPublisherById(99); assertNull(publisher); }
+	 */
 	@Test
-	public void testGetBookById() {
-		IBook book = this.library.getBookById(1);
-		assertNotNull(book);
-		assertEquals("Poezii", book.getTitle());
-		assertEquals(1, book.getId());
+	public void testValidateBook() {
+		IAuthor invalidAuthor = createDummyValidAuthor();
+		invalidAuthor.setFirstName(null);
+		invalidAuthor.setLastName(null);
 
-		book = this.library.getBookById(99);
-		assertNull(book);
-	}
+		IPublisher invalidPublisher = createDumyValidPublisher();
+		invalidPublisher.setName(null);
 
-	@Test
-	public void testGetAuthorById() {
-		IAuthor author = this.library.getAuthorById(1);
-		assertNotNull(author);
-		assertEquals(1, author.getId());
-		assertEquals("Mihai", author.getFirstName());
+		IBook invalidBook1 = new Book();
+		IBook invalidBook2 = createDummyValidBook();
 
-		author = this.library.getAuthorById(99);
-		assertNull(author);
-	}
+		invalidBook2.setAuthor(invalidAuthor);
+		invalidBook2.setPublisher(invalidPublisher);
 
-	@Test
-	public void testGetPublisherById() {
-		IPublisher publisher = this.library.getPublisherById(1);
-		assertNotNull(publisher);
-		assertEquals(1, publisher.getId(), 1);
-		assertEquals("Teora", publisher.getName());
+		IBook invalidBook3 = createDummyValidBook();
+		invalidBook3.setTitle(null);
 
-		publisher = this.library.getPublisherById(99);
-		assertNull(publisher);
+		assertEquals(false, this.library.validateBook(invalidBook1));
+		assertEquals(false, this.library.validateBook(invalidBook2));
+		assertEquals(false, this.library.validateBook(invalidBook3));
 	}
 
 	/*
-	 * @Test public void testValidateBook() { IAuthor invalidAuthor = createDummyValidAuthor();
-	 * invalidAuthor.setFirstName(null); invalidAuthor.setLastName(null);
-	 * 
-	 * IPublisher invalidPublisher = createDumyValidPublisher(); invalidPublisher.setName(null);
-	 * 
-	 * IBook invalidBook1 = null; // new Book(); IBook invalidBook2 = createDummyValidBook();
-	 * 
-	 * invalidBook2.setAuthor(invalidAuthor); invalidBook2.setPublisher(invalidPublisher);
-	 * 
-	 * IBook invalidBook3 = createDummyValidBook(); invalidBook3.setTitle(null);
-	 * 
-	 * assertEquals(false, this.library.validateBook(invalidBook1)); assertEquals(false,
-	 * this.library.validateBook(invalidBook2)); assertEquals(false,
-	 * this.library.validateBook(invalidBook3)); }
-	 * 
 	 * @Test public void testAddBook() { fail("Not yet implemented"); }
 	 * 
 	 * @Test public void testAddBooks() { fail("Not yet implemented"); }
@@ -191,7 +182,7 @@ public class LibraryTest {
 	 * }
 	 */
 	private IAuthor createDummyValidAuthor() {
-		IAuthor author = null; // new Author();
+		IAuthor author = new BookAuthor();
 		author.setFirstName("First");
 		author.setLastName("Last");
 		author.setBirthDate(LocalDate.of(2000, 1, 1));
@@ -202,7 +193,7 @@ public class LibraryTest {
 	}
 
 	private IPublisher createDumyValidPublisher() {
-		IPublisher publisher = null; // new Publisher();
+		IPublisher publisher = new Publisher();
 		publisher.setName("Publisher");
 		publisher.setCity("City");
 		publisher.setId(100);
@@ -211,7 +202,7 @@ public class LibraryTest {
 	}
 
 	private IBook createDummyValidBook() {
-		IBook book = null; // new Book();
+		IBook book = new Book();
 		book.setAuthor(createDummyValidAuthor());
 		book.setPublisher(createDumyValidPublisher());
 		book.setGenre("genre");
