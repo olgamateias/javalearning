@@ -67,6 +67,8 @@ public class Library implements ILibrary {
 //			System.out.println("Publisher's city or name is null");
 //			return false;
 //		}
+
+		// first check the null and after that if isEmpty or == 0
 		if (publisher.getCity() == null || publisher.getName() == null || publisher.getCity().isEmpty() || publisher.getName().isEmpty() || publisher.getId() == 0) {
 			System.out.println("Invalid publisher. Something is null, empty or equal to 0");
 			return false;
@@ -84,6 +86,8 @@ public class Library implements ILibrary {
 //			System.out.println("Author's first name & last name is null");
 //			return false;
 //		}
+
+		// first check the null and after that if isEmpty or == 0
 		if (author.getFirstName() == null || author.getLastName() == null || author.getFirstName().isEmpty() || author.getLastName().isEmpty() || author.getId() == 0) {
 			System.out.println("Invalid author. Something is null, empty or equal to 0");
 			return false;
@@ -103,6 +107,8 @@ public class Library implements ILibrary {
 //			System.out.println("Book's title is null");
 //			return false;
 //		}
+
+		// first check the null and after that if isEmpty or == 0
 		if (book.getGenre() == null || book.getTitle() == null || book.getId() == 0 || book.getTitle().isEmpty() || book.getGenre().isEmpty()) {
 			System.out.println("Invalid book. Something is null, empty or equal to 0");
 			return false;
