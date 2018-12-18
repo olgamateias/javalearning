@@ -173,7 +173,7 @@ public class Library implements ILibrary {
 		List<IBook> allBooks = new ArrayList<IBook>();
 
 		for (IBook book : this.booksDatabase) {
-			if (book.getAuthor().getId() == author.getId()) {
+			if (book.getAuthor().equals(author)) { // getId() == author.getId()) {
 				allBooks.add(book);
 			}
 		}
@@ -184,7 +184,7 @@ public class Library implements ILibrary {
 	public List<IBook> getBooksByPublisher(IPublisher publisher) {
 		List<IBook> allBooks = new ArrayList<IBook>();
 		for (IBook book : this.booksDatabase) {
-			if (book.getPublisher().getId() == publisher.getId()) {
+			if (book.getPublisher().equals(publisher)) { // .getId() == publisher.getId()) {
 				allBooks.add(book);
 			}
 		}
@@ -194,9 +194,8 @@ public class Library implements ILibrary {
 	@Override
 	public List<IBook> getBooksByGenre(String genre) {
 		List<IBook> allBooks = new ArrayList<IBook>();
-		genre = genre.toLowerCase();
 		for (IBook book : this.booksDatabase) {
-			if (book.getGenre().equals(genre)) {
+			if (book.getGenre().equalsIgnoreCase(genre)) {
 				allBooks.add(book);
 			}
 		}
