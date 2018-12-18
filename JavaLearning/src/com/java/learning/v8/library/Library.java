@@ -129,6 +129,7 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public void addBook(IBook book) {
+
 		if (validateBook(book)) {
 			if (!this.publishersDatabase.contains(book.getPublisher())) {
 				this.publishersDatabase.add(book.getPublisher());
@@ -137,6 +138,7 @@ public class Library implements ILibrary {
 			}
 			this.booksDatabase.add(book);
 		}
+		System.out.println("The book is not a valid book. Therefore it wasn't added inthe list");
 	}
 
 	/**
