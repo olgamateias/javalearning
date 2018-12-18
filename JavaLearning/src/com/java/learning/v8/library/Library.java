@@ -60,6 +60,9 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public boolean validatePublisher(IPublisher publisher) {
+		if (publisher == null) {
+			return false;
+		}
 //		try {
 //			publisher.getCity().equals(null);
 //			publisher.getName().equals(null);
@@ -79,6 +82,9 @@ public class Library implements ILibrary {
 
 	@Override
 	public boolean validateAuthor(IAuthor author) {
+		if (author == null) {
+			return false;
+		}
 //		try {
 //			author.getFirstName().equals(null);
 //			author.getLastName().equals(null);
@@ -98,9 +104,9 @@ public class Library implements ILibrary {
 
 	@Override
 	public boolean validateBook(IBook book) {
-//		if(book == null) {
-//			return false;
-//		}
+		if (book == null) {
+			return false;
+		}
 //		try {
 //			book.getTitle().equals(null);
 //		} catch (Exception e) {
@@ -133,10 +139,14 @@ public class Library implements ILibrary {
 		if (validateBook(book)) {
 			if (!this.publishersDatabase.contains(book.getPublisher())) {
 				this.publishersDatabase.add(book.getPublisher());
-			} else if (!this.authorsDatabase.contains(book.getAuthor())) {
+			}
+			if (!this.authorsDatabase.contains(book.getAuthor())) {
 				this.authorsDatabase.add(book.getAuthor());
 			}
-			this.booksDatabase.add(book);
+			if (!this.booksDatabase.contains(book)) {
+				this.booksDatabase.add(book);
+			}
+
 		} else {
 			System.out.println("The book is not a valid book. Therefore it wasn't added in the list");
 		}
