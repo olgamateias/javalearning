@@ -194,6 +194,12 @@ public class Library implements ILibrary {
 	@Override
 	public List<IBook> getBooksByGenre(String genre) {
 		List<IBook> allBooks = new ArrayList<IBook>();
+		genre = genre.toLowerCase();
+		for (IBook book : this.booksDatabase) {
+			if (book.getGenre().equals(genre)) {
+				allBooks.add(book);
+			}
+		}
 		return allBooks;
 	}
 

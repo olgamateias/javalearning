@@ -290,7 +290,7 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
+
 	public void testGetBooksByGenre() {
 		List<IBook> booksByGenre = this.library.getBooksByGenre("filosof");
 		assertEquals(0, booksByGenre.size());
