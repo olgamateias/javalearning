@@ -107,12 +107,6 @@ public class Library implements ILibrary {
 		if (book == null) {
 			return false;
 		}
-//		try {
-//			book.getTitle().equals(null);
-//		} catch (Exception e) {
-//			System.out.println("Book's title is null");
-//			return false;
-//		}
 
 		// first check the null and after that if isEmpty or == 0
 		if (book.getGenre() == null || book.getTitle() == null || book.getId() == 0 || book.getTitle().isEmpty() || book.getGenre().isEmpty()) {
