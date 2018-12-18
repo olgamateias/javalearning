@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Library implements ILibrary {
 
-	public List<IBook> booksDatabase = new ArrayList<>();
-	public List<IAuthor> authorsDatabase = new ArrayList<>();
-	public List<IPublisher> publishersDatabase = new ArrayList<>();
+	private List<IBook> booksDatabase = new ArrayList<>();
+	private List<IAuthor> authorsDatabase = new ArrayList<>();
+	private List<IPublisher> publishersDatabase = new ArrayList<>();
 
 	@Override
 	public IBook getBookById(int bookId) {
@@ -159,7 +159,8 @@ public class Library implements ILibrary {
 
 	@Override
 	public List<IBook> getAllBooks() {
-		List<IBook> allBooks = new ArrayList<IBook>();
+		List<IBook> allBooks = new ArrayList<IBook>(this.booksDatabase);
+
 		return allBooks;
 	}
 
