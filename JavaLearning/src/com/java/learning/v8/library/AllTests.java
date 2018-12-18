@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ AuthorTest.class, BookTest.class, PublisherTest.class, LibraryTest.class })
+@SuiteClasses({ AuthorTest.class, BookTest.class, PublisherTest.class, LibraryTest.class, ArchitectureTest.class })
 public class AllTests {
 
 }
