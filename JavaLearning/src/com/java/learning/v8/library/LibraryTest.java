@@ -259,7 +259,8 @@ public class LibraryTest {
 
 	@Test
 	public void testGetBooksByAuthor() {
-		IAuthor eminescu = this.library.getAuthorById(AUTHOR_ID_EMINESCU);
+		IAuthor eminescu = new BookAuthor();
+		eminescu.setId(AUTHOR_ID_EMINESCU);
 		List<IBook> booksByAuthor = this.library.getBooksByAuthor(eminescu);
 		assertEquals(1, booksByAuthor.size());
 		IBook poezii = booksByAuthor.get(0);
@@ -275,7 +276,8 @@ public class LibraryTest {
 
 	@Test
 	public void testGetBooksByPublisher() {
-		IPublisher pubEnigma = this.library.getPublisherById(PUBLISHER_ID_ENIGMA);
+		IPublisher pubEnigma = new Publisher();
+		pubEnigma.setId(PUBLISHER_ID_ENIGMA);
 		List<IBook> booksByPublisher = this.library.getBooksByPublisher(pubEnigma);
 		assertEquals(2, booksByPublisher.size());
 		IBook bookLacrimi = this.library.getBookById(BOOK_ID_CIORAN_LACRIMI);
@@ -411,7 +413,8 @@ public class LibraryTest {
 	@Test
 	@Ignore
 	public void testGetAuthorsThatPublishedHere() {
-		IPublisher pubTrei = this.library.getPublisherById(PUBLISHER_ID_TREI);
+		IPublisher pubTrei = new Publisher();
+		pubTrei.setId(PUBLISHER_ID_TREI);
 		List<IAuthor> authorsThatPublishedHere = this.library.getAuthorsThatPublishedHere(pubTrei);
 
 		assertEquals(2, authorsThatPublishedHere.size());
@@ -459,7 +462,8 @@ public class LibraryTest {
 	@Test
 	@Ignore
 	public void testGetPublishersWhereThisAuthorPublished() {
-		IAuthor authCioran = this.library.getAuthorById(AUTHOR_ID_CIORAN);
+		IAuthor authCioran = new BookAuthor();
+		authCioran.setId(AUTHOR_ID_CIORAN);
 		List<IPublisher> publishersWhereThisAuthorPublished = this.library.getPublishersWhereThisAuthorPublished(authCioran);
 		assertEquals(2, publishersWhereThisAuthorPublished.size());
 
