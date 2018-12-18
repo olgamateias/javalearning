@@ -137,8 +137,10 @@ public class Library implements ILibrary {
 				this.authorsDatabase.add(book.getAuthor());
 			}
 			this.booksDatabase.add(book);
+		} else {
+			System.out.println("The book is not a valid book. Therefore it wasn't added in the list");
 		}
-		System.out.println("The book is not a valid book. Therefore it wasn't added inthe list");
+
 	}
 
 	/**
