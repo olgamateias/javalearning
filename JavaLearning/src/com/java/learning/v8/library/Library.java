@@ -120,13 +120,31 @@ public class Library implements ILibrary {
 		return false;
 	}
 
+	/**
+	 * Add a book to the booksDatabase. If a book is not valid then it will not be added to the
+	 * booksDatabase. If the book is valid and the book's publisher does not exist yet in the
+	 * publishersDatabase then it needs to be added. If the book is valid and the book's author does
+	 * not exist yet in the authorsDatabase then it needs to be added.
+	 * 
+	 */
 	@Override
 	public void addBook(IBook book) {
-		this.booksDatabase.add(book);
-		this.authorsDatabase.add(book.getAuthor());
-		this.publishersDatabase.add(book.getPublisher());
+		if (validateBook(book)) {
+			if (!this.publishersDatabase.contains(book.getPublisher())) {
+				this.publishersDatabase.add(book.getPublisher());
+			} else if (!this.authorsDatabase.contains(book.getAuthor())) {
+				this.authorsDatabase.add(book.getAuthor());
+			}
+			this.booksDatabase.add(book);
+		}
 	}
 
+	/**
+	 * Add more books to the booksDatabase. If a book is not valid then it will not be added to the
+	 * booksDatabase. If the book is valid and the book's publisher does not exist yet in the
+	 * publishersDatabase then it needs to be added. If the book is valid and the book's author does
+	 * not exist yet in the authorsDatabase then it needs to be added.
+	 */
 	@Override
 	public void addBooks(List<IBook> books) {
 	}
