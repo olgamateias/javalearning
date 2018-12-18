@@ -167,6 +167,12 @@ public class Library implements ILibrary {
 	@Override
 	public List<IBook> getBooksByAuthor(IAuthor author) {
 		List<IBook> allBooks = new ArrayList<IBook>();
+
+		for (IBook book : this.booksDatabase) {
+			if (book.getAuthor() == author) {
+				allBooks.add(book);
+			}
+		}
 		return allBooks;
 	}
 
