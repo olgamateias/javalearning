@@ -151,6 +151,10 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public void addBooks(List<IBook> books) {
+
+		for (IBook book : books) {
+			addBook(book);
+		}
 	}
 
 	@Override
