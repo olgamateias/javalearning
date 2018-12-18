@@ -173,7 +173,7 @@ public class Library implements ILibrary {
 		List<IBook> allBooks = new ArrayList<IBook>();
 
 		for (IBook book : this.booksDatabase) {
-			if (book.getAuthor() == author) {
+			if (book.getAuthor().getId() == author.getId()) {
 				allBooks.add(book);
 			}
 		}
@@ -184,7 +184,7 @@ public class Library implements ILibrary {
 	public List<IBook> getBooksByPublisher(IPublisher publisher) {
 		List<IBook> allBooks = new ArrayList<IBook>();
 		for (IBook book : this.booksDatabase) {
-			if (book.getPublisher() == publisher) {
+			if (book.getPublisher().getId() == publisher.getId()) {
 				allBooks.add(book);
 			}
 		}

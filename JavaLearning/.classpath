@@ -8,6 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="lib/mockito-all-1.10.19.jar" sourcepath="C:/Users/cmateias/.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19-sources.jar"/>
-	<classpathentry kind="lib" path="C:/_stuff/dev/wksp_olga/javalearning/JavaLearning/lib/testng-6.9.9.jar" sourcepath="lib/testng-6.9.9-sources.jar"/>
+	<classpathentry kind="lib" path="lib/testng-6.9.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
