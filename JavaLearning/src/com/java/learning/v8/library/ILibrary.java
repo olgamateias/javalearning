@@ -77,8 +77,9 @@ public interface ILibrary {
 	public List<IBook> getBooksWhereTitleContainsKeyword(String keyword);
 
 	/**
-	 * Get all the books that match the keyword. The keyword must be matched in at least one of the
-	 * following properties: book title, author first name, author last name, publisher name
+	 * Get all the books that match the keyword (contains, ignore case). The keyword must be matched
+	 * in at least one of the following properties: book title, author first name, author last name,
+	 * publisher name
 	 */
 	public List<IBook> getBooksWhereEverythingMightContainKeyword(String keyword);
 
