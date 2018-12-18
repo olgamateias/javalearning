@@ -213,30 +213,42 @@ public class LibraryTest {
 
 	@Test
 	public void testAddBooks() {
-		Mockito.spy(this.library);
+		ILibrary libSpy = Mockito.spy(this.library);
 		IBook book1 = createDummyValidBook(100);
 		IBook book2 = createDummyValidBook(101);
 		IBook book3 = createDummyValidBook(102);
 		List<IBook> books = Arrays.asList(book1, book2, book3);
-		this.library.addBooks(books);
+		libSpy.addBooks(books);
 
-		assertNotNull(this.library.getBookById(100));
-		assertNotNull(this.library.getBookById(101));
-		assertNotNull(this.library.getBookById(102));
+		assertNotNull(libSpy.getBookById(100));
+		assertNotNull(libSpy.getBookById(101));
+		assertNotNull(libSpy.getBookById(102));
 
-		Mockito.verify(this.library, VerificationModeFactory.times(3)).addBook(Mockito.any());
+		Mockito.verify(libSpy, VerificationModeFactory.times(3)).addBook(Mockito.any());
 	}
 
 	@Test
-	@Ignore
 	public void testGetAllBooks() {
-		fail("Not yet implemented");
+		List<IBook> allBooks = this.library.getAllBooks();
+		assertEquals(5, allBooks.size());
+
+		IBook invalidBook = createDummyValidBook(100);
+		invalidBook.setAuthor(null);
+
+		allBooks = this.library.getAllBooks();
+		assertEquals(5, allBooks.size());
 	}
 
 	@Test
-	@Ignore
 	public void testGetBooksByAuthor() {
-		fail("Not yet implemented");
+		IAuthor eminescu = this.library.getAuthorById(1);
+		List<IBook> booksByAuthor = this.library.getBooksByAuthor(eminescu);
+		assertEquals(1, booksByAuthor.size());
+		IBook poezii = booksByAuthor.get(0);
+		assertNotNull(poezii);
+		assertEquals(1, poezii.getId());
+		assertEquals(eminescu, poezii.getAuthor());
+		assertEquals("Poezii", poezii.getTitle());
 	}
 
 	@Test
