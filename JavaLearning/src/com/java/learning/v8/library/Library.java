@@ -310,7 +310,7 @@ public class Library implements ILibrary {
 	public List<IAuthor> getAuthorsThatPublishedHere(IPublisher publisher) {
 		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
 		for (IBook book : this.booksDatabase) {
-			if (book.getPublisher().getId() == publisher.getId()) {
+			if (book.getPublisher().equals(publisher)) {
 				allAuthors.add(book.getAuthor());
 			}
 		}
@@ -322,6 +322,8 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IAuthor> getAuthorsThatPublishedAfter(LocalDate date) {
+		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
+
 		return null;
 	}
 
