@@ -206,9 +206,12 @@ public class Library implements ILibrary {
 	public List<IBook> getBooksPublishedInYear(int year) {
 		List<IBook> allBooks = new ArrayList<IBook>();
 		for (IBook book : this.booksDatabase) {
-			if (book.getPublishDate().getYear() == year) {
-				allBooks.add(book);
+			if (book.getPublishDate() != null) {
+				if (book.getPublishDate().getYear() == year) {
+					allBooks.add(book);
+				}
 			}
+
 		}
 		return allBooks;
 	}
@@ -217,10 +220,11 @@ public class Library implements ILibrary {
 	public List<IBook> getBooksPublishedAfter(LocalDate date) {
 		List<IBook> allBooks = new ArrayList<IBook>();
 		for (IBook book : this.booksDatabase) {
-			if (book.getPublishDate().isAfter(date)) {
-				allBooks.add(book);
+			if (book.getPublishDate() != null) {
+				if (book.getPublishDate().isAfter(date)) {
+					allBooks.add(book);
+				}
 			}
-
 		}
 		return allBooks;
 	}
