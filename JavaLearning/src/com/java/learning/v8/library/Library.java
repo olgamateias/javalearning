@@ -271,7 +271,16 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IAuthor> getAuthorsHavingFirstName(String firstName) {
-		return null;
+		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
+		if (firstName.isEmpty()) {
+			return null;
+		}
+		for (IAuthor author : this.authorsDatabase) {
+			if (author.getFirstName().equalsIgnoreCase(firstName)) {
+				allAuthors.add(author);
+			}
+		}
+		return allAuthors;
 	}
 
 	/**
@@ -279,7 +288,18 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IAuthor> getAuthorsHavingFirstAndLastName(String firstName, String lastName) {
-		return null;
+		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
+		firstName = firstName.toLowerCase();
+		lastName = lastName.toLowerCase();
+		if (firstName.isEmpty() || lastName.isEmpty()) {
+			return null;
+		}
+		for (IAuthor author : this.authorsDatabase) {
+			if (author.getFirstName().toLowerCase().contains(firstName) && author.getLastName().toLowerCase().contains(lastName)) {
+				allAuthors.add(author);
+			}
+		}
+		return allAuthors;
 	}
 
 	/**

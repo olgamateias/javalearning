@@ -379,7 +379,6 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetAuthorsHavingFirstName() {
 		List<IAuthor> authorsHavingFirstName = this.library.getAuthorsHavingFirstName("EmiL");
 		assertEquals(1, authorsHavingFirstName.size());
@@ -392,17 +391,14 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetAuthorsHavingFirstAndLastName() {
-		List<IAuthor> authorsHavingFirstName = this.library.getAuthorsHavingFirstName("Emi");
-		assertEquals(2, authorsHavingFirstName.size());
+		List<IAuthor> authorsHavingFirstName = this.library.getAuthorsHavingFirstAndLastName("Emi", "Ci");
+		assertEquals(1, authorsHavingFirstName.size());
 
 		IAuthor authCioran = this.library.getAuthorById(AUTHOR_ID_CIORAN);
-		IAuthor authEminescu = this.library.getAuthorById(AUTHOR_ID_EMINESCU);
-		assertTrue(authorsHavingFirstName.contains(authEminescu));
 		assertTrue(authorsHavingFirstName.contains(authCioran));
 
-		authorsHavingFirstName = this.library.getAuthorsHavingFirstName("Sadoveanu");
+		authorsHavingFirstName = this.library.getAuthorsHavingFirstAndLastName("Miha", "Sadoveanu");
 		assertEquals(0, authorsHavingFirstName.size());
 
 	}
