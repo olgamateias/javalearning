@@ -323,8 +323,12 @@ public class Library implements ILibrary {
 	@Override
 	public List<IAuthor> getAuthorsThatPublishedAfter(LocalDate date) {
 		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
-
-		return null;
+		for (IBook book : this.booksDatabase) {
+			if (book.getPublishDate().isAfter(date)) {
+				allAuthors.add(book.getAuthor());
+			}
+		}
+		return allAuthors;
 	}
 
 	/**
