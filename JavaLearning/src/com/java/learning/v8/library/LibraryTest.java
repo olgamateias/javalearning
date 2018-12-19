@@ -308,7 +308,7 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
+
 	public void testGetBooksPublishedInYear() {
 		List<IBook> booksPublishedInYear = this.library.getBooksPublishedInYear(2004);
 		assertEquals(2, booksPublishedInYear.size());

@@ -205,6 +205,11 @@ public class Library implements ILibrary {
 	@Override
 	public List<IBook> getBooksPublishedInYear(int year) {
 		List<IBook> allBooks = new ArrayList<IBook>();
+		for (IBook book : this.booksDatabase) {
+			if (book.getPublishDate().getYear() == year) {
+				allBooks.add(book);
+			}
+		}
 		return allBooks;
 	}
 
