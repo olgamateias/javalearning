@@ -360,7 +360,6 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetBooksWhereEverythingMightContainKeyword() {
 		List<IBook> booksWhereEverythingMightContainKeyword = this.library.getBooksWhereEverythingMightContainKeyword("Mihai");
 		assertEquals(1, booksWhereEverythingMightContainKeyword.size());
@@ -376,6 +375,7 @@ public class LibraryTest {
 
 		booksWhereEverythingMightContainKeyword = this.library.getBooksWhereEverythingMightContainKeyword("teatru");
 		assertEquals(0, booksWhereEverythingMightContainKeyword.size());
+
 	}
 
 	@Test

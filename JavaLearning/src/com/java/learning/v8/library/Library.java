@@ -248,9 +248,22 @@ public class Library implements ILibrary {
 		return allBooks;
 	}
 
+	/**
+	 * Get all the books that match the keyword (contains, ignore case). The keyword must be matched
+	 * in at least one of the following properties: book title, author first name, author last name,
+	 * publisher name
+	 */
 	@Override
 	public List<IBook> getBooksWhereEverythingMightContainKeyword(String keyword) {
-		return null;
+		List<IBook> allBooks = new ArrayList<IBook>();
+		keyword = keyword.toLowerCase();
+		for (IBook book : this.booksDatabase) {
+			if (book.getAuthor().getFirstName().toLowerCase().contains(keyword) || book.getAuthor().getLastName().toLowerCase().contains(keyword)
+					|| book.getTitle().toLowerCase().contains(keyword) || book.getPublisher().getName().toLowerCase().contains(keyword)) {
+				allBooks.add(book);
+			}
+		}
+		return allBooks;
 	}
 
 	@Override
