@@ -404,7 +404,6 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetAuthorsThatPublishedHere() {
 		IPublisher pubTrei = new Publisher();
 		pubTrei.setId(PUBLISHER_ID_TREI);
