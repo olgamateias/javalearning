@@ -266,31 +266,50 @@ public class Library implements ILibrary {
 		return allBooks;
 	}
 
+	/**
+	 * Get authors whose first name contains the text parameter (ignoring case)
+	 */
 	@Override
 	public List<IAuthor> getAuthorsHavingFirstName(String firstName) {
 		return null;
 	}
 
+	/**
+	 * Get authors whose first name and last name contains the text parameters (ignoring case).
+	 */
 	@Override
 	public List<IAuthor> getAuthorsHavingFirstAndLastName(String firstName, String lastName) {
 		return null;
 	}
 
+	/**
+	 * Get the authors whose books have been published at this publisher. The publisher is uniquely
+	 * identified by its id.
+	 */
 	@Override
 	public List<IAuthor> getAuthorsThatPublishedHere(IPublisher publisher) {
 		return null;
 	}
 
+	/**
+	 * Get the authors whose books have been published after this date
+	 */
 	@Override
 	public List<IAuthor> getAuthorsThatPublishedAfter(LocalDate date) {
 		return null;
 	}
 
+	/**
+	 * Publisher name must contain the text (ignoring case)
+	 */
 	@Override
 	public List<IPublisher> getPublishersByName(String name) {
 		return null;
 	}
 
+	/**
+	 * Get all the publishers where this author published books
+	 */
 	@Override
 	public List<IPublisher> getPublishersWhereThisAuthorPublished(IAuthor author) {
 		return null;
