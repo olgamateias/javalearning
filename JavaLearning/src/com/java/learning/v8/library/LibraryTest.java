@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.internal.verification.VerificationModeFactory;
@@ -423,7 +422,6 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetAuthorsThatPublishedAfter() {
 		List<IAuthor> authorsThatPublishedAfter = this.library.getAuthorsThatPublishedAfter(LocalDate.of(1934, 3, 1));
 		assertEquals(2, authorsThatPublishedAfter.size());
@@ -439,7 +437,6 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetPublishersByName() {
 		List<IPublisher> publishersByName = this.library.getPublishersByName("trei");
 		assertEquals(1, publishersByName.size());
@@ -452,7 +449,6 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetPublishersWhereThisAuthorPublished() {
 		IAuthor authCioran = new BookAuthor();
 		authCioran.setId(AUTHOR_ID_CIORAN);

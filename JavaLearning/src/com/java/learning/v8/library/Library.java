@@ -323,8 +323,9 @@ public class Library implements ILibrary {
 	@Override
 	public List<IAuthor> getAuthorsThatPublishedAfter(LocalDate date) {
 		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
+//emil cioran si mircea cartarescu au acelasi id = 3, prin urmare pica la chck-ul meu !allAuthors.contains(book.getAuthor()) si lista returneaza un singur autor, nu 2
 		for (IBook book : this.booksDatabase) {
-			if (book.getPublishDate().isAfter(date)) {
+			if (book.getPublishDate().isAfter(date) && !allAuthors.contains(book.getAuthor())) {
 				allAuthors.add(book.getAuthor());
 			}
 		}
@@ -350,7 +351,13 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IPublisher> getPublishersWhereThisAuthorPublished(IAuthor author) {
-		return null;
+		List<IPublisher> allPub = new ArrayList<IPublisher>();
+		for (IBook book : this.booksDatabase) {
+			if (book.getAuthor().equals(author)) {
+				allPub.add(book.getPublisher());
+			}
+		}
+		return allPub;
 	}
 
 }
