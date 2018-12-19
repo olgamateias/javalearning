@@ -215,7 +215,14 @@ public class Library implements ILibrary {
 
 	@Override
 	public List<IBook> getBooksPublishedAfter(LocalDate date) {
-		return null;
+		List<IBook> allBooks = new ArrayList<IBook>();
+		for (IBook book : this.booksDatabase) {
+			if (book.getPublishDate().isAfter(date)) {
+				allBooks.add(book);
+			}
+
+		}
+		return allBooks;
 	}
 
 	@Override
