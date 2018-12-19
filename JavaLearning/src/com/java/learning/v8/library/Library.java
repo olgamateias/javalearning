@@ -336,7 +336,13 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IPublisher> getPublishersByName(String name) {
-		return null;
+		List<IPublisher> allPub = new ArrayList<IPublisher>();
+		for (IPublisher pub : this.publishersDatabase) {
+			if (pub.getName().equalsIgnoreCase(name)) {
+				allPub.add(pub);
+			}
+		}
+		return allPub;
 	}
 
 	/**
