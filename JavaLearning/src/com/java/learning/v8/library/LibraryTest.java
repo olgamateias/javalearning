@@ -336,7 +336,6 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetBooksPublishedBefore() {
 		List<IBook> booksPublishedBefore = this.library.getBooksPublishedBefore(LocalDate.of(1900, 1, 1));
 		assertEquals(1, booksPublishedBefore.size());
