@@ -348,7 +348,6 @@ public class LibraryTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetBooksWhereTitleContainsKeyword() {
 		List<IBook> booksWhereTitleContainsKeyword = this.library.getBooksWhereTitleContainsKeyword("lacrim");
 		assertEquals(1, booksWhereTitleContainsKeyword.size());

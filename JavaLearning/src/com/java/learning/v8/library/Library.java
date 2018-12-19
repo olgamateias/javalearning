@@ -238,7 +238,14 @@ public class Library implements ILibrary {
 
 	@Override
 	public List<IBook> getBooksWhereTitleContainsKeyword(String keyword) {
-		return null;
+		List<IBook> allBooks = new ArrayList<IBook>();
+		keyword = keyword.toLowerCase();
+		for (IBook book : this.booksDatabase) {
+			if (book.getTitle().toLowerCase().contains(keyword)) {
+				allBooks.add(book);
+			}
+		}
+		return allBooks;
 	}
 
 	@Override
