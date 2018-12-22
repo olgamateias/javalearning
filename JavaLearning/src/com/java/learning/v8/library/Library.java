@@ -2,7 +2,9 @@ package com.java.learning.v8.library;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Library implements ILibrary {
 
@@ -172,82 +174,84 @@ public class Library implements ILibrary {
 
 	@Override
 	public List<IBook> getBooksByAuthor(IAuthor author) {
-		List<IBook> allBooks = new ArrayList<IBook>();
 
+		Set<IBook> allBook = new HashSet<IBook>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getAuthor().equals(author)) { // getId() == author.getId()) {
-				allBooks.add(book);
+				// allBooks.add(book);
+				allBook.add(book);
 			}
 		}
-		return allBooks;
+		return new ArrayList<IBook>(allBook);
 	}
 
 	@Override
 	public List<IBook> getBooksByPublisher(IPublisher publisher) {
-		List<IBook> allBooks = new ArrayList<IBook>();
+		Set<IBook> allBooks = new HashSet<IBook>();
+
 		for (IBook book : this.booksDatabase) {
 			if (book.getPublisher().equals(publisher)) { // .getId() == publisher.getId()) {
 				allBooks.add(book);
 			}
 		}
-		return allBooks;
+		return new ArrayList<IBook>(allBooks);
 	}
 
 	@Override
 	public List<IBook> getBooksByGenre(String genre) {
-		List<IBook> allBooks = new ArrayList<IBook>();
+		Set<IBook> allBooks = new HashSet<IBook>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getGenre().equalsIgnoreCase(genre)) {
 				allBooks.add(book);
 			}
 		}
-		return allBooks;
+		return new ArrayList<IBook>(allBooks);
 	}
 
 	@Override
 	public List<IBook> getBooksPublishedInYear(int year) {
-		List<IBook> allBooks = new ArrayList<IBook>();
+		Set<IBook> allBooks = new HashSet<IBook>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getPublishDate() != null && book.getPublishDate().getYear() == year) {
 				allBooks.add(book);
 			}
 
 		}
-		return allBooks;
+		return new ArrayList<IBook>(allBooks);
 	}
 
 	@Override
 	public List<IBook> getBooksPublishedAfter(LocalDate date) {
-		List<IBook> allBooks = new ArrayList<IBook>();
+		Set<IBook> allBooks = new HashSet<IBook>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getPublishDate() != null && book.getPublishDate().isAfter(date)) {
 				allBooks.add(book);
 			}
 		}
-		return allBooks;
+		return new ArrayList<IBook>(allBooks);
 	}
 
 	@Override
 	public List<IBook> getBooksPublishedBefore(LocalDate date) {
-		List<IBook> allBooks = new ArrayList<IBook>();
+		Set<IBook> allBooks = new HashSet<IBook>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getPublishDate() != null && book.getPublishDate().isBefore(date)) {
 				allBooks.add(book);
 			}
 		}
-		return allBooks;
+		return new ArrayList<IBook>(allBooks);
 	}
 
 	@Override
 	public List<IBook> getBooksWhereTitleContainsKeyword(String keyword) {
-		List<IBook> allBooks = new ArrayList<IBook>();
+		Set<IBook> allBooks = new HashSet<IBook>();
 		keyword = keyword.toLowerCase();
 		for (IBook book : this.booksDatabase) {
 			if (book.getTitle().toLowerCase().contains(keyword)) {
 				allBooks.add(book);
 			}
 		}
-		return allBooks;
+		return new ArrayList<IBook>(allBooks);
 	}
 
 	/**
@@ -257,7 +261,7 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IBook> getBooksWhereEverythingMightContainKeyword(String keyword) {
-		List<IBook> allBooks = new ArrayList<IBook>();
+		Set<IBook> allBooks = new HashSet<IBook>();
 		keyword = keyword.toLowerCase();
 		for (IBook book : this.booksDatabase) {
 			if (book.getAuthor().getFirstName().toLowerCase().contains(keyword) || book.getAuthor().getLastName().toLowerCase().contains(keyword)
@@ -265,7 +269,7 @@ public class Library implements ILibrary {
 				allBooks.add(book);
 			}
 		}
-		return allBooks;
+		return new ArrayList<IBook>(allBooks);
 	}
 
 	/**
@@ -273,16 +277,16 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IAuthor> getAuthorsHavingFirstName(String firstName) {
-		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
+		Set<IAuthor> allAuthors = new HashSet<IAuthor>();
 		if (firstName.isEmpty()) {
-			return allAuthors;
+			return new ArrayList<IAuthor>(allAuthors);
 		}
 		for (IAuthor author : this.authorsDatabase) {
 			if (author.getFirstName().equalsIgnoreCase(firstName)) {
 				allAuthors.add(author);
 			}
 		}
-		return allAuthors;
+		return new ArrayList<IAuthor>(allAuthors);
 	}
 
 	/**
@@ -290,18 +294,18 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IAuthor> getAuthorsHavingFirstAndLastName(String firstName, String lastName) {
-		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
+		Set<IAuthor> allAuthors = new HashSet<IAuthor>();
 		firstName = firstName.toLowerCase();
 		lastName = lastName.toLowerCase();
 		if (firstName.isEmpty() || lastName.isEmpty()) {
-			return allAuthors;
+			return new ArrayList<IAuthor>(allAuthors);
 		}
 		for (IAuthor author : this.authorsDatabase) {
 			if (author.getFirstName().toLowerCase().contains(firstName) && author.getLastName().toLowerCase().contains(lastName)) {
 				allAuthors.add(author);
 			}
 		}
-		return allAuthors;
+		return new ArrayList<IAuthor>(allAuthors);
 	}
 
 	/**
@@ -310,13 +314,13 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IAuthor> getAuthorsThatPublishedHere(IPublisher publisher) {
-		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
+		Set<IAuthor> allAuthors = new HashSet<IAuthor>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getPublisher().equals(publisher)) {
 				allAuthors.add(book.getAuthor());
 			}
 		}
-		return allAuthors;
+		return new ArrayList<IAuthor>(allAuthors);
 	}
 
 	/**
@@ -324,13 +328,13 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IAuthor> getAuthorsThatPublishedAfter(LocalDate date) {
-		List<IAuthor> allAuthors = new ArrayList<IAuthor>();
+		Set<IAuthor> allAuthors = new HashSet<IAuthor>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getPublishDate().isAfter(date) && !allAuthors.contains(book.getAuthor())) {
 				allAuthors.add(book.getAuthor());
 			}
 		}
-		return allAuthors;
+		return new ArrayList<IAuthor>(allAuthors);
 	}
 
 	/**
@@ -338,13 +342,13 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IPublisher> getPublishersByName(String name) {
-		List<IPublisher> allPub = new ArrayList<IPublisher>();
+		Set<IPublisher> allPub = new HashSet<IPublisher>();
 		for (IPublisher pub : this.publishersDatabase) {
 			if (pub.getName().equalsIgnoreCase(name)) {
 				allPub.add(pub);
 			}
 		}
-		return allPub;
+		return new ArrayList<>(allPub);
 	}
 
 	/**
@@ -352,13 +356,13 @@ public class Library implements ILibrary {
 	 */
 	@Override
 	public List<IPublisher> getPublishersWhereThisAuthorPublished(IAuthor author) {
-		List<IPublisher> allPub = new ArrayList<IPublisher>();
+		Set<IPublisher> allPub = new HashSet<IPublisher>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getAuthor().equals(author)) {
 				allPub.add(book.getPublisher());
 			}
 		}
-		return allPub;
+		return new ArrayList<>(allPub);
 	}
 
 }
