@@ -20,7 +20,7 @@ public class LibraryTest {
 	private static final int AUTHOR_ID_EMINESCU = 1;
 	private static final int AUTHOR_ID_CARAGIALE = 2;
 	private static final int AUTHOR_ID_CIORAN = 3;
-	private static final int AUTHOR_ID_CARTARESCU = 3;
+	private static final int AUTHOR_ID_CARTARESCU = 4;
 
 	private static final int PUBLISHER_ID_TEORA = 1;
 	private static final int PUBLISHER_ID_TREI = 2;
