@@ -95,7 +95,7 @@ public class MapFunctions {
 		}
 		sb.append('}');
 
-		System.out.println("sb.toString " + sb.toString());
+		// System.out.println("sb.toString " + sb.toString());
 		return sb.toString();
 	}
 
@@ -128,7 +128,32 @@ public class MapFunctions {
 	 * {1 -> {unu, one, ein}, 2 -> {doi, two, zwei}, 3 -> {trei, three, drei}}
 	 */
 	public String printMapWithList(Map<Integer, List<String>> map) {
-		return null;
-	}
+		StringBuilder sb = new StringBuilder();
+		Iterator<Map.Entry<Integer, List<String>>> iter = map.entrySet().iterator();
 
+		sb.append('{');
+		while (iter.hasNext()) {
+			Map.Entry<Integer, List<String>> mapEntry = iter.next();
+			Iterator<String> listEntryValue = mapEntry.getValue().iterator();
+			sb.append(mapEntry.getKey());
+			sb.append(' ').append('-').append('>').append(' ');
+			sb.append('{');
+			while (listEntryValue.hasNext()) {
+				String value = listEntryValue.next();
+				// System.out.println("value from listEntryValue " + value);
+				sb.append(value);
+				if (listEntryValue.hasNext()) {
+					sb.append(',').append(' ');
+				}
+			}
+			// sb.append(mapEntry.getValue());
+			sb.append('}');
+			if (iter.hasNext()) {
+				sb.append(',').append(' ');
+			}
+		}
+		sb.append('}');
+		System.out.println("sb.toString " + sb.toString());
+		return sb.toString();
+	}
 }

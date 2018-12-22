@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class MapFunctionsTest {
@@ -75,7 +74,6 @@ public class MapFunctionsTest {
 	}
 
 	@Test
-	@Ignore
 	public void testPrintMapWithList() {
 		Map<Integer, List<String>> map = this.functions.generateNumbersWithTranslationsMap();
 		String print = this.functions.printMapWithList(map);
