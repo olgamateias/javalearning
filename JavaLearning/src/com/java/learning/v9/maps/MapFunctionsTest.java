@@ -65,10 +65,9 @@ public class MapFunctionsTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGenerateNumbersWithTranslationsMap() {
 		Map<Integer, List<String>> map = this.functions.generateNumbersWithTranslationsMap();
-		assertTrue(map.keySet().containsAll(Arrays.asList(1, 2, 3, 4, 5)));
+		assertTrue(map.keySet().containsAll(Arrays.asList(1, 2, 3)));
 		assertTrue(map.values().stream().reduce((l1, l2) -> {
 			l1.addAll(l2);
 			return l1;

@@ -1,5 +1,7 @@
 package com.java.learning.v9.maps;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -102,7 +104,23 @@ public class MapFunctions {
 	 * E.g.: {1 -> {unu, one, ein}, 2 -> {doi, two, zwei}, 3 -> {trei, three, drei}}
 	 */
 	public Map<Integer, List<String>> generateNumbersWithTranslationsMap() {
-		return null;
+		Map<Integer, List<String>> numbers = new HashMap<Integer, List<String>>();
+		List<String> one = new ArrayList<>();
+		one.addAll(Arrays.asList("unu", "one", "ein"));
+		List<String> two = new ArrayList<String>();
+		two.addAll(Arrays.asList("doi", "two", "zwei"));
+		List<String> three = new ArrayList<String>();
+		three.addAll(Arrays.asList("trei", "three", "drei"));
+		// in mod normal, ar putea sa fac asa:
+		// numbers.put(1, Arrays.asList("unu", "one", "ein"));
+
+		numbers.put(1, one);
+		numbers.put(2, two);
+		numbers.put(3, three);
+
+		System.out.println("Numbers with translation " + numbers);
+
+		return numbers;
 	}
 
 	/**
