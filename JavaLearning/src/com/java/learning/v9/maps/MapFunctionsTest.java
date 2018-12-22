@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class MapFunctionsTest {
@@ -58,12 +59,14 @@ public class MapFunctionsTest {
 	}
 
 	@Test
+	@Ignore
 	public void testPrintMap() {
 		String print = this.functions.printMap(this.numbersMap);
 		assertEquals("{1 -> one, 2 -> two, 3 -> three, 4 -> four, 5 -> five}", print);
 	}
 
 	@Test
+	@Ignore
 	public void testGenerateNumbersWithTranslationsMap() {
 		Map<Integer, List<String>> map = this.functions.generateNumbersWithTranslationsMap();
 		assertTrue(map.keySet().containsAll(Arrays.asList(1, 2, 3, 4, 5)));
@@ -74,6 +77,7 @@ public class MapFunctionsTest {
 	}
 
 	@Test
+	@Ignore
 	public void testPrintMapWithList() {
 		Map<Integer, List<String>> map = this.functions.generateNumbersWithTranslationsMap();
 		String print = this.functions.printMapWithList(map);

@@ -1,6 +1,8 @@
 package com.java.learning.v9.maps;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +15,14 @@ public class MapFunctions {
 	 *
 	 */
 	public Map<Integer, String> generateNumbersMap() {
-		return null;
+		Map<Integer, String> number = new HashMap<Integer, String>();
+		number.put(1, "one");
+		number.put(2, "two");
+		number.put(3, "three");
+		number.put(4, "four");
+		number.put(5, "five");
+		// System.out.println("the Map " + number);
+		return number;
 	}
 
 	/**
@@ -21,7 +30,9 @@ public class MapFunctions {
 	 * E.g.: map is {1 -> one, 2 -> two} and the key is 2; then the method returns "two"
 	 */
 	public String getValueFromMap(Map<Integer, String> map, Integer key) {
-		return null;
+		String value = map.get(key);
+		System.out.println("value " + value);
+		return value;
 	}
 
 	/**
@@ -30,7 +41,10 @@ public class MapFunctions {
 	 * you will return a set containing {1, 2, 3, 4, 5}
 	 */
 	public Set<Integer> getKeys(Map<Integer, String> map) {
-		return null;
+		Set<Integer> keys = new HashSet<Integer>();
+		keys.addAll(map.keySet());
+		System.out.println("Keys " + keys);
+		return keys;
 	}
 
 	/**
@@ -39,13 +53,23 @@ public class MapFunctions {
 	 * then the method returns a collection containing {one, two, three, four, five}
 	 */
 	public Collection<String> getValues(Map<Integer, String> map) {
-		return null;
+		Collection<String> values = map.values();
+		System.out.println("Values " + values);
+		return values;
 	}
 
 	/**
 	 * Check if the key is contained in the map
 	 */
 	public boolean containsKey(Map<Integer, String> map, Integer key) {
+		if (key == null) {
+			System.out.println("They key is null");
+			return false;
+		} else if (map.containsKey(key)) {
+			System.out.println("The Map " + map + ", contains the key " + key);
+			return true;
+		}
+		System.out.println("The Map " + map + ", does not contain the key " + key);
 		return false;
 	}
 
