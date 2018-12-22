@@ -63,6 +63,7 @@ public class Library implements ILibrary {
 		if (publisher == null) {
 			return false;
 		}
+		// incorrect way to check for null values
 //		try {
 //			publisher.getCity().equals(null);
 //			publisher.getName().equals(null);
@@ -85,6 +86,7 @@ public class Library implements ILibrary {
 		if (author == null) {
 			return false;
 		}
+		// incorrect way to check for null values
 //		try {
 //			author.getFirstName().equals(null);
 //			author.getLastName().equals(null);
