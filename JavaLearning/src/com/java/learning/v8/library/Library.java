@@ -174,7 +174,8 @@ public class Library implements ILibrary {
 
 	@Override
 	public List<IBook> getBooksByAuthor(IAuthor author) {
-
+//you can use Set<> instead of ArrayList<>(), the difference is that a Set does not allows duplicates, 
+//so no checks for duplicates. The ArrayList, keeps the order how you add items, but it allows duplicates
 		Set<IBook> allBook = new HashSet<IBook>();
 		for (IBook book : this.booksDatabase) {
 			if (book.getAuthor().equals(author)) { // getId() == author.getId()) {
