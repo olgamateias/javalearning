@@ -3,6 +3,7 @@ package com.java.learning.v9.maps;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -78,7 +79,22 @@ public class MapFunctions {
 	 * {1 -> one, 2 -> two, 3 -> three, 4 -> four, 5 -> five}
 	 */
 	public String printMap(Map<Integer, String> map) {
-		return null;
+		StringBuilder sb = new StringBuilder();
+		Iterator<Map.Entry<Integer, String>> iter = map.entrySet().iterator();
+		sb.append('{');
+		while (iter.hasNext()) {
+			Map.Entry<Integer, String> ent = iter.next();
+			sb.append(ent.getKey());
+			sb.append(' ').append('-').append('>').append(' ');
+			sb.append(ent.getValue());
+			if (iter.hasNext()) {
+				sb.append(',').append(' ');
+			}
+		}
+		sb.append('}');
+
+		System.out.println("sb.toString " + sb.toString());
+		return sb.toString();
 	}
 
 	/**
