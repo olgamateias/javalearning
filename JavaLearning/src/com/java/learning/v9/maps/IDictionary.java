@@ -28,7 +28,8 @@ public interface IDictionary {
 	/**
 	 * Add a new translation for the key. If the key does not already exist then a new entry is
 	 * added in the map. If the key already exists then do not override it, but add the translation
-	 * to the existing translations list
+	 * to the existing translations list.
+	 * If translation is null then the entry is not added
 	 */
 	public void addTranslation(String key, String translation);
 
@@ -45,5 +46,10 @@ public interface IDictionary {
 	 * longer exist in the map.
 	 */
 	public void removeEntry(String key);
+
+	/**
+	 * Remove all the entries from the map. As a result, the map will be empty.
+	 */
+	public void clearAllTheTranslations();
 
 }
