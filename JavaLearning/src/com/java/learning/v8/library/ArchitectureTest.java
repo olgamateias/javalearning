@@ -17,6 +17,8 @@ public class ArchitectureTest {
 		checkClass(BookAuthor.class);
 		checkClass(Book.class);
 		checkClass(Publisher.class);
+		checkClass(Library.class);
+//		checkClass(LibraryExtended.class);
 	}
 
 	private void checkClass(Class<?> clazz) {
