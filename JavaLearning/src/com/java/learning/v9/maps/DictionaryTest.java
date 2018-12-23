@@ -9,8 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +23,7 @@ class DictionaryTest {
 
 	@BeforeEach
 	void setUp() {
-		this.dictionary = null; // new Dictionary();
+		this.dictionary = new Dictionary();
 	}
 
 	@Test
@@ -45,9 +47,10 @@ class DictionaryTest {
 		map.put("trei", Collections.emptyList());
 
 		this.dictionary.addEntry(null);
-		this.dictionary.addEntry(map.entrySet().iterator().next());
-		this.dictionary.addEntry(map.entrySet().iterator().next());
-		this.dictionary.addEntry(map.entrySet().iterator().next());
+		Iterator<Entry<String, List<String>>> iterator = map.entrySet().iterator();
+		this.dictionary.addEntry(iterator.next());
+		this.dictionary.addEntry(iterator.next());
+		this.dictionary.addEntry(iterator.next());
 
 		assertFalse(this.dictionary.getDictionary().containsKey(null));
 		assertMapEntries();
