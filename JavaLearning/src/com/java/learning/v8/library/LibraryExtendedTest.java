@@ -15,7 +15,7 @@ class LibraryExtendedTest extends LibraryTestSupport {
 
 	@Override
 	protected ILibrary getLibrary() {
-		this.library = null; // new LibraryExtended();
+		this.library = new LibraryExtended();
 		return this.library;
 	}
 

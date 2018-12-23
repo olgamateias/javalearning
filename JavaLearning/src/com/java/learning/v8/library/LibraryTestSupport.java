@@ -2,7 +2,7 @@ package com.java.learning.v8.library;
 
 import java.time.LocalDate;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
 public abstract class LibraryTestSupport {
 
@@ -21,7 +21,7 @@ public abstract class LibraryTestSupport {
 	protected static final int BOOK_ID_CIORAN_LACRIMI = 4;
 	protected static final int BOOK_ID_CIORAN_PE_CULMI = 5;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		IAuthor authEminescu = new BookAuthor();
 		authEminescu.setFirstName("Mihai");
