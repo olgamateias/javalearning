@@ -8,9 +8,9 @@ import java.util.Set;
 
 public class Library implements ILibrary {
 
-	public List<IBook> booksDatabase = new ArrayList<>();
-	public List<IAuthor> authorsDatabase = new ArrayList<>();
-	public List<IPublisher> publishersDatabase = new ArrayList<>();
+	protected List<IBook> booksDatabase = new ArrayList<>();
+	protected List<IAuthor> authorsDatabase = new ArrayList<>();
+	protected List<IPublisher> publishersDatabase = new ArrayList<>();
 
 	@Override
 	public IBook getBookById(int bookId) {
