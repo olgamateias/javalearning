@@ -51,6 +51,17 @@ public class Shelter implements IShelter {
 	@Override
 	public List<IAnimal> getAllAnimals(boolean includeAdopted) {
 		List<IAnimal> allAnimals = new ArrayList<IAnimal>();
+		allAnimals.addAll(this.catsList);
+		allAnimals.addAll(this.dogsList);
+
+		if (includeAdopted) {
+			return allAnimals;
+		}
+		for (IAnimal animal : allAnimals) {
+			if (!animal.isAdopted()) {
+				allAnimals.add(animal);
+			}
+		}
 		return allAnimals;
 	}
 
