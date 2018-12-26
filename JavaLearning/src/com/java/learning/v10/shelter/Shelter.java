@@ -5,13 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 public class Shelter implements IShelter {
+	List<Cat> catsList = new ArrayList<>();
+	List<Dog> dogsList = new ArrayList<>();
 
 	@Override
 	public void fosterCat(Cat cat) {
+		this.catsList.add(cat);
 	}
 
 	@Override
 	public void fosterDog(Dog dog) {
+		this.dogsList.add(dog);
 	}
 
 	@Override
@@ -22,38 +26,38 @@ public class Shelter implements IShelter {
 
 	@Override
 	public List<Dog> getAllDogs(boolean includeAdopted) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Dog> allDogs = new ArrayList<>();
+		return allDogs;
 	}
 
 	@Override
 	public List<IAnimal> getAllAnimals(boolean includeAdopted) {
-		// TODO Auto-generated method stub
-		return null;
+		List<IAnimal> allAnimals = new ArrayList<IAnimal>();
+		return allAnimals;
 	}
 
 	@Override
 	public Cat adoptCat() {
-		// TODO Auto-generated method stub
-		return null;
+		Cat cat = new Cat();
+		return cat;
 	}
 
 	@Override
 	public Cat adoptCat(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Cat cat = new Cat();
+		return cat;
 	}
 
 	@Override
 	public Dog adoptDog() {
-		// TODO Auto-generated method stub
-		return null;
+		Dog dog = new Dog();
+		return dog;
 	}
 
 	@Override
 	public Dog adoptDog(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Dog dog = new Dog();
+		return dog;
 	}
 
 	@Override

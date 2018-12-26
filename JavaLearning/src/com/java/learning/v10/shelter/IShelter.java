@@ -7,10 +7,13 @@ public interface IShelter {
 
 //	Shelter will have two lists, one for cats and one for dogs
 
+	// add cat and dog into the shelter
 	public void fosterCat(Cat cat);
 
 	public void fosterDog(Dog dog);
 
+	// if includeAdopted = yes -> return all animals, if = no -> return only the animals that are in
+	// the shelter and not adopted
 	public List<Cat> getAllCats(boolean includeAdopted);
 
 	public List<Dog> getAllDogs(boolean includeAdopted);
@@ -50,7 +53,7 @@ public interface IShelter {
 	public IAnimal adoptAnyAnimal();
 
 	/**
-	 * The all the adopted cats and dogs and put them in a map. The key of the map represents the
+	 * Get all the adopted cats and dogs and put them in a map. The key of the map represents the
 	 * animal type (cat, dog) and the value of the map is a list of all the adopted cats or dogs
 	 */
 	public Map<String, List<IAnimal>> getAdoptedAnimals();
