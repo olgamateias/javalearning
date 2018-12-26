@@ -65,6 +65,9 @@ public class Shelter implements IShelter {
 		return allAnimals;
 	}
 
+	/**
+	 * Get the oldest cat, mark it as adopted and return the cat
+	 */
 	@Override
 	public Cat adoptCat() {
 		Cat cat = new Cat();
