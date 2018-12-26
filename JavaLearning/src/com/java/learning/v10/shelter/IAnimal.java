@@ -6,4 +6,6 @@ public interface IAnimal {
 //	String name
 //	String breed
 //	boolean adopted
+
+//	public void speak(); this method should be implemented in Cat and Dog, not in Animal
 }
