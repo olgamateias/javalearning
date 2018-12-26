@@ -1,6 +1,7 @@
 package com.java.learning.v10.shelter;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IShelter {
 
@@ -44,8 +45,19 @@ public interface IShelter {
 	/**
 	 * Decide which animal to adopt based on the number of animals of each type. If there are more
 	 * cats than dogs then return the oldest cat (mark it as adopted also); otherwise return the
-	 * oldest dog
+	 * oldest dog (mark it as adopted also)
 	 */
 	public IAnimal adoptAnyAnimal();
+
+	/**
+	 * The all the adopted cats and dogs and put them in a map. The key of the map represents the
+	 * animal type (cat, dog) and the value of the map is a list of all the adopted cats or dogs
+	 */
+	public Map<String, List<IAnimal>> getAdoptedAnimals();
+
+	/**
+	 * Get the youngest animal that was adopted, regardless if it is a dog or cat
+	 */
+	public IAnimal getTheYoungestAdoptedAnimal();
 
 }
