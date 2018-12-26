@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class ShelterTest {
@@ -91,7 +90,6 @@ class ShelterTest {
 	}
 
 	@Test
-	@Disabled
 	void testAdoptCatString() {
 		createCats();
 
@@ -113,7 +111,6 @@ class ShelterTest {
 	}
 
 	@Test
-	@Disabled
 	void testAdoptDogString() {
 		createDogs();
 
@@ -126,7 +123,6 @@ class ShelterTest {
 	}
 
 	@Test
-	@Disabled
 	void testAdoptAnyAnimal() {
 		createCats();
 		createDogs();
@@ -144,7 +140,6 @@ class ShelterTest {
 	}
 
 	@Test
-	@Disabled
 	void testGetAdoptedAnimals() {
 		createCats();
 		createDogs();
@@ -162,19 +157,18 @@ class ShelterTest {
 	}
 
 	@Test
-	@Disabled
 	void testGetTheYoungestAdoptedAnimal() {
 		createCats();
 		createDogs();
 
 		IAnimal youngestAnimal = this.shelter.getTheYoungestAdoptedAnimal();
 		assertTrue(youngestAnimal.isAdopted());
-		assertEquals("pisi3", youngestAnimal.getName());
+		assertEquals("cutzu4", youngestAnimal.getName());
 
 		this.shelter.adoptDog("cutzu1");
 		youngestAnimal = this.shelter.getTheYoungestAdoptedAnimal();
 		assertTrue(youngestAnimal.isAdopted());
-		assertEquals("cutzu1", youngestAnimal.getName());
+		assertEquals("cutzu4", youngestAnimal.getName());
 	}
 
 	private void createCats() {

@@ -2,6 +2,7 @@ package com.java.learning.v10.shelter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,6 @@ public class Shelter implements IShelter {
 		if (cat != null) {
 			this.catsList.add(cat);
 		}
-		System.out.println("cat list " + this.catsList.size());
 	}
 
 	@Override
@@ -103,9 +103,21 @@ public class Shelter implements IShelter {
 		return cat;
 	}
 
+	/**
+	 * Get the cat matching the name (exactly, case sensitive), mark it as adopted and return the
+	 * cat
+	 */
 	@Override
 	public Cat adoptCat(String name) {
-		Cat cat = new Cat();
+		Cat cat = null;
+		for (Cat el : this.catsList) {
+			if (el.getName().contains(name)) {
+				cat = el;
+			}
+		}
+		if (cat != null) {
+			cat.setAdopted(true);
+		}
 		return cat;
 	}
 
@@ -127,26 +139,77 @@ public class Shelter implements IShelter {
 
 	@Override
 	public Dog adoptDog(String name) {
-		Dog dog = new Dog();
+		Dog dog = null;
+		for (Dog el : this.dogsList) {
+			if (el.getName().contains(name)) {
+				dog = el;
+			}
+		}
+		if (dog != null) {
+			dog.setAdopted(true);
+		}
 		return dog;
 	}
 
+	/**
+	 * Decide which animal to adopt based on the number of animals of each type. If there are more
+	 * cats than dogs (not adopted) then return the oldest cat (mark it as adopted also); otherwise
+	 * return the oldest dog (mark it as adopted also)
+	 */
 	@Override
 	public IAnimal adoptAnyAnimal() {
-		// TODO Auto-generated method stub
-		return null;
+		IAnimal animal = null;
+		if (getAllCats(false).size() > getAllDogs(false).size()) {
+			animal = adoptCat();
+		} else {
+			animal = adoptDog();
+		}
+		return animal;
 	}
 
+	/**
+	 * Get all the adopted cats and dogs and put them in a map. The key of the map represents the
+	 * animal type (cat, dog) and the value of the map is a list of all the adopted cats or dogs
+	 */
 	@Override
 	public Map<String, List<IAnimal>> getAdoptedAnimals() {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, List<IAnimal>> adoptedAnimals = new HashMap<>();
+		List<IAnimal> adoptedCats = new ArrayList<>();
+		List<IAnimal> adoptedDogs = new ArrayList<>();
+
+		for (Cat cat : this.catsList) {
+			if (cat.isAdopted()) {
+				adoptedCats.add(cat);
+			}
+		}
+		for (Dog dog : this.dogsList) {
+			if (dog.isAdopted()) {
+				adoptedDogs.add(dog);
+			}
+		}
+		adoptedAnimals.put("cat", adoptedCats);
+		adoptedAnimals.put("dog", adoptedDogs);
+		return adoptedAnimals;
 	}
 
+	/**
+	 * Get the youngest animal that was adopted, regardless if it is a dog or cat
+	 */
 	@Override
 	public IAnimal getTheYoungestAdoptedAnimal() {
-		// TODO Auto-generated method stub
-		return null;
+		List<IAnimal> adoptedAnimals = new ArrayList<>();
+		IAnimal adoptedAnimal = null;
+		LocalDate min = LocalDate.MIN;
+		for (IAnimal animal : getAllAnimals(true)) {
+			if (animal.isAdopted()) {
+				if (animal.getAge().isAfter(min)) {
+					min = animal.getAge();
+					adoptedAnimal = animal;
+				}
+				// adoptedAnimals.add(animal);
+			}
+		}
+		return adoptedAnimal;
 	}
 
 }
