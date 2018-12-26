@@ -21,6 +21,15 @@ public class Shelter implements IShelter {
 	@Override
 	public List<Cat> getAllCats(boolean includeAdopted) {
 		List<Cat> allCats = new ArrayList<>();
+		if (includeAdopted == true) {
+			allCats = this.catsList;
+		} else if (includeAdopted == false) {
+			for (Cat cat : this.catsList) {
+				if (cat.isAdopted() == false) {
+					allCats.add(cat);
+				}
+			}
+		}
 		return allCats;
 	}
 
