@@ -20,22 +20,31 @@ public class Shelter implements IShelter {
 
 	@Override
 	public List<Cat> getAllCats(boolean includeAdopted) {
+
+		if (includeAdopted) {
+			return this.catsList;
+		}
 		List<Cat> allCats = new ArrayList<>();
-		if (includeAdopted == true) {
-			allCats = this.catsList;
-		} else if (includeAdopted == false) {
-			for (Cat cat : this.catsList) {
-				if (cat.isAdopted() == false) {
-					allCats.add(cat);
-				}
+		for (Cat cat : this.catsList) {
+			if (!cat.isAdopted()) {
+				allCats.add(cat);
 			}
 		}
+
 		return allCats;
 	}
 
 	@Override
 	public List<Dog> getAllDogs(boolean includeAdopted) {
+		if (includeAdopted) {
+			return this.dogsList;
+		}
 		List<Dog> allDogs = new ArrayList<>();
+		for (Dog dog : this.dogsList) {
+			if (!dog.isAdopted()) {
+				allDogs.add(dog);
+			}
+		}
 		return allDogs;
 	}
 
