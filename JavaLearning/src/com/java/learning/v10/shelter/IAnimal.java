@@ -20,4 +20,6 @@ public interface IAnimal {
 
 	LocalDate getAge();
 
+	void speak();
+
 }
