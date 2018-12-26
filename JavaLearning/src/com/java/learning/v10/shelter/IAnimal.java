@@ -1,11 +1,23 @@
 package com.java.learning.v10.shelter;
 
+import java.time.LocalDate;
+
 public interface IAnimal {
 
-//	LocalDate age
-//	String name
-//	String breed
-//	boolean adopted
+	void setAdopted(boolean adopted);
 
-//	public void speak(); this method should be implemented in Cat and Dog, not in Animal
+	boolean isAdopted();
+
+	void setBreed(String breed);
+
+	String getBreed();
+
+	void setName(String name);
+
+	String getName();
+
+	void setAge(LocalDate age);
+
+	LocalDate getAge();
+
 }
