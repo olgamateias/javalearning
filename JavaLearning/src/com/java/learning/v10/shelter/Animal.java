@@ -4,19 +4,19 @@ import java.time.LocalDate;
 
 public abstract class Animal implements IAnimal {
 
-	private LocalDate age;
+	private LocalDate birthDate;
 	private String name;
 	private String breed;
 	private boolean adopted;
 
 	@Override
 	public LocalDate getAge() {
-		return this.age;
+		return this.birthDate;
 	}
 
 	@Override
 	public void setAge(LocalDate age) {
-		this.age = age;
+		this.birthDate = age;
 	}
 
 	@Override

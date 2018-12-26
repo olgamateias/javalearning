@@ -1,6 +1,8 @@
 package com.java.learning.v10.shelter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -10,12 +12,18 @@ public class Shelter implements IShelter {
 
 	@Override
 	public void fosterCat(Cat cat) {
-		this.catsList.add(cat);
+		if (cat != null) {
+			this.catsList.add(cat);
+		}
+		System.out.println("cat list " + this.catsList.size());
 	}
 
 	@Override
 	public void fosterDog(Dog dog) {
-		this.dogsList.add(dog);
+		if (dog != null) {
+			this.dogsList.add(dog);
+		}
+
 	}
 
 	@Override
@@ -50,19 +58,27 @@ public class Shelter implements IShelter {
 
 	@Override
 	public List<IAnimal> getAllAnimals(boolean includeAdopted) {
-		List<IAnimal> allAnimals = new ArrayList<IAnimal>();
+		List<IAnimal> allAnimals = new ArrayList<>();
 		allAnimals.addAll(this.catsList);
 		allAnimals.addAll(this.dogsList);
+		Iterator<IAnimal> iterator = allAnimals.iterator();
 
 		if (includeAdopted) {
 			return allAnimals;
 		}
-		for (IAnimal animal : allAnimals) {
-			if (!animal.isAdopted()) {
-				allAnimals.add(animal);
+		while (iterator.hasNext()) {
+			if (iterator.next().isAdopted()) {
+				iterator.remove();
 			}
 		}
 		return allAnimals;
+//		List<IAnimal> notAdoptedAnimals = new ArrayList<>();
+//		for (IAnimal animal : allAnimals) {
+//			if (!animal.isAdopted()) {
+//				notAdoptedAnimals.add(animal);
+//			}
+//		}
+//		return notAdoptedAnimals;
 	}
 
 	/**
@@ -71,6 +87,17 @@ public class Shelter implements IShelter {
 	@Override
 	public Cat adoptCat() {
 		Cat cat = new Cat();
+		LocalDate max = LocalDate.MAX;
+		for (Cat el : this.catsList) {
+			if (el.getAge().isBefore(max)) {
+				max = el.getAge();
+				System.out.println("max date " + max);
+				System.out.println("oldest cat " + el.getName());
+				cat = el;
+				cat.setAdopted(true);
+			}
+		}
+
 		return cat;
 	}
 
