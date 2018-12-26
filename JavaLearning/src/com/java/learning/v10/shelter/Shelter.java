@@ -2,6 +2,7 @@ package com.java.learning.v10.shelter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Shelter implements IShelter {
 
@@ -57,6 +58,18 @@ public class Shelter implements IShelter {
 
 	@Override
 	public IAnimal adoptAnyAnimal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<String, List<IAnimal>> getAdoptedAnimals() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IAnimal getTheYoungestAdoptedAnimal() {
 		// TODO Auto-generated method stub
 		return null;
 	}
