@@ -20,7 +20,9 @@ public interface IDealer {
 	 * The fuel property will be of type enum and will have the following values: GAS, GASOLINE,
 	 * DIESEL, ELECTRIC
 	 * 
-	 * The dealer will have a database (list) for each type of vehicle.
+	 * The dealer will have a database (Map<String, List<?>>) that stores each vehicle. The key of
+	 * the map is defined by 4 constants (public static final) of type String that will represent
+	 * the type of vehicle. The constants are defined in Dealer class.
 	 * 
 	 * Define the classes/interfaces necessary to store the vehicles sold by the dealer. Think about
 	 * what properties/methods are common to which classes and extract interfaces/abstract classes
