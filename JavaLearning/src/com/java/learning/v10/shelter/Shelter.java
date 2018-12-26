@@ -86,7 +86,7 @@ public class Shelter implements IShelter {
 	 */
 	@Override
 	public Cat adoptCat() {
-		Cat cat = new Cat();
+		Cat cat = null;
 		LocalDate max = LocalDate.MAX;
 		for (Cat el : this.catsList) {
 			if (el.getAge().isBefore(max)) {
@@ -94,8 +94,10 @@ public class Shelter implements IShelter {
 				System.out.println("max date " + max);
 				System.out.println("oldest cat " + el.getName());
 				cat = el;
-				cat.setAdopted(true);
 			}
+		}
+		if (cat != null) {
+			cat.setAdopted(true);
 		}
 
 		return cat;
@@ -110,6 +112,10 @@ public class Shelter implements IShelter {
 	@Override
 	public Dog adoptDog() {
 		Dog dog = new Dog();
+		LocalDate max = LocalDate.MAX;
+		for (Dog el : this.dogsList) {
+
+		}
 		return dog;
 	}
 
