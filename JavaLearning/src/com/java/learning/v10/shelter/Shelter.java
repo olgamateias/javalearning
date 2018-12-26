@@ -111,10 +111,16 @@ public class Shelter implements IShelter {
 
 	@Override
 	public Dog adoptDog() {
-		Dog dog = new Dog();
+		Dog dog = null;
 		LocalDate max = LocalDate.MAX;
 		for (Dog el : this.dogsList) {
-
+			if (el.getAge().isBefore(max)) {
+				max = el.getAge();
+				dog = el;
+			}
+		}
+		if (dog != null) {
+			dog.setAdopted(true);
 		}
 		return dog;
 	}

@@ -104,7 +104,6 @@ class ShelterTest {
 	}
 
 	@Test
-	@Disabled
 	void testAdoptDog() {
 		createDogs();
 
