@@ -47,8 +47,8 @@ public interface IShelter {
 
 	/**
 	 * Decide which animal to adopt based on the number of animals of each type. If there are more
-	 * cats than dogs then return the oldest cat (mark it as adopted also); otherwise return the
-	 * oldest dog (mark it as adopted also)
+	 * cats than dogs (not adopted) then return the oldest cat (mark it as adopted also); otherwise
+	 * return the oldest dog (mark it as adopted also)
 	 */
 	public IAnimal adoptAnyAnimal();
 
