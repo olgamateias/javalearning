@@ -26,4 +26,21 @@ public class Dealer implements IDealer {
 		return this.vehicleDatabase;
 	}
 
+	// add vehicle types
+	public void addBicycle(Bicycle bike) {
+		this.vehicleDatabase.get(BICYCLE).add(bike);
+	}
+
+	public void addTricycle(Tricycle tricycle) {
+		this.vehicleDatabase.get(TRICYCLE).add(tricycle);
+	}
+
+	public void addMoto(Motorcycle moto) {
+		this.vehicleDatabase.get(MOTORCYCLE).add(moto);
+	}
+
+	public void addCar(Car car) {
+		this.vehicleDatabase.get(CAR).add(car);
+	}
+
 }
