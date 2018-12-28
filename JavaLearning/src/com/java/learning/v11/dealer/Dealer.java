@@ -22,4 +22,8 @@ public class Dealer implements IDealer {
 		this.vehicleDatabase.put(CAR, new ArrayList<>());
 	}
 
+	public Map<String, List<INonAutomatedVehicle>> getVehicleDatabase() {
+		return this.vehicleDatabase;
+	}
+
 }
