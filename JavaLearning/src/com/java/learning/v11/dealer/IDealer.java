@@ -28,5 +28,15 @@ public interface IDealer {
 	 * what properties/methods are common to which classes and extract interfaces/abstract classes
 	 * that define/implement the common behaviour.
 	 * 
+	 * 
+	 * - get the database
+	 * - add car/motorcycle/bicycle/tricycle
+	 * - get the database for vehicle type - type passed as parameter
+	 * - get the vehicles for fuel type - type passed as parameter
+	 * - get a map with vehicles for each fuel type
+	 * - get the car(s) with the highest speed
+	 * - get the motorcycle(s) with the highest speed
+	 * 
+	 * 
 	 */
 }
