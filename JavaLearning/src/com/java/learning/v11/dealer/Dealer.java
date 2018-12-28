@@ -43,4 +43,10 @@ public class Dealer implements IDealer {
 		this.vehicleDatabase.get(CAR).add(car);
 	}
 
+	// get the database for vehicle type - type passed as parameter
+	public List<INonAutomatedVehicle> getVehiclesOfType(String vehicle) {
+		List<INonAutomatedVehicle> vehicles = this.vehicleDatabase.get(vehicle);
+		return vehicles;
+	}
+
 }
