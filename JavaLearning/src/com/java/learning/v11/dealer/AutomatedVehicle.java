@@ -1,47 +1,13 @@
 package com.java.learning.v11.dealer;
 
-public class AutomatedVehicle implements IAutomatedVehicle {
+public abstract class AutomatedVehicle extends NonAutomatedVehicle implements IAutomatedVehicle {
 
-	private double weight;
-	private int wheels;
-	private double price;
 	private int maxSpeed;
 	private String fuel;
 
-	public AutomatedVehicle(int wheels, String fuel) {
-		super();
-		this.wheels = wheels;
+	public AutomatedVehicle(int nrWheels, String fuel) {
+		super(nrWheels);
 		this.fuel = fuel;
-	}
-
-	@Override
-	public double getWeight() {
-		return this.weight;
-	}
-
-	@Override
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
-
-	@Override
-	public int getWheels() {
-		return this.wheels;
-	}
-
-	@Override
-	public void setWheels(int wheels) {
-		this.wheels = wheels;
-	}
-
-	@Override
-	public double getPrice() {
-		return this.price;
-	}
-
-	@Override
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 	@Override

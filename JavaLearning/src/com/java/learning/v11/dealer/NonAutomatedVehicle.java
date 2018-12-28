@@ -1,13 +1,12 @@
 package com.java.learning.v11.dealer;
 
-public class NonAutomatedVehicle implements INonAutomatedVehicle {
+public abstract class NonAutomatedVehicle implements INonAutomatedVehicle {
 
 	private double weight;
 	private int nrWheels;
 	private double price;
 
 	public NonAutomatedVehicle(int nrWheels) {
-		super();
 		this.nrWheels = nrWheels;
 	}
 
