@@ -2,9 +2,9 @@ package com.java.learning.v11.dealer;
 
 public interface IAutomatedVehicle extends INonAutomatedVehicle {
 
-	void setFuel(String fuel);
+	void setFuel(Fuel fuel);
 
-	String getFuel();
+	Fuel getFuel();
 
 	void setMaxSpeed(int maxSpeed);
 

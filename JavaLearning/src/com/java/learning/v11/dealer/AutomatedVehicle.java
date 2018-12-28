@@ -3,9 +3,9 @@ package com.java.learning.v11.dealer;
 public abstract class AutomatedVehicle extends NonAutomatedVehicle implements IAutomatedVehicle {
 
 	private int maxSpeed;
-	private String fuel;
+	private Fuel fuel;
 
-	public AutomatedVehicle(int nrWheels, String fuel) {
+	public AutomatedVehicle(int nrWheels, Fuel fuel) {
 		super(nrWheels);
 		this.fuel = fuel;
 	}
@@ -21,12 +21,12 @@ public abstract class AutomatedVehicle extends NonAutomatedVehicle implements IA
 	}
 
 	@Override
-	public String getFuel() {
+	public Fuel getFuel() {
 		return this.fuel;
 	}
 
 	@Override
-	public void setFuel(String fuel) {
+	public void setFuel(Fuel fuel) {
 		this.fuel = fuel;
 	}
 

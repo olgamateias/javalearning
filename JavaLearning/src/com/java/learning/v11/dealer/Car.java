@@ -5,7 +5,7 @@ public class Car extends AutomatedVehicle {
 	private int nrSeats;
 	private String color;
 
-	public Car(int wheels, String fuel) {
+	public Car(int wheels, Fuel fuel) {
 		super(wheels, fuel);
 	}
 
