@@ -6,6 +6,11 @@ public class NonAutomatedVehicle implements INonAutomatedVehicle {
 	private int nrWheels;
 	private double price;
 
+	public NonAutomatedVehicle(int nrWheels) {
+		super();
+		this.nrWheels = nrWheels;
+	}
+
 	@Override
 	public double getWeight() {
 		return this.weight;
