@@ -36,7 +36,14 @@ public interface IDealer {
 	 * - get a map with vehicles for each fuel type
 	 * - get the car(s) with the highest speed
 	 * - get the motorcycle(s) with the highest speed
-	 * 
+	 * - get a map with each vehicle type and the number of vehicles:
+	 * ex.: {CAR -> 2, MOTORCICLE - > 0, BICYCLE -> 10, TRICYCLE -> 3}
+	 * - get a map with each fuel type and the number of vehicles:
+	 * ex.: {GAS -> 2, GASOLINE -> 1, DIESEL -> 4, ELECTRIC -> 9}
+	 * - get the average number of wheels in the dealership :)
+	 * - get the average number of seats for all the cars in the dealership
+	 * - check if there is a car available in a color (return true or false) - color passed as
+	 * parameter
 	 * 
 	 */
 }
