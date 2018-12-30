@@ -94,19 +94,19 @@ public class Dealer implements IDealer {
 
 	// get the car(s) with the highest speed
 	public List<IAutomatedVehicle> highSpeedCar() {
-		List<IAutomatedVehicle> highSpeedCar = new ArrayList<>();
-		IAutomatedVehicle auto;
-		int maxSpeed = Integer.MIN_VALUE;
-		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(CAR)) {
-			auto = (IAutomatedVehicle) vehicle;
-			if (auto.getMaxSpeed() > maxSpeed) {
-				maxSpeed = auto.getMaxSpeed();
-				highSpeedCar.clear();
-				highSpeedCar.add(auto);
-			} else if (auto.getMaxSpeed() == maxSpeed) {
-				highSpeedCar.add(auto);
-			}
-		}
+		List<IAutomatedVehicle> highSpeedCar = highSpeedVehicle(CAR);
+//		IAutomatedVehicle auto;
+//		int maxSpeed = Integer.MIN_VALUE;
+//		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(CAR)) {
+//			auto = (IAutomatedVehicle) vehicle;
+//			if (auto.getMaxSpeed() > maxSpeed) {
+//				maxSpeed = auto.getMaxSpeed();
+//				highSpeedCar.clear();
+//				highSpeedCar.add(auto);
+//			} else if (auto.getMaxSpeed() == maxSpeed) {
+//				highSpeedCar.add(auto);
+//			}
+//		}
 //		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(CAR)) {
 //			auto = (IAutomatedVehicle) vehicle;
 //			if (auto.getMaxSpeed() == maxSpeed) {
@@ -119,18 +119,34 @@ public class Dealer implements IDealer {
 
 	// get the motorcycle(s) with the highest speed
 	public List<IAutomatedVehicle> highSpeedMoto() {
-		List<IAutomatedVehicle> highSpeedMoto = new ArrayList<>();
+		List<IAutomatedVehicle> highSpeedMoto = highSpeedVehicle(MOTORCYCLE);
+//		int maxSpeed = Integer.MIN_VALUE;
+//		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(MOTORCYCLE)) {
+//			IAutomatedVehicle auto = (IAutomatedVehicle) vehicle;
+//			if (auto.getMaxSpeed() > maxSpeed) {
+//				maxSpeed = auto.getMaxSpeed();
+//				highSpeedMoto.clear();
+//				highSpeedMoto.add(auto);
+//			} else if (auto.getMaxSpeed() == maxSpeed) {
+//				highSpeedMoto.add(auto);
+//			}
+//		}
+		return highSpeedMoto;
+	}
+
+	private List<IAutomatedVehicle> highSpeedVehicle(String vehicleType) {
+		List<IAutomatedVehicle> highSpeedVehicle = new ArrayList<>();
 		int maxSpeed = Integer.MIN_VALUE;
-		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(MOTORCYCLE)) {
+		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(vehicleType)) {
 			IAutomatedVehicle auto = (IAutomatedVehicle) vehicle;
 			if (auto.getMaxSpeed() > maxSpeed) {
 				maxSpeed = auto.getMaxSpeed();
-				highSpeedMoto.clear();
-				highSpeedMoto.add(auto);
+				highSpeedVehicle.clear();
+				highSpeedVehicle.add(auto);
 			} else if (auto.getMaxSpeed() == maxSpeed) {
-				highSpeedMoto.add(auto);
+				highSpeedVehicle.add(auto);
 			}
 		}
-		return highSpeedMoto;
+		return highSpeedVehicle;
 	}
 }
