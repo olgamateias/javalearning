@@ -1,6 +1,39 @@
 package com.java.learning.v11.dealer;
 
+import java.util.List;
+import java.util.Map;
+
 public interface IDealer {
+
+	boolean hasColor(String color);
+
+	double getAvgNrOfSeats();
+
+	double getAvgNrWheels();
+
+	Map<Fuel, Integer> getNrOfVehiclesOfFuelType();
+
+	Map<String, Integer> getNrOfVehicleTypes();
+
+	List<IAutomatedVehicle> highSpeedMoto();
+
+	List<IAutomatedVehicle> highSpeedCar();
+
+	Map<Fuel, List<IAutomatedVehicle>> autoVehiclesMap();
+
+	List<IAutomatedVehicle> getVehiclesOfFuelType(Fuel fuel);
+
+	List<INonAutomatedVehicle> getVehiclesOfType(String vehicle);
+
+	void addCar(Car car);
+
+	void addMoto(Motorcycle moto);
+
+	void addTricycle(Tricycle tricycle);
+
+	void addBicycle(Bicycle bike);
+
+	Map<String, List<INonAutomatedVehicle>> getVehicleDatabase();
 
 	/*
 	 * A dealer will sell vehicles of all types: bicycles, tricycles, motorcycles, cars (gas,

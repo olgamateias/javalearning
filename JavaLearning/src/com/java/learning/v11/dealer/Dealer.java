@@ -23,34 +23,41 @@ public class Dealer implements IDealer {
 	}
 
 	// get dataBase
+	@Override
 	public Map<String, List<INonAutomatedVehicle>> getVehicleDatabase() {
 		return this.vehicleDatabase;
 	}
 
 	// add vehicle types
+	@Override
 	public void addBicycle(Bicycle bike) {
 		this.vehicleDatabase.get(BICYCLE).add(bike);
 	}
 
+	@Override
 	public void addTricycle(Tricycle tricycle) {
 		this.vehicleDatabase.get(TRICYCLE).add(tricycle);
 	}
 
+	@Override
 	public void addMoto(Motorcycle moto) {
 		this.vehicleDatabase.get(MOTORCYCLE).add(moto);
 	}
 
+	@Override
 	public void addCar(Car car) {
 		this.vehicleDatabase.get(CAR).add(car);
 	}
 
 	// get the database for vehicle type - type passed as parameter
+	@Override
 	public List<INonAutomatedVehicle> getVehiclesOfType(String vehicle) {
 		List<INonAutomatedVehicle> vehicles = this.vehicleDatabase.get(vehicle);
 		return vehicles;
 	}
 
 	// get the vehicles for fuel type - type passed as parameter
+	@Override
 	public List<IAutomatedVehicle> getVehiclesOfFuelType(Fuel fuel) {
 		List<IAutomatedVehicle> allVehiclesOfFuelType = new ArrayList<>();
 
@@ -81,6 +88,7 @@ public class Dealer implements IDealer {
 	}
 
 	// get a map with vehicles for each fuel type
+	@Override
 	public Map<Fuel, List<IAutomatedVehicle>> autoVehiclesMap() {
 
 		Map<Fuel, List<IAutomatedVehicle>> autoVehicleMap = new HashMap<>();
@@ -93,6 +101,7 @@ public class Dealer implements IDealer {
 	}
 
 	// get the car(s) with the highest speed
+	@Override
 	public List<IAutomatedVehicle> highSpeedCar() {
 		List<IAutomatedVehicle> highSpeedCar = getHighSpeedVehicle(CAR);
 //		IAutomatedVehicle auto;
@@ -118,6 +127,7 @@ public class Dealer implements IDealer {
 	}
 
 	// get the motorcycle(s) with the highest speed
+	@Override
 	public List<IAutomatedVehicle> highSpeedMoto() {
 		List<IAutomatedVehicle> highSpeedMoto = getHighSpeedVehicle(MOTORCYCLE);
 //		int maxSpeed = Integer.MIN_VALUE;
@@ -152,6 +162,7 @@ public class Dealer implements IDealer {
 
 	// get a map with each vehicle type and the number of vehicles:
 	// ex.: {CAR -> 2, MOTORCICLE - > 0, BICYCLE -> 10, TRICYCLE -> 3}
+	@Override
 	public Map<String, Integer> getNrOfVehicleTypes() {
 		Map<String, Integer> nrOfVehicleTypes = new HashMap<>();
 
@@ -167,6 +178,7 @@ public class Dealer implements IDealer {
 	 * get a map with each fuel type and the number of vehicles:
 	 * ex.: {GAS -> 2, GASOLINE -> 1, DIESEL -> 4, ELECTRIC -> 9}
 	 */
+	@Override
 	public Map<Fuel, Integer> getNrOfVehiclesOfFuelType() {
 		Map<Fuel, Integer> nrOfVehiclesFuelType = new HashMap<>();
 
@@ -179,9 +191,10 @@ public class Dealer implements IDealer {
 	}
 
 	// get the average number of wheels in the dealership :)
+	@Override
 	public double getAvgNrWheels() {
 		double avgNrWheels = 0;
-		int nrWheels = 0;
+		double nrWheels = 0;
 		List<INonAutomatedVehicle> allVehicles = new ArrayList<>();
 		allVehicles.addAll(this.vehicleDatabase.get(BICYCLE));
 		allVehicles.addAll(this.vehicleDatabase.get(TRICYCLE));
@@ -191,10 +204,12 @@ public class Dealer implements IDealer {
 			nrWheels = nrWheels + vehicle.getNrWheels();
 		}
 		avgNrWheels = nrWheels / allVehicles.size();
+
 		return avgNrWheels;
 	}
 
 	// - get the average number of seats for all the cars in the dealership
+	@Override
 	public double getAvgNrOfSeats() {
 		double avgNrOfSeats = 0;
 		int nrSeats = 0;
@@ -210,6 +225,7 @@ public class Dealer implements IDealer {
 
 	// - check if there is a car available in a color (return true or false) - color passed as
 	// parameter
+	@Override
 	public boolean hasColor(String color) {
 		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(CAR)) {
 			Car car = (Car) vehicle;
@@ -219,4 +235,5 @@ public class Dealer implements IDealer {
 		}
 		return false;
 	}
+
 }
