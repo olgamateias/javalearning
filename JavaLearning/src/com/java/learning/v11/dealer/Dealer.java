@@ -94,7 +94,7 @@ public class Dealer implements IDealer {
 
 	// get the car(s) with the highest speed
 	public List<IAutomatedVehicle> highSpeedCar() {
-		List<IAutomatedVehicle> highSpeedCar = highSpeedVehicle(CAR);
+		List<IAutomatedVehicle> highSpeedCar = getHighSpeedVehicle(CAR);
 //		IAutomatedVehicle auto;
 //		int maxSpeed = Integer.MIN_VALUE;
 //		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(CAR)) {
@@ -119,7 +119,7 @@ public class Dealer implements IDealer {
 
 	// get the motorcycle(s) with the highest speed
 	public List<IAutomatedVehicle> highSpeedMoto() {
-		List<IAutomatedVehicle> highSpeedMoto = highSpeedVehicle(MOTORCYCLE);
+		List<IAutomatedVehicle> highSpeedMoto = getHighSpeedVehicle(MOTORCYCLE);
 //		int maxSpeed = Integer.MIN_VALUE;
 //		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(MOTORCYCLE)) {
 //			IAutomatedVehicle auto = (IAutomatedVehicle) vehicle;
@@ -134,7 +134,7 @@ public class Dealer implements IDealer {
 		return highSpeedMoto;
 	}
 
-	private List<IAutomatedVehicle> highSpeedVehicle(String vehicleType) {
+	private List<IAutomatedVehicle> getHighSpeedVehicle(String vehicleType) {
 		List<IAutomatedVehicle> highSpeedVehicle = new ArrayList<>();
 		int maxSpeed = Integer.MIN_VALUE;
 		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(vehicleType)) {
@@ -148,5 +148,33 @@ public class Dealer implements IDealer {
 			}
 		}
 		return highSpeedVehicle;
+	}
+
+	// get a map with each vehicle type and the number of vehicles:
+	// ex.: {CAR -> 2, MOTORCICLE - > 0, BICYCLE -> 10, TRICYCLE -> 3}
+	public Map<String, Integer> getNrOfVehicleTypes() {
+		Map<String, Integer> nrOfVehicleTypes = new HashMap<>();
+
+		nrOfVehicleTypes.put(BICYCLE, this.vehicleDatabase.get(BICYCLE).size());
+		nrOfVehicleTypes.put(TRICYCLE, this.vehicleDatabase.get(TRICYCLE).size());
+		nrOfVehicleTypes.put(CAR, this.vehicleDatabase.get(CAR).size());
+		nrOfVehicleTypes.put(MOTORCYCLE, this.vehicleDatabase.get(MOTORCYCLE).size());
+
+		return nrOfVehicleTypes;
+	}
+
+	/*
+	 * get a map with each fuel type and the number of vehicles:
+	 * ex.: {GAS -> 2, GASOLINE -> 1, DIESEL -> 4, ELECTRIC -> 9}
+	 */
+	public Map<Fuel, Integer> getNrOfVehiclesOfFuelType() {
+		Map<Fuel, Integer> nrOfVehiclesFuelType = new HashMap<>();
+
+		nrOfVehiclesFuelType.put(Fuel.DIESEL, getVehiclesOfFuelType(Fuel.DIESEL).size());
+		nrOfVehiclesFuelType.put(Fuel.ELECTRIC, getVehiclesOfFuelType(Fuel.ELECTRIC).size());
+		nrOfVehiclesFuelType.put(Fuel.GAS, getVehiclesOfFuelType(Fuel.GAS).size());
+		nrOfVehiclesFuelType.put(Fuel.GASOLINE, getVehiclesOfFuelType(Fuel.GASOLINE).size());
+
+		return nrOfVehiclesFuelType;
 	}
 }
