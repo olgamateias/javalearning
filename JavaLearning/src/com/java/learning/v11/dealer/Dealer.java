@@ -22,6 +22,7 @@ public class Dealer implements IDealer {
 		this.vehicleDatabase.put(CAR, new ArrayList<>());
 	}
 
+	// get dataBase
 	public Map<String, List<INonAutomatedVehicle>> getVehicleDatabase() {
 		return this.vehicleDatabase;
 	}
@@ -47,6 +48,48 @@ public class Dealer implements IDealer {
 	public List<INonAutomatedVehicle> getVehiclesOfType(String vehicle) {
 		List<INonAutomatedVehicle> vehicles = this.vehicleDatabase.get(vehicle);
 		return vehicles;
+	}
+
+	// get the vehicles for fuel type - type passed as parameter
+	public List<IAutomatedVehicle> getVehiclesOfFuelType(Fuel fuel) {
+		List<IAutomatedVehicle> allVehiclesOfFuelType = new ArrayList<>();
+
+//		for (INonAutomatedVehicle notAuto : this.vehicleDatabase.get(CAR)) {
+//			IAutomatedVehicle auto = (IAutomatedVehicle) notAuto;
+//			if (auto.getFuel().equals(fuel)) {
+//				allVehiclesOfFuelType.add(auto);
+//			}
+//		}
+//
+//		for (INonAutomatedVehicle notAuto : this.vehicleDatabase.get(MOTORCYCLE)) {
+//			IAutomatedVehicle auto = (IAutomatedVehicle) notAuto;
+//			if (auto.getFuel().equals(fuel)) {
+//				allVehiclesOfFuelType.add(auto);
+//			}
+//		}
+
+		List<INonAutomatedVehicle> nonAuto = new ArrayList<>();
+		nonAuto.addAll(this.vehicleDatabase.get(CAR));
+		nonAuto.addAll(this.vehicleDatabase.get(MOTORCYCLE));
+		for (INonAutomatedVehicle nonVehicle : nonAuto) {
+			IAutomatedVehicle auto = (IAutomatedVehicle) nonVehicle;
+			if (auto.getFuel().equals(fuel)) {
+				allVehiclesOfFuelType.add(auto);
+			}
+		}
+		return allVehiclesOfFuelType;
+	}
+
+	// get a map with vehicles for each fuel type
+	public Map<Fuel, List<IAutomatedVehicle>> autoVehiclesMap() {
+
+		Map<Fuel, List<IAutomatedVehicle>> autoVehicleMap = new HashMap<>();
+		autoVehicleMap.put(Fuel.GAS, getVehiclesOfFuelType(Fuel.GAS));
+		autoVehicleMap.put(Fuel.GASOLINE, getVehiclesOfFuelType(Fuel.GASOLINE));
+		autoVehicleMap.put(Fuel.DIESEL, getVehiclesOfFuelType(Fuel.DIESEL));
+		autoVehicleMap.put(Fuel.ELECTRIC, getVehiclesOfFuelType(Fuel.ELECTRIC));
+
+		return autoVehicleMap;
 	}
 
 }
