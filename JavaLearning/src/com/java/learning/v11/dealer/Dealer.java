@@ -177,4 +177,46 @@ public class Dealer implements IDealer {
 
 		return nrOfVehiclesFuelType;
 	}
+
+	// get the average number of wheels in the dealership :)
+	public double getAvgNrWheels() {
+		double avgNrWheels = 0;
+		int nrWheels = 0;
+		List<INonAutomatedVehicle> allVehicles = new ArrayList<>();
+		allVehicles.addAll(this.vehicleDatabase.get(BICYCLE));
+		allVehicles.addAll(this.vehicleDatabase.get(TRICYCLE));
+		allVehicles.addAll(this.vehicleDatabase.get(CAR));
+		allVehicles.addAll(this.vehicleDatabase.get(MOTORCYCLE));
+		for (INonAutomatedVehicle vehicle : allVehicles) {
+			nrWheels = nrWheels + vehicle.getNrWheels();
+		}
+		avgNrWheels = nrWheels / allVehicles.size();
+		return avgNrWheels;
+	}
+
+	// - get the average number of seats for all the cars in the dealership
+	public double getAvgNrOfSeats() {
+		double avgNrOfSeats = 0;
+		int nrSeats = 0;
+		int nrOfCars = getNrOfVehicleTypes().get(CAR);
+		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(CAR)) {
+			Car auto = (Car) vehicle;
+			nrSeats = nrSeats + auto.getNrSeats();
+		}
+		avgNrOfSeats = nrSeats / nrOfCars;
+
+		return avgNrOfSeats;
+	}
+
+	// - check if there is a car available in a color (return true or false) - color passed as
+	// parameter
+	public boolean hasColor(String color) {
+		for (INonAutomatedVehicle vehicle : this.vehicleDatabase.get(CAR)) {
+			Car car = (Car) vehicle;
+			if (car.getColor().equals(color)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
