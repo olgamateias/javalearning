@@ -11,8 +11,17 @@ public interface ISchool {
 	 * teacher, name/level (string)
 	 * Grade: student, teacher, grade (double), subject
 	 * School: all teachers, all classes, all grades
-	 * - create a map of all teachers and their classes
-	 * - create a map of all teachers and their students (from all the classes)
-	 * 
+	 * - add a class
+	 * - add a teacher
+	 * - add a student for a class
+	 * - add a teacher for a class
+	 * - add a grade
+	 * - get all classes
+	 * - get all teachers
+	 * - get all students from all classes
+	 * - get all grades
+	 * - return a map of all teachers and their classes
+	 * - return a map of all teachers and their students (from all the classes)
+	 * - return the students with the maximum grade for each Subject (map)
 	 */
 }
