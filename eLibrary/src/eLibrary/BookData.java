@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookData {
-	private double rating;
+	private Double rating;
 	private String summary;
 	private List<String> genre = new ArrayList<>();
 	private Book book;
@@ -15,10 +15,10 @@ public class BookData {
 	public Book getBook() {
 		return book;
 	}
-	public double getRating() {
+	public Double getRating() {
 		return rating;
 	}
-	public void setRating(double rating) {
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
 	public String getSummary() {
@@ -33,5 +33,8 @@ public class BookData {
 	public void addGenre(List<String> genre) {
 		this.genre.addAll(genre);
 	}
-
+	@Override
+	public String toString() {
+		return book + " - " + rating;
+	}
 }

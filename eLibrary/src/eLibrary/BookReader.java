@@ -22,11 +22,15 @@ public class BookReader {
 		List<Book> allBooks = new ArrayList<>();
 		File location = new File(folderPath);
 		for(File fileEntry :location.listFiles()) {
+			if(fileEntry.isDirectory()) {
+				continue;
+			}
+			System.out.println(fileEntry.getName());
 			String authorFullName = fileEntry.getName().substring(0, fileEntry.getName().indexOf("-"));
-			String bookName = fileEntry.getName().substring(fileEntry.getName().indexOf("-")+1, fileEntry.getName().indexOf("."));
+			String bookName = fileEntry.getName().substring(fileEntry.getName().indexOf("-")+1, fileEntry.getName().lastIndexOf("."));
 			//System.out.println("author " + authorFullName + ", book " +bookName);
 			Author author = new Author(authorFullName.substring(0, authorFullName.indexOf(" ")).trim(), authorFullName.substring(authorFullName.indexOf(" ")).trim());
-			Book book = new Book(author, bookName.trim());
+			Book book = new Book(author, bookName.trim(), fileEntry);
 			allBooks.add(book);
 		}
 		return allBooks;
