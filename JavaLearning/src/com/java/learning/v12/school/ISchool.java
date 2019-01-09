@@ -10,7 +10,9 @@ public interface ISchool {
 	 * Class: students (list), teachers (will also contain the principal teacher), principal
 	 * teacher, name/level (string)
 	 * Grade: student, teacher, grade (double), subject
-	 * School: all students, all teachers, all classes, all grades
+	 * School: all teachers, all classes, all grades
+	 * - create a map of all teachers and their classes
+	 * - create a map of all teachers and their students (from all the classes)
 	 * 
 	 */
 }

@@ -2,13 +2,14 @@ package com.java.learning.v12.school;
 
 import java.util.List;
 
-public class Class implements IClass {
+public class ClassRoom implements IClass {
 
 	private List<Student> allStudents;
 	private List<Teacher> classTeachers;
 	private Teacher principal;
 	private String className;
 	private String classLevel;
+	// add students and add teachers
 
 	@Override
 	public Teacher getPrincipal() {

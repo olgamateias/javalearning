@@ -2,7 +2,7 @@ package com.java.learning.v12.school;
 
 import java.time.LocalDate;
 
-public class Person implements IPerson {
+public abstract class Person implements IPerson {
 	private String firstName;
 	private String lastName;
 	private String sex;
