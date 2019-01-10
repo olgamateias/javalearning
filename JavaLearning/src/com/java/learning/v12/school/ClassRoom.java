@@ -11,6 +11,14 @@ public class ClassRoom implements IClass {
 	private String classLevel;
 	// add students and add teachers
 
+	public void addStudent(Student student) {
+		this.allStudents.add(student);
+	}
+
+	public void addTeacher(Teacher teacher) {
+		this.classTeachers.add(teacher);
+	}
+
 	@Override
 	public Teacher getPrincipal() {
 		return this.principal;
