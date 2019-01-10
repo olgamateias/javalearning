@@ -63,6 +63,17 @@ public class School implements ISchool {
 		return allClassesForATeacher;
 	}
 
+	// return all Students of a teacher
+	public List<Student> getTeachersAllStudents(Teacher teacher) {
+		List<Student> allTeachersStudents = new ArrayList<>();
+		for (ClassRoom classRoom : this.allClasses) {
+			if (classRoom.getClassTeachers().contains(teacher)) {
+				allTeachersStudents.addAll(classRoom.getAllStudents());
+			}
+		}
+		return allTeachersStudents;
+	}
+
 	// return a map of all teachers and their classes
 	public Map<Teacher, List<ClassRoom>> mapTeachersAndClasses() {
 		Map<Teacher, List<ClassRoom>> allteachersAndClasses = new HashMap<>();
@@ -71,6 +82,15 @@ public class School implements ISchool {
 			allteachersAndClasses.put(teacher, teachersClasses);
 		}
 		return allteachersAndClasses;
+	}
+
+	// return a map of all teachers and their students (from all the classes)
+	public Map<Teacher, List<Student>> mapTeachersAllStudents() {
+		Map<Teacher, List<Student>> allTeachersStudents = new HashMap<>();
+		for (Teacher teacher : this.allTeachers) {
+			allTeachersStudents.put(teacher, getTeachersAllStudents(teacher));
+		}
+		return allTeachersStudents;
 	}
 
 }
