@@ -106,4 +106,27 @@ public class School implements ISchool {
 		return allTeachersStudents;
 	}
 
+	// all students that have a specific grade for a specific subject
+	@Override
+	public List<Student> getAllStudentsWithGrade(double grade, Subject subject) {
+		List<Student> allStudents = new ArrayList<>();
+		for (Grade score : this.allGrades) {
+			if (score.getSubject().equals(subject) && score.getGrade() == grade) {
+				allStudents.add(score.getStudent());
+			}
+		}
+		return allStudents;
+	}
+
+	// return a map with grades and all the students that have that grade for a specific subject
+	@Override
+	public Map<Double, List<Student>> mapGrades(Subject subject) {
+		Map<Double, List<Student>> allGradesAndStudents = new HashMap<>();
+		for (Grade grade : this.allGrades) {
+			Double score = grade.getGrade();
+			allGradesAndStudents.put(score, getAllStudentsWithGrade(score, subject));
+		}
+		return allGradesAndStudents;
+	}
+
 }

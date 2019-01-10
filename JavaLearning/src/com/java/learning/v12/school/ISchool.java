@@ -31,6 +31,10 @@ public interface ISchool {
 
 	void addTeacher(Teacher teacher);
 
+	Map<Double, List<Student>> mapGrades(Subject subject);
+
+	List<Student> getAllStudentsWithGrade(double grade, Subject subject);
+
 	/*
 	 * We need to store the data from exams for a school. We need the following entities:
 	 * Student: first name, last name, sex, date of birth
@@ -52,5 +56,6 @@ public interface ISchool {
 	 * - return a map of all teachers and their classes
 	 * - return a map of all teachers and their students (from all the classes)
 	 * - return the students with the maximum grade for each Subject (map)
+	 * - return a map with grades and all the students that have that grade for a specific subject
 	 */
 }
