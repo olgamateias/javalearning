@@ -1,6 +1,35 @@
 package com.java.learning.v12.school;
 
+import java.util.List;
+import java.util.Map;
+
 public interface ISchool {
+
+	Map<Teacher, List<Student>> mapTeachersAllStudents();
+
+	Map<Teacher, List<ClassRoom>> mapTeachersAndClasses();
+
+	List<Student> getTeachersAllStudents(Teacher teacher);
+
+	List<ClassRoom> getAllClassesForATeacher(Teacher teacher);
+
+	List<Student> getAllStudents();
+
+	List<Grade> getAllGrades();
+
+	List<ClassRoom> getAllClasses();
+
+	List<Teacher> getAllTeachers();
+
+	void addTeacherForClass(Teacher teacher, ClassRoom classRoom);
+
+	void addStudentForClass(Student student, ClassRoom classRoom);
+
+	void addGrade(Grade grade);
+
+	void addClass(ClassRoom classroom);
+
+	void addTeacher(Teacher teacher);
 
 	/*
 	 * We need to store the data from exams for a school. We need the following entities:
