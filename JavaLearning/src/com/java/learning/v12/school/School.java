@@ -1,7 +1,9 @@
 package com.java.learning.v12.school;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class School implements ISchool {
 
@@ -48,6 +50,27 @@ public class School implements ISchool {
 			allStudents.addAll(classRoom.getAllStudents());
 		}
 		return allStudents;
+	}
+
+	// return all classes for a teacher in a list
+	public List<ClassRoom> getAllClassesForATeacher(Teacher teacher) {
+		List<ClassRoom> allClassesForATeacher = new ArrayList<>();
+		for (ClassRoom classRoom : this.allClasses) {
+			if (classRoom.getClassTeachers().contains(teacher)) {
+				allClassesForATeacher.add(classRoom);
+			}
+		}
+		return allClassesForATeacher;
+	}
+
+	// return a map of all teachers and their classes
+	public Map<Teacher, List<ClassRoom>> mapTeachersAndClasses() {
+		Map<Teacher, List<ClassRoom>> allteachersAndClasses = new HashMap<>();
+		for (Teacher teacher : this.allTeachers) {
+			List<ClassRoom> teachersClasses = getAllClassesForATeacher(teacher);
+			allteachersAndClasses.put(teacher, teachersClasses);
+		}
+		return allteachersAndClasses;
 	}
 
 }
