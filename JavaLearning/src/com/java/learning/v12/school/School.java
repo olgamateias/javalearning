@@ -119,6 +119,19 @@ public class School implements ISchool {
 	}
 
 	// return a map with grades and all the students that have that grade for a specific subject
+	/*
+	 * metoda mapGrades nu e în totalitate ok
+	 * cred că ar trebui să filtrezi mai întâi grades după subject și apoi să iterezi peste acele
+	 * grades
+	 * pentru că așa cum este acum, map-ul pe care îl returnezi poate conține și notele de la alte
+	 * materii
+	 * și tot aici mai e ceva care nu e chiar așa important dar e bine de luat în calcul: dacă ai
+	 * mai multe obiecte de tip Grade cu același score, vei suprascrie entry-ul din map pentru
+	 * fiecare grade cu acel score
+	 * în final va fi la fel rezultatul, dar va face apeluri la metoda getAllStudentsWithGrade de
+	 * mai multe ori pentru aceeași combinație score+suibject
+	 * 
+	 */
 	@Override
 	public Map<Double, List<Student>> mapGrades(Subject subject) {
 		Map<Double, List<Student>> allGradesAndStudents = new HashMap<>();
