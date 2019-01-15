@@ -259,5 +259,46 @@ public class Exercises {
 	 * 
 	 * [output] array.integer
 	 */
+	public int[] digitRootSort(int[] a) {
+		int[] secondArray = Arrays.copyOf(a, a.length);
+		System.out.println("array " + Arrays.toString(a));
+		int sum1 = 0;
+		int sum2 = 0;
+		int max = 0;// indexul
+		for (int i = 0; i < a.length; i++) {
+			int nr = a[i];// i=0->13 ...
+			int size = String.valueOf(nr).length();
+
+			for (int x = 0; x < size; x++) {
+				sum1 = sum1 + (nr % 10);
+				nr = nr / 10;
+			}
+
+			for (int j = i + 1; j < a.length; j++) {
+				int next = secondArray[j];// j=1->20
+				int sizeNext = String.valueOf(next).length();
+				for (int x = 0; x < sizeNext; x++) {
+					sum2 = sum2 + (next % 10);
+					next = next / 10;
+				}
+				if (sum1 > sum2) {
+					max = secondArray[i];
+					secondArray[i] = secondArray[j];
+					secondArray[j] = max;
+				} else if (sum1 == sum2) {
+					if (a[i] > a[j]) {
+						max = secondArray[i];
+						secondArray[i] = secondArray[j];
+						secondArray[j] = max;
+					}
+
+				}
+				sum2 = 0;
+			}
+			sum1 = 0;
+		}
+		System.out.println("second array " + Arrays.toString(secondArray));
+		return secondArray;
+	}
 
 }
