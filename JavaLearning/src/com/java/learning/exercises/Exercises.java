@@ -259,46 +259,195 @@ public class Exercises {
 	 * 
 	 * [output] array.integer
 	 */
-	public int[] digitRootSort(int[] a) {
-		int[] secondArray = Arrays.copyOf(a, a.length);
-		System.out.println("array " + Arrays.toString(a));
-		int sum1 = 0;
-		int sum2 = 0;
-		int max = 0;// indexul
-		for (int i = 0; i < a.length; i++) {
-			int nr = a[i];// i=0->13 ...
-			int size = String.valueOf(nr).length();
+	public static int sumDigits(int number) {
+		int sum = 0;
+		int size = String.valueOf(number).length();
 
-			for (int x = 0; x < size; x++) {
-				sum1 = sum1 + (nr % 10);
-				nr = nr / 10;
-			}
-
-			for (int j = i + 1; j < a.length; j++) {
-				int next = secondArray[j];// j=1->20
-				int sizeNext = String.valueOf(next).length();
-				for (int x = 0; x < sizeNext; x++) {
-					sum2 = sum2 + (next % 10);
-					next = next / 10;
-				}
-				if (sum1 > sum2) {
-					max = secondArray[i];
-					secondArray[i] = secondArray[j];
-					secondArray[j] = max;
-				} else if (sum1 == sum2) {
-					if (a[i] > a[j]) {
-						max = secondArray[i];
-						secondArray[i] = secondArray[j];
-						secondArray[j] = max;
-					}
-
-				}
-				sum2 = 0;
-			}
-			sum1 = 0;
+		for (int x = 0; x < size; x++) {
+			sum = sum + (number % 10);
+			number = number / 10;
 		}
-		System.out.println("second array " + Arrays.toString(secondArray));
-		return secondArray;
+		return sum;
+	}
+
+	public int[] digitRootSort(int[] a) {
+//try with lists or map
+		return null;
+	}
+
+	/*
+	 * Given an integer size, return an array containing each integer from 1 to size in the
+	 * following order:
+	 * 
+	 * 1, size, 2, size - 1, 3, size - 2, 4, ...
+	 * 
+	 * Example
+	 * 
+	 * For size = 7, the output should be
+	 * constructArray(size) = [1, 7, 2, 6, 3, 5, 4].
+	 * 
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] integer size
+	 * 
+	 * A positive integer.
+	 * 
+	 * Guaranteed constraints:
+	 * 1 ≤ size ≤ 15.
+	 * 
+	 * [output] array.integer
+	 */
+	public static int[] constructArray(int size) {
+		int[] array = new int[size];
+		int value = 1;
+		for (int i = 0; i < size; i = i + 2) {
+			array[i] = value;
+			value++;
+		}
+		value = 0;
+		for (int x = 1; x < size; x = x + 2) {
+			array[x] = size - value;
+			value++;
+		}
+		System.out.println("array " + Arrays.toString(array));
+		return array;
+	}
+	/*
+	 * Given an encoded string, return its corresponding decoded string.
+	 * 
+	 * The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets
+	 * is repeated exactly k times. Note: k is guaranteed to be a positive integer.
+	 * 
+	 * Note that your solution should have linear complexity because this is what you will be asked
+	 * during an interview.
+	 * 
+	 * Example
+	 * 
+	 * For s = "4[ab]", the output should be
+	 * decodeString(s) = "abababab";
+	 * 
+	 * For s = "2[b3[a]]", the output should be
+	 * decodeString(s) = "baaabaaa";
+	 * 
+	 * For s = "z1[y]zzz2[abc]", the output should be
+	 * decodeString(s) = "zyzzzabcabc".
+	 * 
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] string s
+	 * 
+	 * A string encoded as described above. It is guaranteed that:
+	 * 
+	 * the string consists only of digits, square brackets and lowercase English letters;
+	 * the square brackets form a regular bracket sequence;
+	 * all digits that appear in the string represent the number of times the content in the
+	 * brackets that follow them repeats, i.e. k in the description above;
+	 * there are at most 20 pairs of square brackets in the given string.
+	 * Guaranteed constraints:
+	 * 0 ≤ s.length ≤ 80.
+	 * 
+	 * [output] string
+	 */
+
+	/////////////////
+	/*
+	 * Write a function that accepts an array of 10 integers (between 0 and 9), that returns a
+	 * string of those numbers in the form of a phone number.
+	 * 
+	 * Example:
+	 * Kata.createPhoneNumber(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}) // => returns
+	 * "(123) 456-7890"
+	 * The returned format must be correct in order to complete this challenge.
+	 * Don't forget the space after the closing parentheses!
+	 * 
+	 * 
+	 */
+	public static String phoneNr(int[] number) {
+		String phoneNr = "(";
+		int count = 0;
+		for (int i = 0; i < number.length; i++) {
+			phoneNr = phoneNr + String.valueOf(number[i]);
+			count++;
+			if (count == 3) {
+				phoneNr = phoneNr + ") ";
+			} else if (count == 6) {
+				phoneNr = phoneNr + "-";
+			}
+		}
+		System.out.println("Phone Nr " + phoneNr);
+		return phoneNr;
+	}
+
+	/*
+	 * Your task is to make a function that can take any non-negative integer as a argument and
+	 * return it with its digits in descending order. Essentially, rearrange the digits to create
+	 * the highest possible number.
+	 * 
+	 * Examples:
+	 * Input: 21445 Output: 54421
+	 * 
+	 * Input: 145263 Output: 654321
+	 * 
+	 * Input: 1254859723 Output: 9875543221
+	 * 
+	 * 
+	 */
+	public static long reversedNr(int number) {
+		long reversedNr = 0;
+		int size = String.valueOf(number).length();
+		String reversedString = "";
+		String orderedString = "";
+		for (int i = 0; i < size; i++) {
+			reversedString = reversedString + (number % 10);
+			number = number / 10;
+		}
+		char[] array = reversedString.toCharArray();
+		for (int i = 0; i < array.length; i++) {
+			for (int x = i + 1; x < array.length; x++) {
+				if (array[i] < array[x]) {
+					char temp = array[i];
+					array[i] = array[x];
+					array[x] = temp;
+				}
+			}
+		}
+		for (int y = 0; y < array.length; y++) {
+			orderedString = orderedString + String.valueOf(array[y]);
+		}
+
+		try {
+			reversedNr = Long.parseLong(orderedString);
+		} catch (NumberFormatException e) {
+			System.out.println("number format exception");
+		}
+
+//		System.out.println("array " + Arrays.toString(array));
+//		System.out.println("String " + reversedString);
+//		System.out.println("ordered String " + orderedString);
+		return reversedNr;
+	}
+
+	/*
+	 * Welcome. In this kata, you are asked to square every digit of a number.
+	 * 
+	 * For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and
+	 * 12 is 1.
+	 * 
+	 * Note: The function accepts an integer and returns an integer
+	 */
+
+	public static int squareDigits(int n) {
+		String result = "";
+		String array = String.valueOf(n);
+		System.out.println(array);
+		for (int i = 0; i < array.length(); i++) {
+			result = result + String.valueOf(Integer.parseInt(String.valueOf(array.charAt(i))) * Integer.parseInt(String.valueOf(array.charAt(i))));
+		}
+		return Integer.parseInt(result);
 	}
 
 }
