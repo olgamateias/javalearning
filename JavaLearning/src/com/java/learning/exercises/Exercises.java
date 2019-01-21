@@ -450,4 +450,142 @@ public class Exercises {
 		return Integer.parseInt(result);
 	}
 
+	/*
+	 * Mr. Scrooge has a sum of money 'P' that wants to invest, and he wants to know how many years
+	 * 'Y' this sum has to be kept in the bank in order for this sum of money to amount to 'D'.
+	 * 
+	 * The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly, and the new sum
+	 * is re-invested yearly after paying tax 'T'
+	 * 
+	 * Note that the principal is not taxed but only the year's accrued interest
+	 * 
+	 * Example:
+	 * 
+	 * Let P be the Principal = 1000.00
+	 * Let I be the Interest Rate = 0.05 (1000*0.05=50)
+	 * Let T be the Tax Rate = 0.18 (50 * 0.18 = 9)
+	 * Let D be the Desired Sum = 1100.00
+	 * 
+	 * 
+	 * After 1st Year -->
+	 * P = 1041.00 (1000+41=1041)
+	 * After 2nd Year -->
+	 * P = 1083.86 (1041*0.05 = 52.05; 52.05*0.18=9.369, 1041+42.681=1083.68
+	 * After 3rd Year -->
+	 * P = 1128.30
+	 * Thus Mr. Scrooge has to wait for 3 years for the initial pricipal to ammount to the desired
+	 * sum.
+	 * 
+	 * Your task is to complete the method provided and return the number of years 'Y' as a whole in
+	 * order for Mr. Scrooge to get the desired sum.
+	 * 
+	 * Assumptions : Assume that Desired Principal 'D' is always greater than the initial principal,
+	 * however it is best to take into consideration that if the Desired Principal 'D' is equal to
+	 * Principal 'P' this should return 0 Years.
+	 */
+	public static int calculateYears(double principal, double interest, double tax, double desired) {
+		int yearsToWait = 0;
+		while (principal < desired) {
+			principal = principal + (principal * interest) - ((principal * interest) * tax);
+			yearsToWait++;
+		}
+		return yearsToWait;
+	}
+
+	/*
+	 * There is an array with some numbers. All numbers are equal except for one. Try to find it!
+	 * 
+	 * Kata.findUniq(new double[]{ 1, 1, 1, 2, 1, 1 }); // => 2
+	 * Kata.findUniq(new double[]{ 0, 0, 0.55, 0, 0 }); // => 0.55
+	 * It’s guaranteed that array contains more than 3 numbers.
+	 * 
+	 * The tests contain some very huge arrays, so think about performance.
+	 */
+	public static double findUniq(double arr[]) {
+		double temp = 0;
+		for (int i = 0; i < arr.length; i++) {
+			for (int x = i + 1; x < arr.length; x++) {
+				for (int z = x + 1; z < arr.length; z++) {
+					if (arr[z] != arr[x]) {
+						if (arr[z] != arr[i]) {
+							if (arr[i] == arr[x]) {
+								System.out.println(" x " + arr[x]);
+								System.out.println(" i " + arr[i]);
+								System.out.println(" z " + arr[z]);
+								temp = arr[z];
+								return arr[z];
+							}
+						} else if (arr[x] != arr[i]) {
+							System.out.println(" i " + arr[i]);
+							System.out.println(" x " + arr[x]);
+							temp = arr[x];
+							return arr[x];
+						}
+					}
+				}
+
+			}
+		}
+		System.out.println("temp " + temp);
+		return temp;
+	}
+
+	/*
+	 * You are going to be given a word. Your job is to return the middle character of the word. If
+	 * the word's length is odd, return the middle character. If the word's length is even, return
+	 * the middle 2 characters.
+	 * 
+	 * #Examples:
+	 * 
+	 * Kata.getMiddle("test") should return "es"
+	 * 
+	 * Kata.getMiddle("testing") should return "t"
+	 * 
+	 * Kata.getMiddle("middle") should return "dd"
+	 * 
+	 * Kata.getMiddle("A") should return "A"
+	 * #Input
+	 * 
+	 * A word (string) of length 0 < str < 1000 (In javascript you may get slightly more than 1000
+	 * in some test cases due to an error in the test cases). You do not need to test for this. This
+	 * is only here to tell you that you do not need to worry about your solution timing out.
+	 * 
+	 * #Output
+	 * 
+	 * The middle character(s) of the word represented as a string.
+	 */
+	public static String getMiddle(String word) {
+		String middle = "";
+		int length = word.length();
+		if ((length % 2) == 0) {
+			System.out.println("the word is even");
+			middle = word.substring((length / 2) - 1, (length / 2) + 1);
+		} else {
+			System.out.println("the word is odd");
+			middle = word.substring(length / 2, (length / 2) + 1);
+		}
+		System.out.println("Middle " + middle);
+		return middle;
+	}
+
+	/*
+	 * If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and
+	 * 9. The sum of these multiples is 23.
+	 * 
+	 * Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the
+	 * number passed in.
+	 * 
+	 * Note: If the number is a multiple of both 3 and 5, only count it once.
+	 */
+	public int solution(int number) {
+		int sum = 0;
+		for (int i = 0; i < number; i++) {
+			if (i % 3 == 0 || i % 5 == 0) {
+				sum = sum + i;
+			}
+		}
+		System.out.println("Sum " + sum);
+		return sum;
+	}
+
 }

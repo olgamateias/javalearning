@@ -13,6 +13,12 @@ public class Main {
 		ex1.phoneNr(array);
 		ex1.reversedNr(1254859723);
 		ex1.squareDigits(9119);
+		ex1.calculateYears(1000, 0.05, 0.18, 1100);
+		// double[] arr = { 1, 1, 1, 2, 3, 3, 3 };
+		double[] arr = { 0, 1, 0 };
+		ex1.findUniq(arr);
+		ex1.getMiddle("testing");
+		ex1.solution(10);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };
