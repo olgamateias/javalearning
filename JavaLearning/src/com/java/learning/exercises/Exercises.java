@@ -2,8 +2,10 @@ package com.java.learning.exercises;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Exercises {
 
@@ -771,17 +773,63 @@ public class Exercises {
 	 * 
 	 * 
 	 */
+//	public boolean almostIncreasingSequence(int[] sequence) {
+//		int count = 0;
+//		List<Integer> array = Arrays.stream(sequence).boxed().collect(Collectors.toList());
+//		// List<Integer> list = Arrays.stream(ints).boxed().collect(Collectors.toList()); java 8
+//		// feature
+//		// copy int[] to list
+////		for (int i = 0; i < sequence.length; i++) {
+////			array.add(sequence[i]);
+////		}
+//		System.out.println("Array " + array);
+//		for (int x : array) {
+//			int temp = array.get(x);
+//			System.out.println("temp " + temp);
+//			array.remove(x);
+//			System.out.println("Array with one removed element " + array);
+//
+//			for (int y = 0; y < array.size() - 1; y++) {
+//				if (array.get(y) < array.get(y + 1)) {
+//					count++;
+//				}
+//			}
+//			if (count == array.size() - 1) {
+//				System.out.println("almostIncreasingSequence " + array);
+//				return true;
+//			}
+//			count = 0;
+//			array.add(x, temp);
+//			System.out.println("Initial Array " + array);
+//		}
+//
+//		return false;
+//	}
+
 	public boolean almostIncreasingSequence(int[] sequence) {
-		boolean isSequence = true;
-		List<Integer> array = new ArrayList<>();
-		for (int i = 0; i < sequence.length; i++) {
-			for (int x = i + 1; x < sequence.length; x++) {
-				if (sequence[i] > sequence[x]) {
-					array.add(sequence[x]);
+
+		List<Integer> array = Arrays.stream(sequence).boxed().collect(Collectors.toList());
+		Iterator<Integer> iter = array.iterator();
+		for (int x : array) {
+
+			int count = 0;
+			int temp = array.get(x);
+			array.remove(x);
+
+			for (int y = 0; y < array.size() - 1; y++) {
+				if (array.get(y) < array.get(y + 1)) {
+					count++;
+				} else {
+					break;
 				}
 			}
+			if (count == array.size() - 1) {
+				return true;
+			}
+			count = 0;
+			array.add(x, temp);
 		}
-		System.out.println("Array " + array);
-		return isSequence;
+
+		return false;
 	}
 }

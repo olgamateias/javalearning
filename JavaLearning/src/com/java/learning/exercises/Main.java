@@ -26,7 +26,7 @@ public class Main {
 		ex1.pologonArea(3);
 		int[] newArray = { 6, 2, 3, 9 };
 		ex1.makeArrayConsecutive2(newArray);
-		int[] sequence = { 1, 3, 2, 1 };
+		int[] sequence = { 1, 3, 2, 4 };
 		ex1.almostIncreasingSequence(sequence);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
