@@ -19,6 +19,15 @@ public class Main {
 		ex1.findUniq(arr);
 		ex1.getMiddle("testing");
 		ex1.solution(10);
+		ex1.centuryFromYear(1705);
+		ex1.checkPalindrome("aaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaa");
+		int[] arrayN = { -23, 4, -3, 8, -12 };
+		ex1.adjacentElementsProduct(arrayN);
+		ex1.pologonArea(3);
+		int[] newArray = { 6, 2, 3, 9 };
+		ex1.makeArrayConsecutive2(newArray);
+		int[] sequence = { 1, 3, 2, 1 };
+		ex1.almostIncreasingSequence(sequence);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

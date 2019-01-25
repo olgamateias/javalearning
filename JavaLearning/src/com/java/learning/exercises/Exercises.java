@@ -588,4 +588,200 @@ public class Exercises {
 		return sum;
 	}
 
+	// find the century from the year
+	int centuryFromYear(int year) {
+		int century = 0;
+		if (year >= 1 && year <= 100) {
+			century = 1;
+		} else if (year >= 101 && year <= 200) {
+			century = 2;
+		} else if (year >= 201 && year <= 300) {
+			century = 3;
+		} else if (year >= 301 && year <= 400) {
+			century = 4;
+		} else if (year >= 401 && year <= 500) {
+			century = 5;
+		} else if (year >= 501 && year <= 600) {
+			century = 6;
+		} else if (year >= 601 && year <= 700) {
+			century = 7;
+		} else if (year >= 701 && year <= 800) {
+			century = 8;
+		} else if (year >= 801 && year <= 900) {
+			century = 9;
+		} else if (year >= 901 && year <= 1000) {
+			century = 10;
+		} else if (year >= 1001 && year <= 1100) {
+			century = 11;
+		} else if (year >= 1101 && year <= 1200) {
+			century = 12;
+		} else if (year >= 1201 && year <= 1300) {
+			century = 13;
+		} else if (year >= 1301 && year <= 1400) {
+			century = 14;
+		} else if (year >= 1401 && year <= 1500) {
+			century = 15;
+		} else if (year >= 1501 && year <= 1600) {
+			century = 16;
+		} else if (year >= 1601 && year <= 1700) {
+			century = 17;
+		} else if (year >= 1701 && year <= 1800) {
+			century = 18;
+		} else if (year >= 1801 && year <= 1900) {
+			century = 19;
+		} else if (year >= 1901 && year <= 2000) {
+			century = 20;
+		} else if (year >= 2001 && year <= 2100) {
+			century = 21;
+		}
+
+//		if (year % 100 > 0) {
+//			century = (int) Math.round(year / 100.0) + 1;
+//			System.out.println("century " + century);
+//		} else {
+//			century = (int) Math.round(year / 100.0);
+//			System.out.println("century Math.round(year / 100.0)" + Math.round(year / 100.0));
+//		}
+		// System.out.println("century Math.round(year / 100.0) " + Math.round(year / 100.0));
+		century = (int) Math.round(year / 100.0);
+		return century;
+	}
+
+	// check Palindrome
+	boolean checkPalindrome(String inputString) {
+		boolean isPal = false;
+		if (inputString.length() == 1) {
+			System.out.println("is palindrome ");
+			return true;
+		}
+		for (int i = 0; i < inputString.length() / 2; i++) {
+			if (inputString.charAt(i) == inputString.charAt(inputString.length() - i - 1)) {
+				// System.out.println("maybe palindrome");
+				isPal = true;
+			} else {
+				isPal = false;
+			}
+		}
+		System.out.println("is palindrome " + isPal);
+		return isPal;
+	}
+
+	/*
+	 * Given an array of integers, find the pair of adjacent elements that has the largest product
+	 * and return that product.
+	 * 
+	 * Example
+	 * 
+	 * For inputArray = [3, 6, -2, -5, 7, 3], the output should be
+	 * adjacentElementsProduct(inputArray) = 21.
+	 * 
+	 * 7 and 3 produce the largest product.
+	 * 
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] array.integer inputArray
+	 * 
+	 * An array of integers containing at least two elements.
+	 * 
+	 * Guaranteed constraints:
+	 * 2 ≤ inputArray.length ≤ 10,
+	 * -1000 ≤ inputArray[i] ≤ 1000.
+	 * 
+	 * [output] integer
+	 * 
+	 * The largest product of adjacent elements.
+	 */
+	public int adjacentElementsProduct(int[] inputArray) {
+		int value = Integer.MIN_VALUE;
+		for (int i = 0; i < inputArray.length - 1; i++) {
+			System.out.println("i " + i);
+			if (inputArray[i] * inputArray[i + 1] > value) {
+				value = inputArray[i] * inputArray[i + 1];
+				System.out.println("value " + value);
+			}
+		}
+		return value;
+	}
+
+	public int pologonArea(int n) {
+		int area = ((int) Math.pow(n, 2)) + ((int) Math.pow(n - 1, 2));
+		System.out.println("Area " + area);
+		return area;
+	}
+
+	/*
+	 * Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each
+	 * statue having an non-negative integer size. Since he likes to make things perfect, he wants
+	 * to arrange them from smallest to largest so that each statue will be bigger than the previous
+	 * one exactly by 1. He may need some additional statues to be able to accomplish that. Help him
+	 * figure out the minimum number of additional statues needed.
+	 * 
+	 * Example
+	 * 
+	 * For statues = [6, 2, 3, 8], the output should be
+	 * makeArrayConsecutive2(statues) = 3.
+	 * 
+	 * Ratiorg needs statues of sizes 4, 5 and 7.
+	 */
+	public int makeArrayConsecutive2(int[] statues) {
+		int count = 0;
+		// first order the array
+		for (int i = 0; i < statues.length; i++) {
+			for (int x = i + 1; x < statues.length; x++) {
+				if (statues[i] > statues[x]) {
+					int temp = statues[i];
+					statues[i] = statues[x];
+					statues[x] = temp;
+				}
+			}
+		}
+		System.out.println("Sorted array " + Arrays.toString(statues));
+
+		for (int y = 0; y < statues.length - 1; y++) {
+			if (statues[y] != (statues[y + 1] - 1)) {
+				count = count + statues[y + 1] - statues[y] - 1;
+			}
+		}
+		System.out.println("Count " + count);
+		return count;
+	}
+
+	/*
+	 * Given a sequence of integers as an array, determine whether it is possible to obtain a
+	 * strictly increasing sequence by removing no more than one element from the array.
+	 * 
+	 * Note: sequence a0, a1, ..., an is considered to be a strictly increasing if a0 < a1 < ... <
+	 * an. Sequence containing only one element is also considered to be strictly increasing.
+	 * 
+	 * Example
+	 * 
+	 * For sequence = [1, 3, 2, 1], the output should be
+	 * almostIncreasingSequence(sequence) = false.
+	 * 
+	 * There is no one element in this array that can be removed in order to get a strictly
+	 * increasing sequence.
+	 * 
+	 * For sequence = [1, 3, 2], the output should be
+	 * almostIncreasingSequence(sequence) = true.
+	 * 
+	 * You can remove 3 from the array to get the strictly increasing sequence [1, 2]. Alternately,
+	 * you can remove 2 to get the strictly increasing sequence [1, 3].
+	 * 
+	 * 
+	 */
+	public boolean almostIncreasingSequence(int[] sequence) {
+		boolean isSequence = true;
+		List<Integer> array = new ArrayList<>();
+		for (int i = 0; i < sequence.length; i++) {
+			for (int x = i + 1; x < sequence.length; x++) {
+				if (sequence[i] > sequence[x]) {
+					array.add(sequence[x]);
+				}
+			}
+		}
+		System.out.println("Array " + array);
+		return isSequence;
+	}
 }
