@@ -28,6 +28,8 @@ public class Main {
 		ex1.makeArrayConsecutive2(newArray);
 		int[] sequence = { 1, 3, 2, 4 };
 		ex1.almostIncreasingSequence(sequence);
+		int[][] matrix = { { 0, 3, 5, 7 }, { 4, 5, 6, 1 }, { 1, 0, 0, 0 } };
+		ex1.matrix(matrix);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

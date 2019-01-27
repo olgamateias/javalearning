@@ -773,63 +773,82 @@ public class Exercises {
 	 * 
 	 * 
 	 */
-//	public boolean almostIncreasingSequence(int[] sequence) {
-//		int count = 0;
-//		List<Integer> array = Arrays.stream(sequence).boxed().collect(Collectors.toList());
-//		// List<Integer> list = Arrays.stream(ints).boxed().collect(Collectors.toList()); java 8
-//		// feature
-//		// copy int[] to list
-////		for (int i = 0; i < sequence.length; i++) {
-////			array.add(sequence[i]);
-////		}
-//		System.out.println("Array " + array);
-//		for (int x : array) {
-//			int temp = array.get(x);
-//			System.out.println("temp " + temp);
-//			array.remove(x);
-//			System.out.println("Array with one removed element " + array);
-//
-//			for (int y = 0; y < array.size() - 1; y++) {
-//				if (array.get(y) < array.get(y + 1)) {
-//					count++;
-//				}
-//			}
-//			if (count == array.size() - 1) {
-//				System.out.println("almostIncreasingSequence " + array);
-//				return true;
-//			}
-//			count = 0;
-//			array.add(x, temp);
-//			System.out.println("Initial Array " + array);
-//		}
-//
-//		return false;
-//	}
-
-	public boolean almostIncreasingSequence(int[] sequence) {
-
+	public boolean almostIncreasingSequence2(int[] sequence) {
+		int count = 0;
 		List<Integer> array = Arrays.stream(sequence).boxed().collect(Collectors.toList());
 		Iterator<Integer> iter = array.iterator();
-		for (int x : array) {
-
-			int count = 0;
-			int temp = array.get(x);
-			array.remove(x);
-
-			for (int y = 0; y < array.size() - 1; y++) {
-				if (array.get(y) < array.get(y + 1)) {
-					count++;
-				} else {
+		// List<Integer> list = Arrays.stream(ints).boxed().collect(Collectors.toList()); java 8
+		// feature
+		// copy int[] to list
+//		for (int i = 0; i < sequence.length; i++) {
+//			array.add(sequence[i]);
+//		}
+		System.out.println("Array " + array);
+		int max = 0;
+		int min = 0;
+		for (int i = 0; i < array.size() - 1; i++) {
+			if (array.get(i) >= array.get(i + 1)) {
+				max = i;
+				min = i + 1;
+				count++;
+			}
+		}
+		if (count > 1) {
+			return false;
+		} else if (count == 1) {
+			boolean isTrue = false;
+			array.remove(max);
+			System.out.println("Array with max el removed " + array);
+			for (int x = 0; x < array.size() - 1; x++) {
+				if (array.get(x) >= array.get(x + 1)) {
+					System.out.println("false");
+					isTrue = false;
 					break;
 				}
 			}
-			if (count == array.size() - 1) {
-				return true;
-			}
-			count = 0;
-			array.add(x, temp);
+			array.add(max);
+			array.remove(min);
 		}
 
-		return false;
+		System.out.println("true?");
+		return true;
+	}
+
+	public boolean almostIncreasingSequence(int[] sequence) {
+		List<Integer> array = Arrays.stream(sequence).boxed().collect(Collectors.toList());
+		int length = sequence.length;
+		int count1 = 0, count2 = 0;
+		if (sequence[1] <= sequence[0]) {
+			count1++;
+		}
+
+		for (int i = 2; i < length; i++) {
+			if (sequence[i] <= sequence[i - 1]) {
+				count1++;
+			}
+			if (sequence[i] <= sequence[i - 2]) {
+				count2++;
+			}
+		}
+		if (count1 > 1 || count2 > 1) {
+			System.out.println("false");
+			return false;
+		} else {
+			System.out.println("true");
+			return true;
+		}
+	}
+
+	public void matrix(int[][] matrix) {
+		int sum = 0;
+		for (int i = matrix.length - 1; i >= 0; i--) {
+			System.out.println(i + " row " + Arrays.toString(matrix[i]));
+			for (int x = 0; x < matrix[i].length; x++) {
+//				System.out.println("matrix[i+1][x] " + matrix[i + 1][x]);
+				if (matrix[i][x] != 0) {
+				}
+
+			}
+		}
 	}
 }
