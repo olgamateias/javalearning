@@ -841,14 +841,6 @@ public class Exercises {
 
 	public void matrix(int[][] matrix) {
 		int sum = 0;
-		for (int i = matrix.length - 1; i >= 0; i--) {
-			System.out.println(i + " row " + Arrays.toString(matrix[i]));
-			for (int x = 0; x < matrix[i].length; x++) {
-//				System.out.println("matrix[i+1][x] " + matrix[i + 1][x]);
-				if (matrix[i][x] != 0) {
-				}
 
-			}
-		}
 	}
 }
