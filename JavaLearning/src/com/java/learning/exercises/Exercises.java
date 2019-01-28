@@ -861,4 +861,86 @@ public class Exercises {
 		return sum;
 	}
 
+	// Given an array of strings, return another array containing all of its longest strings.
+	// Example
+	// For inputArray = ["aba", "aa", "ad", "vcd", "aba"], the output should be
+	// allLongestStrings(inputArray) = ["aba", "vcd", "aba"].
+	public String[] allLongestStrings(String[] inputArray) {
+		List<String> array = new ArrayList<>();
+		int size = 0;
+		for (String word : inputArray) {
+			if (word.length() >= size) {
+				size = word.length();
+			}
+		}
+
+		int i = 0;
+		for (String str : inputArray) {
+
+			if (str.length() == size) {
+				array.add(str);
+			}
+		}
+		return array.toArray(new String[0]);
+	}
+
+	/*
+	 * Given two strings, find the number of common characters between them.
+	 * 
+	 * Example
+	 * 
+	 * For s1 = "aabcc" and s2 = "adcaa", the output should be
+	 * commonCharacterCount(s1, s2) = 3.
+	 * 
+	 * Strings have 3 common characters - 2 "a"s and 1 "c".
+	 */
+	int commonCharacterCount(String s1, String s2) {
+		int count = 0;
+		char[] s1Array = s1.toCharArray();
+		System.out.println("s1 array " + Arrays.toString(s1Array));
+		char[] s2Array = s2.toCharArray();
+		System.out.println("s2 array " + Arrays.toString(s2Array));
+		for (int i = 0; i < s1Array.length; i++) {
+			for (int x = 0; x < s2Array.length; x++) {
+				if (s1Array[i] == s2Array[x]) {
+					count++;
+					s2Array[x] = 32;
+					System.out.println("s2 array " + Arrays.toString(s2Array));
+					break;
+				}
+			}
+		}
+		System.out.println("count " + count);
+		return count;
+	}
+
+	/*
+	 * Ticket numbers usually consist of an even number of digits. A ticket number is considered
+	 * lucky if the sum of the first half of the digits is equal to the sum of the second half.
+	 * 
+	 * Given a ticket number n, determine if it's lucky or not.
+	 * 
+	 * Example
+	 * 
+	 * For n = 1230, the output should be
+	 * isLucky(n) = true;
+	 * For n = 239017, the output should be
+	 * isLucky(n) = false.
+	 */
+	boolean isLucky2(int n) {
+		int sum1 = 0;
+		int sum2 = 0;
+		char[] array = String.valueOf(n).toCharArray();
+		for (int i = 0; i < array.length / 2; i++) {
+			sum1 = sum1 + array[i];
+		}
+		for (int x = array.length - 1; x >= array.length / 2; x--) {
+			sum2 = sum2 + array[x];
+		}
+		if (sum1 == sum2) {
+			return true;
+		}
+		System.out.println("sum1 " + sum1 + ", sum2 " + sum2);
+		return false;
+	}
 }

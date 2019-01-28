@@ -30,6 +30,10 @@ public class Main {
 		ex1.almostIncreasingSequence(sequence);
 		int[][] matrix = { { 0, 3, 5, 7 }, { 4, 5, 6, 1 }, { 1, 0, 2, 0 } };
 		ex1.matrix(matrix);
+		String[] inputArray = { "abc", "eeee", "abcd", "dcd" };
+		ex1.allLongestStrings(inputArray);
+		ex1.commonCharacterCount("aabcc", "adcaa");
+		ex1.isLucky2(1230);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };
