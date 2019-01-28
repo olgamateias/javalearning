@@ -34,6 +34,9 @@ public class Main {
 		ex1.allLongestStrings(inputArray);
 		ex1.commonCharacterCount("aabcc", "adcaa");
 		ex1.isLucky2(1230);
+		int[] sortByHeight = { -1, 150, 190, 170, -1, -1, 160, 180 };
+		ex1.sortByHeight(sortByHeight);
+		ex1.reverseInParentheses("foo(bar)baz(blim)");
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

@@ -943,4 +943,99 @@ public class Exercises {
 		System.out.println("sum1 " + sum1 + ", sum2 " + sum2);
 		return false;
 	}
+
+	/*
+	 * Some people are standing in a row in a park. There are trees between them which cannot be
+	 * moved. Your task is to rearrange the people by their heights in a non-descending order
+	 * without moving the trees. People can be very tall!
+	 * 
+	 * Example
+	 * 
+	 * For a = [-1, 150, 190, 170, -1, -1, 160, 180], the output should be
+	 * sortByHeight(a) = [-1, 150, 160, 170, -1, -1, 180, 190].
+	 * 
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] array.integer a
+	 * 
+	 * If a[i] = -1, then the ith position is occupied by a tree. Otherwise a[i] is the height of a
+	 * person standing in the ith position.
+	 * 
+	 * 
+	 */
+	public int[] sortByHeight(int[] a) {
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != -1) {
+				for (int x = i + 1; x < a.length; x++) {
+					if (a[x] != -1) {
+						if (a[i] > a[x]) {
+							int temp = a[i];
+							a[i] = a[x];
+							a[x] = temp;
+						}
+					}
+				}
+			}
+		}
+		System.out.println("sorted array " + Arrays.toString(a));
+		return a;
+	}
+
+	/*
+	 * Write a function that reverses characters in (possibly nested) parentheses in the input
+	 * string.
+	 * 
+	 * Input strings will always be well-formed with matching ()s.
+	 * 
+	 * Example
+	 * 
+	 * For inputString = "(bar)", the output should be
+	 * reverseInParentheses(inputString) = "rab";
+	 * For inputString = "foo(bar)baz", the output should be
+	 * reverseInParentheses(inputString) = "foorabbaz";
+	 * For inputString = "foo(bar)baz(blim)", the output should be
+	 * reverseInParentheses(inputString) = "foorabbazmilb";
+	 * For inputString = "foo(bar(baz))blim", the output should be
+	 * reverseInParentheses(inputString) = "foobazrabblim".
+	 * Because "foo(bar(baz))blim" becomes "foo(barzab)blim" and then "foobazrabblim".
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] string inputString
+	 * 
+	 * A string consisting of lowercase English letters and the characters ( and ). It is guaranteed
+	 * that all parentheses in inputString form a regular bracket sequence.
+	 */
+	String reverseInParentheses(String inputString) {
+		String reverse = "";
+
+		for (int i = 0; i < inputString.length(); i++) {
+			if (inputString.charAt(i) == 40) {
+				// tot prima paranteza o ia chiar si atunci cand o citeste pe a 2-a
+				int begin = inputString.indexOf(inputString.charAt(i));
+				reverse = reverse + inputString.substring(0, begin);
+			}
+		}
+
+//		int first = inputString.indexOf("(");
+//		int last = inputString.indexOf(")");
+//		char[] reverseArray = inputString.substring(first + 1, last).toCharArray();
+//
+//		for (int i = 0; i < reverseArray.length / 2; i++) {
+//			char temp = reverseArray[i];
+//			reverseArray[i] = reverseArray[reverseArray.length - 1 - i];
+//			reverseArray[reverseArray.length - 1 - i] = temp;
+//		}
+//		reverse = reverse + inputString.substring(0, first);
+//		for (int x = 0; x < reverseArray.length; x++) {
+//			reverse = reverse + String.valueOf(reverseArray[x]);
+//		}
+//		reverse = reverse + inputString.substring(last + 1, inputString.length());
+//		System.out.println("reverse array " + Arrays.toString(reverseArray));
+		System.out.println("word rev " + reverse);
+		return reverse;
+	}
 }
