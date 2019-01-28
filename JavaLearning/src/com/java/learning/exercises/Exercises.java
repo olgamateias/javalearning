@@ -839,8 +839,26 @@ public class Exercises {
 		}
 	}
 
-	public void matrix(int[][] matrix) {
+	public int matrix(int[][] matrix) {
 		int sum = 0;
-
+		int rows = matrix.length;
+		System.out.println("rows " + rows);
+		for (int i = 0; i < rows - 1; i++) {
+			for (int x = 0; x < matrix[i].length; x++) {
+				if (matrix[i][x] == 0) {
+					matrix[i + 1][x] = 0;
+				}
+				// sum = sum + matrix[i][x];
+			}
+			System.out.println("matrix " + Arrays.toString(matrix[i]));
+		}
+		for (int y = 0; y < rows; y++) {
+			for (int z = 0; z < matrix[y].length; z++) {
+				sum = sum + matrix[y][z];
+			}
+		}
+		System.out.println("sum " + sum);
+		return sum;
 	}
+
 }
