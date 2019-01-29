@@ -739,14 +739,14 @@ public class Exercises {
 				}
 			}
 		}
-		System.out.println("Sorted array " + Arrays.toString(statues));
+		// System.out.println("Sorted array " + Arrays.toString(statues));
 
 		for (int y = 0; y < statues.length - 1; y++) {
 			if (statues[y] != (statues[y + 1] - 1)) {
 				count = count + statues[y + 1] - statues[y] - 1;
 			}
 		}
-		System.out.println("Count " + count);
+		// System.out.println("Count " + count);
 		return count;
 	}
 
@@ -810,7 +810,7 @@ public class Exercises {
 			array.remove(min);
 		}
 
-		System.out.println("true?");
+		// System.out.println("true?");
 		return true;
 	}
 
@@ -831,10 +831,10 @@ public class Exercises {
 			}
 		}
 		if (count1 > 1 || count2 > 1) {
-			System.out.println("false");
+			// System.out.println("false");
 			return false;
 		} else {
-			System.out.println("true");
+			// System.out.println("true");
 			return true;
 		}
 	}
@@ -842,7 +842,7 @@ public class Exercises {
 	public int matrix(int[][] matrix) {
 		int sum = 0;
 		int rows = matrix.length;
-		System.out.println("rows " + rows);
+		// System.out.println("rows " + rows);
 		for (int i = 0; i < rows - 1; i++) {
 			for (int x = 0; x < matrix[i].length; x++) {
 				if (matrix[i][x] == 0) {
@@ -850,14 +850,14 @@ public class Exercises {
 				}
 				// sum = sum + matrix[i][x];
 			}
-			System.out.println("matrix " + Arrays.toString(matrix[i]));
+			// System.out.println("matrix " + Arrays.toString(matrix[i]));
 		}
 		for (int y = 0; y < rows; y++) {
 			for (int z = 0; z < matrix[y].length; z++) {
 				sum = sum + matrix[y][z];
 			}
 		}
-		System.out.println("sum " + sum);
+		// System.out.println("sum " + sum);
 		return sum;
 	}
 
@@ -897,20 +897,20 @@ public class Exercises {
 	int commonCharacterCount(String s1, String s2) {
 		int count = 0;
 		char[] s1Array = s1.toCharArray();
-		System.out.println("s1 array " + Arrays.toString(s1Array));
+		// System.out.println("s1 array " + Arrays.toString(s1Array));
 		char[] s2Array = s2.toCharArray();
-		System.out.println("s2 array " + Arrays.toString(s2Array));
+		// System.out.println("s2 array " + Arrays.toString(s2Array));
 		for (int i = 0; i < s1Array.length; i++) {
 			for (int x = 0; x < s2Array.length; x++) {
 				if (s1Array[i] == s2Array[x]) {
 					count++;
 					s2Array[x] = 32;
-					System.out.println("s2 array " + Arrays.toString(s2Array));
+					// System.out.println("s2 array " + Arrays.toString(s2Array));
 					break;
 				}
 			}
 		}
-		System.out.println("count " + count);
+		// System.out.println("count " + count);
 		return count;
 	}
 
@@ -940,7 +940,7 @@ public class Exercises {
 		if (sum1 == sum2) {
 			return true;
 		}
-		System.out.println("sum1 " + sum1 + ", sum2 " + sum2);
+		// System.out.println("sum1 " + sum1 + ", sum2 " + sum2);
 		return false;
 	}
 
@@ -979,7 +979,7 @@ public class Exercises {
 				}
 			}
 		}
-		System.out.println("sorted array " + Arrays.toString(a));
+		// System.out.println("sorted array " + Arrays.toString(a));
 		return a;
 	}
 
@@ -1010,32 +1010,39 @@ public class Exercises {
 	 * that all parentheses in inputString form a regular bracket sequence.
 	 */
 	String reverseInParentheses(String inputString) {
-		String reverse = "";
-
-		for (int i = 0; i < inputString.length(); i++) {
-			if (inputString.charAt(i) == 40) {
-				// tot prima paranteza o ia chiar si atunci cand o citeste pe a 2-a
-				int begin = inputString.indexOf(inputString.charAt(i));
-				reverse = reverse + inputString.substring(0, begin);
+		int index1 = inputString.lastIndexOf("(");
+		System.out.println("index1 ( " + index1);
+		int index2 = inputString.lastIndexOf(")");
+		System.out.println("index2 ) " + index2);
+		char[] inputArray = inputString.toCharArray();
+		String word = "";
+		System.out.println("array " + Arrays.toString(inputArray));
+		for (int i = index1 + 1; i < index2; i++) {
+			word = word + inputArray[i];
+			if (word.contains("(") || word.contains(")")) {
+				word = word.replace('(', ' ');
+				word = word.replace(')', ' ');
+				word = reverseWord(word.trim());
 			}
 		}
+		String[] splitedArray = inputString.split("\\(");
+		System.out.println("splitedArray " + Arrays.toString(splitedArray));
+		System.out.println("word " + word);
+		return null;
+	}
 
-//		int first = inputString.indexOf("(");
-//		int last = inputString.indexOf(")");
-//		char[] reverseArray = inputString.substring(first + 1, last).toCharArray();
-//
-//		for (int i = 0; i < reverseArray.length / 2; i++) {
-//			char temp = reverseArray[i];
-//			reverseArray[i] = reverseArray[reverseArray.length - 1 - i];
-//			reverseArray[reverseArray.length - 1 - i] = temp;
-//		}
-//		reverse = reverse + inputString.substring(0, first);
-//		for (int x = 0; x < reverseArray.length; x++) {
-//			reverse = reverse + String.valueOf(reverseArray[x]);
-//		}
-//		reverse = reverse + inputString.substring(last + 1, inputString.length());
-//		System.out.println("reverse array " + Arrays.toString(reverseArray));
-		System.out.println("word rev " + reverse);
-		return reverse;
+	public static String reverseWord(String word) {
+		String reversedWord = "";
+		char[] array = word.toCharArray();
+		for (int i = 0; i < array.length / 2; i++) {
+			char temp = array[i];
+			array[i] = array[(array.length - 1) - i];
+			array[(array.length - 1) - i] = temp;
+		}
+		for (int x = 0; x < array.length; x++) {
+			reversedWord = reversedWord + array[x];
+		}
+		System.out.println("reversed word " + reversedWord);
+		return reversedWord;
 	}
 }
