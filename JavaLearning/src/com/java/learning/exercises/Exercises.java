@@ -1010,24 +1010,7 @@ public class Exercises {
 	 * that all parentheses in inputString form a regular bracket sequence.
 	 */
 	String reverseInParentheses(String inputString) {
-		int index1 = inputString.lastIndexOf("(");
-		System.out.println("index1 ( " + index1);
-		int index2 = inputString.lastIndexOf(")");
-		System.out.println("index2 ) " + index2);
-		char[] inputArray = inputString.toCharArray();
-		String word = "";
-		System.out.println("array " + Arrays.toString(inputArray));
-		for (int i = index1 + 1; i < index2; i++) {
-			word = word + inputArray[i];
-			if (word.contains("(") || word.contains(")")) {
-				word = word.replace('(', ' ');
-				word = word.replace(')', ' ');
-				word = reverseWord(word.trim());
-			}
-		}
-		String[] splitedArray = inputString.split("\\(");
-		System.out.println("splitedArray " + Arrays.toString(splitedArray));
-		System.out.println("word " + word);
+
 		return null;
 	}
 
@@ -1045,4 +1028,69 @@ public class Exercises {
 		System.out.println("reversed word " + reversedWord);
 		return reversedWord;
 	}
+
+	/*
+	 * Several people are standing in a row and need to be divided into two teams. The first person
+	 * goes into team 1, the second goes into team 2, the third goes into team 1 again, the fourth
+	 * into team 2, and so on.
+	 * 
+	 * You are given an array of positive integers - the weights of the people. Return an array of
+	 * two integers, where the first element is the total weight of team 1, and the second element
+	 * is the total weight of team 2 after the division is complete.
+	 * 
+	 * Example
+	 * 
+	 * For a = [50, 60, 60, 45, 70], the output should be
+	 * alternatingSums(a) = [180, 105].
+	 */
+	int[] alternatingSums(int[] a) {
+
+		int team1 = 0;
+		int team2 = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (i % 2 == 0) {
+				team1 = team1 + a[i];
+			} else {
+				team2 = team2 + a[i];
+			}
+		}
+		int[] teamWeight = { team1, team2 };
+		System.out.println("result " + Arrays.toString(teamWeight));
+		return teamWeight;
+	}
+
+	/*
+	 * Given a rectangular matrix of characters, add a border of asterisks(*) to it.
+	 * 
+	 * Example
+	 * 
+	 * For
+	 * 
+	 * picture = ["abc","ded"]
+	 * the output should be
+	 * 
+	 * addBorder(picture) = ["*****", "*abc*", "*ded*", "*****"]
+	 */
+	String[] addBorder(String[] picture) {
+
+		System.out.println("matrix size " + picture.length);
+		String[][] border = new String[picture.length + 2][1];
+		for (int i = 0; i < border.length; i++) {
+			if (i == 0 || i == border.length - 1) {
+				for (int x = 0; x < border[i].length; x++) {
+					border[i][x] = "****";
+				}
+			} else {
+				for (int z = 0; z < 1; z++) {
+					String test = "*" + picture[i - 1] + "*";
+					border[i][z] = test;
+					break;
+				}
+			}
+			System.out.println("matrix " + Arrays.toString(border[i]));
+		}
+
+		return null;
+	}
+
 }

@@ -39,6 +39,10 @@ public class Main {
 		// ex1.reverseInParentheses("foo(bar)baz(blim)");
 		ex1.reverseInParentheses("foo(bar(baz))blim");
 		ex1.reverseWord("bar");
+		int[] teamWeight = { 50, 60, 60, 45, 70 };
+		ex1.alternatingSums(teamWeight);
+		String[] picture = { "abc", "ded" };
+		ex1.addBorder(picture);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };
