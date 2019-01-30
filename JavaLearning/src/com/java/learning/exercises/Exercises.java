@@ -1072,25 +1072,48 @@ public class Exercises {
 	 * addBorder(picture) = ["*****", "*abc*", "*ded*", "*****"]
 	 */
 	String[] addBorder(String[] picture) {
-
-		System.out.println("matrix size " + picture.length);
-		String[][] border = new String[picture.length + 2][1];
-		for (int i = 0; i < border.length; i++) {
-			if (i == 0 || i == border.length - 1) {
-				for (int x = 0; x < border[i].length; x++) {
-					border[i][x] = "****";
+		String[] array = new String[picture.length + 2];
+		for (int i = 0; i < array.length; i++) {
+			if (i == 0 || i == array.length - 1) {
+				int size = picture[0].length() + 2;
+				String asteriks = "";
+				System.out.println("size " + size);
+				for (int x = 0; x < size; x++) {
+					asteriks = asteriks + "*";
 				}
+				array[i] = asteriks;
 			} else {
 				for (int z = 0; z < 1; z++) {
 					String test = "*" + picture[i - 1] + "*";
-					border[i][z] = test;
+					array[i] = test;
 					break;
 				}
 			}
-			System.out.println("matrix " + Arrays.toString(border[i]));
 		}
-
-		return null;
+		System.out.println("array " + Arrays.toString(array));
+		return array;
 	}
+
+//	String[] addBorder(String[] picture) {
+//
+//		System.out.println("matrix size " + picture.length);
+//		String[][] border = new String[picture.length + 2][1];
+//		for (int i = 0; i < border.length; i++) {
+//			if (i == 0 || i == border.length - 1) {
+//				for (int x = 0; x < border[i].length; x++) {
+//					border[i][x] = "****";
+//				}
+//			} else {
+//				for (int z = 0; z < 1; z++) {
+//					String test = "*" + picture[i - 1] + "*";
+//					border[i][z] = test;
+//					break;
+//				}
+//			}
+//			System.out.println("matrix " + Arrays.toString(border[i]));
+//		}
+//
+//		return null;
+//	}
 
 }
