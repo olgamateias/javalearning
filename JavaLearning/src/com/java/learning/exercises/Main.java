@@ -43,6 +43,9 @@ public class Main {
 		ex1.alternatingSums(teamWeight);
 		String[] picture = { "abc", "ded" };
 		ex1.addBorder(picture);
+		int[] a = { 1, 2, 3 };
+		int[] b = { 3, 2, 1 };
+		ex1.areSimilar(a, b);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

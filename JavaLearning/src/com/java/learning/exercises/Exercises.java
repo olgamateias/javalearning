@@ -1140,6 +1140,51 @@ public class Exercises {
 	 * Any swap of any two elements either in a or in b won't make a and b equal.
 	 */
 	boolean areSimilar(int[] a, int[] b) {
+
+		int count = countDifference(a, b);
+		if (count > 2) {
+			return false;
+		}
+		count = 0;
+		for (int z = 0; z < a.length; z++) {
+			if (a[z] == b[z]) {
+				count++;
+			}
+//			for (int i = 0; i < b.length; i++) {
+//				if (a[z] == b[i]) {
+//					count++;
+//
+//				}
+//			}
+		}
+		// b[b[a[2]]]
+		System.out.println("equals " + count);
+		if (count == a.length) {
+			return true;
+		}
+
 		return false;
+
+	}
+
+	public static int sumEl(int[] a) {
+		int sum = 0;
+		for (int i = 0; i < a.length; i++) {
+			sum = sum + a[i];
+		}
+		return sum;
+	}
+
+	public static int countDifference(int[] a, int[] b) {
+		int count = 0;
+		for (int i = 0; i < a.length; i++) {
+
+			if (a[i] != b[i]) {
+				count++;
+			}
+
+		}
+
+		return count;
 	}
 }
