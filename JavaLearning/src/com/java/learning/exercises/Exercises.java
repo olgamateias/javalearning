@@ -1140,26 +1140,26 @@ public class Exercises {
 	 * Any swap of any two elements either in a or in b won't make a and b equal.
 	 */
 	boolean areSimilar(int[] a, int[] b) {
+		int index1 = 0;
+		int index2 = 0;
 
-		int count = countDifference(a, b);
+		int count = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != b[i]) {
+				count++;
+				if (count > 1) {
+					index2 = i;
+				} else {
+					index1 = i;
+				}
+			}
+		}
+		System.out.println("index1 " + index1 + ", index2 " + index2);
 		if (count > 2) {
 			return false;
 		}
-		count = 0;
-		for (int z = 0; z < a.length; z++) {
-			if (a[z] == b[z]) {
-				count++;
-			}
-//			for (int i = 0; i < b.length; i++) {
-//				if (a[z] == b[i]) {
-//					count++;
-//
-//				}
-//			}
-		}
-		// b[b[a[2]]]
-		System.out.println("equals " + count);
-		if (count == a.length) {
+
+		if (a[index1] == b[index2] && a[index2] == b[index1]) {
 			return true;
 		}
 
@@ -1186,5 +1186,49 @@ public class Exercises {
 		}
 
 		return count;
+	}
+
+	/*
+	 * You are given an array of integers. On each move you are allowed to increase exactly one of
+	 * its element by one. Find the minimal number of moves required to obtain a strictly increasing
+	 * sequence from the input.
+	 * 
+	 * Example
+	 * 
+	 * For inputArray = [1, 1, 1], the output should be
+	 * arrayChange(inputArray) = 3.
+	 * inputArray: [2, 1, 10, 1]
+	 * Expected Output: 12
+	 * inputArray: [-1000, 0, -2, 0]
+	 * Expected Output: 5
+	 * 
+	 * Practic trebuie să returnezi de câte ori trebuie să faci +1 la fiecare element ca să fie
+	 * crescător
+	 * la un array [1, 1], trebuie să adaugi +1 la a[1] ca să obții [1, 2] - crescător
+	 * [-1000, 0, -2, 0]
+	 * a[2] ar trebui să facă de 3 ori +1 ca să devină 1
+	 * și pentru a[3] ar trebui să faci de 2 ori +1 ca să devină 2
+	 * și obții [-1000, 0, 1, 2]
+	 * deci returnezi 5
+	 * 
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] array.integer inputArray
+	 * 
+	 * Guaranteed constraints:
+	 * 3 ≤ inputArray.length ≤ 105,
+	 * -105 ≤ inputArray[i] ≤ 105.
+	 * 
+	 * [output] integer
+	 * 
+	 * The minimal number of moves needed to obtain a strictly increasing sequence from inputArray.
+	 * It's guaranteed that for the given test cases the answer always fits signed 32-bit integer
+	 * type.
+	 */
+	int arrayChange(int[] inputArray) {
+		int i = 0;
+		return i;
 	}
 }
