@@ -46,6 +46,8 @@ public class Main {
 		int[] a = { 832, 998, 148, 570, 533, 561, 894, 147, 455, 279 };
 		int[] b = { 832, 998, 148, 570, 533, 561, 455, 147, 894, 279 };
 		ex1.areSimilar(a, b);
+		int[] arrayChange = { -1000, 0, -2, 0 };
+		ex1.arrayChange(arrayChange);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

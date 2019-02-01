@@ -1228,7 +1228,16 @@ public class Exercises {
 	 * type.
 	 */
 	int arrayChange(int[] inputArray) {
-		int i = 0;
-		return i;
+		int count = 0;
+		for (int i = 0; i < inputArray.length - 1; i++) {
+			if (inputArray[i] >= inputArray[i + 1]) {
+				int temp = inputArray[i + 1];
+				inputArray[i + 1] = inputArray[i] + 1;
+				count = count + inputArray[i + 1] - temp;
+			}
+		}
+		System.out.println("array " + Arrays.toString(inputArray));
+		System.out.println("count " + count);
+		return count;
 	}
 }
