@@ -1346,4 +1346,78 @@ public class Exercises {
 		System.out.println("diff " + diff);
 		return diff;
 	}
+
+	/*
+	 * An IP address is a numerical label assigned to each device (e.g., computer, printer)
+	 * participating in a computer network that uses the Internet Protocol for communication. There
+	 * are two versions of the Internet protocol, and thus two versions of addresses. One of them is
+	 * the IPv4 address.
+	 * 
+	 * IPv4 addresses are represented in dot-decimal notation, which consists of four decimal
+	 * numbers, each ranging from 0 to 255 inclusive, separated by dots, e.g., 172.16.254.1.
+	 * 
+	 * Given a string, find out if it satisfies the IPv4 address naming rules.
+	 * 
+	 * Example
+	 * 
+	 * For inputString = "172.16.254.1", the output should be
+	 * isIPv4Address(inputString) = true;
+	 * 
+	 * For inputString = "172.316.254.1", the output should be
+	 * isIPv4Address(inputString) = false.
+	 * 
+	 * 316 is not in range [0, 255].
+	 * 
+	 * For inputString = ".254.255.0", the output should be
+	 * isIPv4Address(inputString) = false.
+	 * 
+	 * There is no first number.
+	 * 
+	 * 
+	 */
+	boolean isIPv4Address(String inputString) {
+		String subStr = "";
+		for (int i = 0; i < inputString.length(); i++) {
+			int index = inputString.indexOf(".");
+			System.out.println("inde of . " + index);
+			subStr = inputString.substring(0, index);
+//			int number = Integer.parseInt(subStr.trim());
+//			inputString = inputString.replace(subStr + ".", " ");
+//			System.out.println("number " + number);
+
+		}
+
+//		int count = 0;
+//		if (inputString.charAt(0) == 46 || inputString.charAt(inputString.length() - 1) == 46) {
+//			return false;
+//		}
+//		for (int i = 0; i < inputString.length(); i++) {
+//
+//			if (inputString.charAt(i) != 46 && (inputString.charAt(i) >= 48 && inputString.charAt(i) <= 57)) {
+//				subStr = subStr + inputString.charAt(i);
+//			} else if (inputString.charAt(i) == 46) {
+//				count++;
+//				if (count > 3) {
+//					return false;
+//				}
+//				if (subStr.isEmpty()) {
+//					return false;
+//				}
+//				int number = Integer.parseInt(subStr);
+//				System.out.println("number " + number);
+//
+//				if (number > 255) {
+//					return false;
+//				}
+//				subStr = "";
+//
+//			} else {
+//				return false;
+//			}
+//		}
+		System.out.println("new string " + subStr);
+		System.out.println("replaced string " + inputString);
+//		System.out.println("is IPv4 " + true);
+		return true;
+	}
 }
