@@ -51,7 +51,7 @@ public class Main {
 		ex1.palindromeRearranging("geekskeeg");
 		int[] maxAdj = { -1, 4, 10, 3, -2 };
 		ex1.arrayMaximalAdjacentDifference(maxAdj);
-		ex1.isIPv4Address("1.23..254.255.1");
+		ex1.isIPv4Address("1.23a.254.255.1");
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

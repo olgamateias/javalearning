@@ -1379,11 +1379,22 @@ public class Exercises {
 		String subStr = "";
 		for (int i = 0; i < inputString.length(); i++) {
 			int index = inputString.indexOf(".");
-			System.out.println("inde of . " + index);
+			System.out.println("inde of . " + index + " and i is " + i);
+			if (i > 2) {
+				System.out.println("too long IP");
+				return false;
+			}
 			subStr = inputString.substring(0, index);
-//			int number = Integer.parseInt(subStr.trim());
-//			inputString = inputString.replace(subStr + ".", " ");
-//			System.out.println("number " + number);
+			if (subStr.equals(" ")) {
+				System.out.println("not IPv4");
+				return false;
+			}
+			int number = Integer.parseInt(subStr.trim());
+			inputString = inputString.replace(subStr + ".", " ");
+			System.out.println("number " + number);
+			if (number > 255) {
+				return false;
+			}
 
 		}
 
