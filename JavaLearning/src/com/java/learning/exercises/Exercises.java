@@ -1289,11 +1289,61 @@ public class Exercises {
 		if (count % 2 == 0) {
 			System.out.println("true");
 			return true;
-		} else if (inputString.length() - count == 2) {
+		} else if ((inputString.length() - count) == 2) {
 			System.out.println("true");
 			return true;
 		}
 		System.out.println("false");
 		return false;
+	}
+
+	/*
+	 * Call two arms equally strong if the heaviest weights they each are able to lift are equal.
+	 * 
+	 * Call two people equally strong if their strongest arms are equally strong (the strongest arm
+	 * can be both the right and the left), and so are their weakest arms.
+	 * 
+	 * Given your and your friend's arms' lifting capabilities find out if you two are equally
+	 * strong.
+	 * 
+	 * Example
+	 * 
+	 * For yourLeft = 10, yourRight = 15, friendsLeft = 15, and friendsRight = 10, the output should
+	 * be
+	 * areEquallyStrong(yourLeft, yourRight, friendsLeft, friendsRight) = true;
+	 * For yourLeft = 15, yourRight = 10, friendsLeft = 15, and friendsRight = 10, the output should
+	 * be
+	 * areEquallyStrong(yourLeft, yourRight, friendsLeft, friendsRight) = true;
+	 * For yourLeft = 15, yourRight = 10, friendsLeft = 15, and friendsRight = 9, the output should
+	 * be
+	 * areEquallyStrong(yourLeft, yourRight, friendsLeft, friendsRight) = false.
+	 * 
+	 */
+	boolean areEquallyStrong(int yourLeft, int yourRight, int friendsLeft, int friendsRight) {
+		if ((yourLeft == friendsLeft && yourRight == friendsRight) || (yourLeft == friendsRight && yourRight == friendsLeft)) {
+			return true;
+		}
+		return false;
+	}
+
+	/*
+	 * Given an array of integers, find the maximal absolute difference between any two of its
+	 * adjacent elements.
+	 * 
+	 * Example
+	 * 
+	 * For inputArray = [2, 4, 1, 0], the output should be
+	 * arrayMaximalAdjacentDifference(inputArray) = 3.
+	 */
+	int arrayMaximalAdjacentDifference(int[] inputArray) {
+		int diff = 0;
+		System.out.println(Math.abs(-5));
+		for (int i = 0; i < inputArray.length - 1; i++) {
+			if (Math.abs(inputArray[i] - inputArray[i + 1]) > diff) {
+				diff = Math.abs(inputArray[i] - inputArray[i + 1]);
+			}
+		}
+		System.out.println("diff " + diff);
+		return diff;
 	}
 }

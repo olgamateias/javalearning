@@ -48,7 +48,9 @@ public class Main {
 		ex1.areSimilar(a, b);
 		int[] arrayChange = { -1000, 0, -2, 0 };
 		ex1.arrayChange(arrayChange);
-		ex1.palindromeRearranging("annnba");
+		ex1.palindromeRearranging("geekskeeg");
+		int[] maxAdj = { -1, 4, 10, 3, -2 };
+		ex1.arrayMaximalAdjacentDifference(maxAdj);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };
