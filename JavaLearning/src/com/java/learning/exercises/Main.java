@@ -51,7 +51,12 @@ public class Main {
 		ex1.palindromeRearranging("geekskeeg");
 		int[] maxAdj = { -1, 4, 10, 3, -2 };
 		ex1.arrayMaximalAdjacentDifference(maxAdj);
-		ex1.isIPv4Address("1.23a.254.255.1");
+		// ex1.isIPv4Address("1.23a.254.255.1");
+		int[] sourceArray = { 92988800, 80253955, 17396563, 91682092, 77708269, 97587946, 23889892, 20661856, 21013095, 92028000, 17562863, 86804822, 17819093, 97941923,
+				64955308 };
+		int[] destinationArray = { 92988800, 80253955, 17396563, 91682092, 77708229, 97587946, 23889892, 20661866, 21013095, 92928000, 17962863, 86804822, 14819093, 97241923,
+				62955308 };
+		ex1.longestUncorruptedSegment(sourceArray, destinationArray);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };
