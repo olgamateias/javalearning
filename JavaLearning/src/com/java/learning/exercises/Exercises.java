@@ -1281,7 +1281,7 @@ public class Exercises {
 				}
 			}
 		}
-		System.out.println("count " + countpair);
+		System.out.println("countpair " + countpair);
 		System.out.println("half " + inputString.length() / 2);
 		System.out.println("whole word length " + inputString.length());
 		if (countpair == 0) {
@@ -1377,60 +1377,65 @@ public class Exercises {
 	 * 
 	 */
 	boolean isIPv4Address(String inputString) {
-		String subStr = "";
-		for (int i = 0; i < inputString.length(); i++) {
-			int index = inputString.indexOf(".");
-			System.out.println("inde of . " + index + " and i is " + i);
-			if (i > 2) {
-				System.out.println("too long IP");
-				return false;
-			}
-			subStr = inputString.substring(0, index);
-			if (subStr.equals(" ")) {
-				System.out.println("not IPv4");
-				return false;
-			}
-			int number = Integer.parseInt(subStr.trim());
-			inputString = inputString.replace(subStr + ".", " ");
-			System.out.println("number " + number);
-			if (number > 255) {
-				return false;
-			}
-
+		if (inputString.length() < 7) {
+			return false;
 		}
-
-//		int count = 0;
-//		if (inputString.charAt(0) == 46 || inputString.charAt(inputString.length() - 1) == 46) {
-//			return false;
-//		}
-//		for (int i = 0; i < inputString.length(); i++) {
-//
-//			if (inputString.charAt(i) != 46 && (inputString.charAt(i) >= 48 && inputString.charAt(i) <= 57)) {
-//				subStr = subStr + inputString.charAt(i);
-//			} else if (inputString.charAt(i) == 46) {
-//				count++;
-//				if (count > 3) {
-//					return false;
-//				}
-//				if (subStr.isEmpty()) {
-//					return false;
-//				}
-//				int number = Integer.parseInt(subStr);
-//				System.out.println("number " + number);
-//
-//				if (number > 255) {
-//					return false;
-//				}
-//				subStr = "";
-//
-//			} else {
-//				return false;
-//			}
-//		}
-		System.out.println("new string " + subStr);
+		String[] array = inputString.split("\\.");
+		System.out.println("array " + Arrays.toString(array));
+		if (array.length != 4) {
+			return false;
+		}
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].isEmpty() || array[i].length() > 3) {
+				return false;
+			} else {
+				for (int x = 0; x < array[i].length(); x++) {
+					System.out.println("x " + array[i].charAt(x));
+					if (array[i].charAt(x) < 48 || array[i].charAt(x) > 58) {
+						return false;
+					}
+				}
+			}
+			if (Integer.parseInt(array[i]) > 255) {
+				System.out.println("is IPv4 " + false);
+				return false;
+			}
+		}
 		System.out.println("replaced string " + inputString);
-//		System.out.println("is IPv4 " + true);
+		System.out.println("is IPv4 " + true);
 		return true;
+	}
+
+	/*
+	 * You are given an array of integers representing coordinates of obstacles situated on a
+	 * straight line.
+	 * 
+	 * Assume that you are jumping from the point with coordinate 0 to the right. You are allowed
+	 * only to make jumps of the same length represented by some integer.
+	 * 
+	 * Find the minimal length of the jump enough to avoid all the obstacles.
+	 * 
+	 * Example
+	 * 
+	 * For inputArray = [5, 3, 6, 7, 9], the output should be
+	 * avoidObstacles(inputArray) = 4.
+	 */
+	int avoidObstacles(int[] inputArray) {
+		// int startPoint=0;
+		// sort the array
+		for (int i = 0; i < inputArray.length; i++) {
+			for (int x = i + 1; x < inputArray.length; x++) {
+				if (inputArray[i] > inputArray[x]) {
+					int temp = inputArray[i];
+					inputArray[i] = inputArray[x];
+					inputArray[x] = temp;
+				}
+			}
+		}
+		System.out.println("sorted array " + Arrays.toString(inputArray));
+		for (int z = 0; z < inputArray.length; z++) {
+		}
+		return 0;
 	}
 
 	/*
@@ -1487,31 +1492,31 @@ public class Exercises {
 	int[] longestUncorruptedSegment(int[] sourceArray, int[] destinationArray) {
 		int countEq = 0;
 		int index = 0;
-		int countNonEq = 0;
+		int indexNonEq = 0;
 		int max = 0;
 		for (int i = 0; i < sourceArray.length; i++) {
 			if (sourceArray[i] == destinationArray[i]) {
-				countEq++;
-				if (countEq == 1) {
+				if (countEq == 0) {
 					index = i;
 				}
+				countEq++;
 			} else {
-				index = i;
-				if (countEq > max) {
+
+				if (max < countEq) {
 					max = countEq;
+					indexNonEq = index;
 				}
 				countEq = 0;
-				countNonEq++;
 			}
 		}
-		if (sourceArray.length > 1 && countNonEq != sourceArray.length) {
-			index = index + 1;
-		} else if (countNonEq == sourceArray.length) {
-			index = 0;
+		if (max < countEq) {
+			max = countEq;
+			indexNonEq = index;
 		}
-		int[] segment = { max, index };
-		System.out.println("index " + index + ", count eq " + countEq + ", countNonEq " + countNonEq + ", max " + max);
-		System.out.println("segment " + Arrays.toString(segment));
+		int[] segment = { max, indexNonEq };
+		// System.out.println("index " + index + ", count eq " + countEq + ", indexNonEq " +
+		// indexNonEq + ", max " + max);
+		// System.out.println("segment " + Arrays.toString(segment));
 		return segment;
 	}
 }
