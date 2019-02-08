@@ -52,11 +52,11 @@ public class Main {
 		int[] maxAdj = { -1, 4, 10, 3, -2 };
 		ex1.arrayMaximalAdjacentDifference(maxAdj);
 		ex1.isIPv4Address("12.14.24");
-		int[] avoidObstacles = { 5, 3, 6, 7, 9 };
-		ex1.avoidObstacles(avoidObstacles);
 		int[] sourceArray = { 33531593, 96933415, 28506400, 39457872, 29684716, 86010806 };
 		int[] destinationArray = { 33531593, 96913415, 28506400, 39457872, 29684716, 86010806 };
 		ex1.longestUncorruptedSegment(sourceArray, destinationArray);
+		int[] avoidObstacles = { 19, 32, 11, 23 };
+		ex1.avoidObstacles(avoidObstacles);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

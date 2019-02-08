@@ -70,7 +70,7 @@ public class Exercises {
 
 			}
 		}
-		System.out.print("Sorted desc Array ");
+		// System.out.print("Sorted desc Array ");
 		printArray(newSortedArray);
 		System.out.println();
 		printArray(array);
@@ -88,21 +88,21 @@ public class Exercises {
 		// myArray[5] = 1;
 		int count = 0;
 		Arrays.sort(myArray);
-		System.out.println("array elements ");
+		// System.out.println("array elements ");
 
 		for (int i = 0; i < (myArray.length - 1); i++) {
 			if (myArray[i] == myArray[i + 1]) {
 				count++;
 			}
-			System.out.println(myArray[i]);
+			// System.out.println(myArray[i]);
 		}
-		System.out.println("duplicates " + count);
+		// System.out.println("duplicates " + count);
 	}
 
 	public static void sortArrayAsc(int[] myArray) {
 		// myArray = {8, 3, 2, 7, 1, 5};
 		int temp = 0;
-		System.out.println("sorted elements ");
+		// System.out.println("sorted elements ");
 		for (int i = 0; i < myArray.length - 1; i++) {
 			for (int j = i + 1; j < myArray.length; j++) {
 				if (myArray[i] > myArray[j]) {
@@ -113,7 +113,7 @@ public class Exercises {
 
 			}
 
-			System.out.println(myArray[i]);
+			// System.out.println(myArray[i]);
 		}
 
 	}
@@ -121,21 +121,21 @@ public class Exercises {
 	public static void reverse(int[] myArray) {
 		int lastIndex = myArray.length - 1;
 		int halfLenghtArray = myArray.length / 2;
-		System.out.println("reversed elements ");
+		// System.out.println("reversed elements ");
 		for (int i = 0; i < halfLenghtArray; i++) {
 			int temp = myArray[i];
 			myArray[i] = myArray[lastIndex - i];
 			myArray[lastIndex - i] = temp;
 
 		}
-		System.out.println(Arrays.toString(myArray));
+		// System.out.println(Arrays.toString(myArray));
 
 	}
 
 	public static void sortArrayDesc(int[] myArray) {
 		// myArray = {8, 3, 2, 7, 1, 5};
 		int temp = 0;
-		System.out.println("sorted elements ");
+		// System.out.println("sorted elements ");
 		for (int i = 0; i < myArray.length - 1; i++) {
 			for (int j = i + 1; j < myArray.length; j++) {
 				if (myArray[i] < myArray[j]) {
@@ -146,7 +146,7 @@ public class Exercises {
 
 			}
 
-			System.out.println(myArray[i]);
+			// System.out.println(myArray[i]);
 		}
 
 	}
@@ -174,9 +174,9 @@ public class Exercises {
 	public String[] newNrSystem(char number) {
 		List<String> allLetters = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 		ArrayList<String> resultList = new ArrayList<>();
-		System.out.println("index of nr " + allLetters.indexOf(String.valueOf(number)));
+		// System.out.println("index of nr " + allLetters.indexOf(String.valueOf(number)));
 		int nr = allLetters.indexOf(String.valueOf(number));
-		System.out.println("nr " + nr);
+		// System.out.println("nr " + nr);
 		for (int i = 0; i <= nr / 2; i++) {
 			// int result = i + (nr -i);
 			String print = "\"" + allLetters.get(i) + " + " + allLetters.get(nr - i) + "\"";
@@ -185,7 +185,7 @@ public class Exercises {
 
 		}
 		String[] array = resultList.toArray(new String[0]);
-		System.out.println(resultList);
+		// System.out.println(resultList);
 
 		return array;
 	}
@@ -221,7 +221,7 @@ public class Exercises {
 		int nr2 = Integer.valueOf(String.valueOf(number).substring(length / 2, length));
 		int sum1 = 0;
 		int sum2 = 0;
-		System.out.println("length " + length);
+		// System.out.println("length " + length);
 		for (int i = 0; i < length / 2; i++) {
 			int first = nr1 % 10;
 			int last = nr2 % 10;
@@ -231,7 +231,7 @@ public class Exercises {
 			sum1 = sum1 + first;
 			sum2 = sum2 + last;
 		}
-		System.out.println("sum1 " + sum1 + " & sum2 " + sum2);
+		// System.out.println("sum1 " + sum1 + " & sum2 " + sum2);
 		if (sum1 == sum2) {
 			return true;
 		}
@@ -313,7 +313,7 @@ public class Exercises {
 			array[x] = size - value;
 			value++;
 		}
-		System.out.println("array " + Arrays.toString(array));
+		// System.out.println("array " + Arrays.toString(array));
 		return array;
 	}
 	/*
@@ -380,7 +380,7 @@ public class Exercises {
 				phoneNr = phoneNr + "-";
 			}
 		}
-		System.out.println("Phone Nr " + phoneNr);
+		// System.out.println("Phone Nr " + phoneNr);
 		return phoneNr;
 	}
 
@@ -445,7 +445,7 @@ public class Exercises {
 	public static int squareDigits(int n) {
 		String result = "";
 		String array = String.valueOf(n);
-		System.out.println(array);
+		// System.out.println(array);
 		for (int i = 0; i < array.length(); i++) {
 			result = result + String.valueOf(Integer.parseInt(String.valueOf(array.charAt(i))) * Integer.parseInt(String.valueOf(array.charAt(i))));
 		}
@@ -511,15 +511,15 @@ public class Exercises {
 					if (arr[z] != arr[x]) {
 						if (arr[z] != arr[i]) {
 							if (arr[i] == arr[x]) {
-								System.out.println(" x " + arr[x]);
-								System.out.println(" i " + arr[i]);
-								System.out.println(" z " + arr[z]);
+								// System.out.println(" x " + arr[x]);
+								// System.out.println(" i " + arr[i]);
+								// System.out.println(" z " + arr[z]);
 								temp = arr[z];
 								return arr[z];
 							}
 						} else if (arr[x] != arr[i]) {
-							System.out.println(" i " + arr[i]);
-							System.out.println(" x " + arr[x]);
+							// System.out.println(" i " + arr[i]);
+							// System.out.println(" x " + arr[x]);
 							temp = arr[x];
 							return arr[x];
 						}
@@ -528,7 +528,7 @@ public class Exercises {
 
 			}
 		}
-		System.out.println("temp " + temp);
+		// System.out.println("temp " + temp);
 		return temp;
 	}
 
@@ -560,13 +560,13 @@ public class Exercises {
 		String middle = "";
 		int length = word.length();
 		if ((length % 2) == 0) {
-			System.out.println("the word is even");
+			// System.out.println("the word is even");
 			middle = word.substring((length / 2) - 1, (length / 2) + 1);
 		} else {
-			System.out.println("the word is odd");
+			// System.out.println("the word is odd");
 			middle = word.substring(length / 2, (length / 2) + 1);
 		}
-		System.out.println("Middle " + middle);
+		// System.out.println("Middle " + middle);
 		return middle;
 	}
 
@@ -586,7 +586,7 @@ public class Exercises {
 				sum = sum + i;
 			}
 		}
-		System.out.println("Sum " + sum);
+		// System.out.println("Sum " + sum);
 		return sum;
 	}
 
@@ -653,7 +653,7 @@ public class Exercises {
 	boolean checkPalindrome(String inputString) {
 		boolean isPal = false;
 		if (inputString.length() == 1) {
-			System.out.println("is palindrome ");
+			// System.out.println("is palindrome ");
 			return true;
 		}
 		for (int i = 0; i < inputString.length() / 2; i++) {
@@ -664,7 +664,7 @@ public class Exercises {
 				isPal = false;
 			}
 		}
-		System.out.println("is palindrome " + isPal);
+		// System.out.println("is palindrome " + isPal);
 		return isPal;
 	}
 
@@ -698,10 +698,10 @@ public class Exercises {
 	public int adjacentElementsProduct(int[] inputArray) {
 		int value = Integer.MIN_VALUE;
 		for (int i = 0; i < inputArray.length - 1; i++) {
-			System.out.println("i " + i);
+			// System.out.println("i " + i);
 			if (inputArray[i] * inputArray[i + 1] > value) {
 				value = inputArray[i] * inputArray[i + 1];
-				System.out.println("value " + value);
+				// System.out.println("value " + value);
 			}
 		}
 		return value;
@@ -709,7 +709,7 @@ public class Exercises {
 
 	public int pologonArea(int n) {
 		int area = ((int) Math.pow(n, 2)) + ((int) Math.pow(n - 1, 2));
-		System.out.println("Area " + area);
+		// System.out.println("Area " + area);
 		return area;
 	}
 
@@ -783,7 +783,7 @@ public class Exercises {
 //		for (int i = 0; i < sequence.length; i++) {
 //			array.add(sequence[i]);
 //		}
-		System.out.println("Array " + array);
+		// System.out.println("Array " + array);
 		int max = 0;
 		int min = 0;
 		for (int i = 0; i < array.size() - 1; i++) {
@@ -798,10 +798,10 @@ public class Exercises {
 		} else if (count == 1) {
 			boolean isTrue = false;
 			array.remove(max);
-			System.out.println("Array with max el removed " + array);
+			// System.out.println("Array with max el removed " + array);
 			for (int x = 0; x < array.size() - 1; x++) {
 				if (array.get(x) >= array.get(x + 1)) {
-					System.out.println("false");
+					// System.out.println("false");
 					isTrue = false;
 					break;
 				}
@@ -1025,7 +1025,7 @@ public class Exercises {
 		for (int x = 0; x < array.length; x++) {
 			reversedWord = reversedWord + array[x];
 		}
-		System.out.println("reversed word " + reversedWord);
+		// System.out.println("reversed word " + reversedWord);
 		return reversedWord;
 	}
 
@@ -1055,7 +1055,7 @@ public class Exercises {
 			}
 		}
 		int[] teamWeight = { team1, team2 };
-		System.out.println("result " + Arrays.toString(teamWeight));
+		// System.out.println("result " + Arrays.toString(teamWeight));
 		return teamWeight;
 	}
 
@@ -1077,7 +1077,7 @@ public class Exercises {
 			if (i == 0 || i == array.length - 1) {
 				int size = picture[0].length() + 2;
 				String asteriks = "";
-				System.out.println("size " + size);
+				// System.out.println("size " + size);
 				for (int x = 0; x < size; x++) {
 					asteriks = asteriks + "*";
 				}
@@ -1090,7 +1090,7 @@ public class Exercises {
 				}
 			}
 		}
-		System.out.println("array " + Arrays.toString(array));
+		// System.out.println("array " + Arrays.toString(array));
 		return array;
 	}
 
@@ -1154,7 +1154,7 @@ public class Exercises {
 				}
 			}
 		}
-		System.out.println("index1 " + index1 + ", index2 " + index2);
+		// System.out.println("index1 " + index1 + ", index2 " + index2);
 		if (count > 2) {
 			return false;
 		}
@@ -1236,7 +1236,7 @@ public class Exercises {
 				count = count + inputArray[i + 1] - temp;
 			}
 		}
-		System.out.println("array " + Arrays.toString(inputArray));
+		// System.out.println("array " + Arrays.toString(inputArray));
 		// System.out.println("count " + count);
 		return count;
 	}
@@ -1338,13 +1338,13 @@ public class Exercises {
 	 */
 	int arrayMaximalAdjacentDifference(int[] inputArray) {
 		int diff = 0;
-		System.out.println(Math.abs(-5));
+		// System.out.println(Math.abs(-5));
 		for (int i = 0; i < inputArray.length - 1; i++) {
 			if (Math.abs(inputArray[i] - inputArray[i + 1]) > diff) {
 				diff = Math.abs(inputArray[i] - inputArray[i + 1]);
 			}
 		}
-		System.out.println("diff " + diff);
+		// System.out.println("diff " + diff);
 		return diff;
 	}
 
@@ -1381,7 +1381,7 @@ public class Exercises {
 			return false;
 		}
 		String[] array = inputString.split("\\.");
-		System.out.println("array " + Arrays.toString(array));
+		// System.out.println("array " + Arrays.toString(array));
 		if (array.length != 4) {
 			return false;
 		}
@@ -1397,12 +1397,12 @@ public class Exercises {
 				}
 			}
 			if (Integer.parseInt(array[i]) > 255) {
-				System.out.println("is IPv4 " + false);
+				// System.out.println("is IPv4 " + false);
 				return false;
 			}
 		}
-		System.out.println("replaced string " + inputString);
-		System.out.println("is IPv4 " + true);
+		// System.out.println("replaced string " + inputString);
+		// System.out.println("is IPv4 " + true);
 		return true;
 	}
 
@@ -1421,7 +1421,8 @@ public class Exercises {
 	 * avoidObstacles(inputArray) = 4.
 	 */
 	int avoidObstacles(int[] inputArray) {
-		// int startPoint=0;
+		int startPoint = 0;
+		int distance = 0;
 		// sort the array
 		for (int i = 0; i < inputArray.length; i++) {
 			for (int x = i + 1; x < inputArray.length; x++) {
@@ -1433,9 +1434,35 @@ public class Exercises {
 			}
 		}
 		System.out.println("sorted array " + Arrays.toString(inputArray));
-		for (int z = 0; z < inputArray.length; z++) {
-		}
-		return 0;
+
+//		for (int z = 0; z < inputArray.length - 1; z++) {
+//			// daca diferenta dintre [z+1] - z==nr par (2, 4,6) => primul element liber este[z]+1
+//			// daca diferenta dintre [z+1] - z==nr impar (3,5,7) => primul element liber este[z]+2
+//			if ((inputArray[z + 1] - inputArray[z]) > 1) {
+//				if ((inputArray[z + 1] - inputArray[z]) % 2 == 0) { // nr par
+//					distance = (inputArray[z] + 1) - startPoint;
+//					for (int x = z + 1; x < inputArray.length; x++) {
+//						if ((distance * 2) == inputArray[x]) {
+//							distance = 0;
+//							break;
+//						}
+//					}
+//					startPoint = distance;
+//				} else {
+//					distance = (inputArray[z] + 2) - startPoint;
+//					startPoint = distance;
+//				}
+//			} else if ((inputArray[z + 1] - inputArray[z]) == 1) {
+//				distance = inputArray[z + 1] + 1;
+//				for (int q = z + 1; q < inputArray.length; q++) {
+//					if (distance == inputArray[q]) {
+//						distance = 0;
+//					}
+//				}
+//			}
+//		}
+		System.out.println("distance " + distance);
+		return distance;
 	}
 
 	/*
