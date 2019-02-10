@@ -57,6 +57,10 @@ public class Main {
 		ex1.longestUncorruptedSegment(sourceArray, destinationArray);
 		int[] avoidObstacles = { 19, 32, 11, 23 };
 		ex1.avoidObstacles(avoidObstacles);
+		ex1.evenDigitsOnly(5468428);
+		ex1.variableName("var_1_-Int");
+		ex1.alphabeticShift("aaaabbbccd");
+		ex1.depositProfit(1, 1, 199);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

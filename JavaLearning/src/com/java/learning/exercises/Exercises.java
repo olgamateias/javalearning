@@ -1546,4 +1546,253 @@ public class Exercises {
 		// System.out.println("segment " + Arrays.toString(segment));
 		return segment;
 	}
+
+	/*
+	 * Last night you partied a little too hard. Now there's a black and white photo of you that's
+	 * about to go viral! You can't let this ruin your reputation, so you want to apply the box blur
+	 * algorithm to the photo to hide its content.
+	 * 
+	 * The pixels in the input image are represented as integers. The algorithm distorts the input
+	 * image in the following way: Every pixel x in the output image has a value equal to the
+	 * average value of the pixel values from the 3 × 3 square that has its center at x, including x
+	 * itself. All the pixels on the border of x are then removed.
+	 * 
+	 * Return the blurred image as an integer, with the fractions rounded down.
+	 * 
+	 * Example
+	 * 
+	 * For
+	 * 
+	 * image = [[1, 1, 1],
+	 * [1, 7, 1],
+	 * [1, 1, 1]]
+	 * the output should be boxBlur(image) = [[1]].
+	 * 
+	 * To get the value of the middle pixel in the input 3 × 3 square: (1 + 1 + 1 + 1 + 7 + 1 + 1 +
+	 * 1 + 1) = 15 / 9 = 1.66666 = 1. The border pixels are cropped from the final result.
+	 * 
+	 * For
+	 * 
+	 * image = [[7, 4, 0, 1],
+	 * [5, 6, 2, 2],
+	 * [6, 10, 7, 8],
+	 * [1, 4, 2, 0]]
+	 * the output should be
+	 * 
+	 * boxBlur(image) = [[5, 4],
+	 * [4, 4]]
+	 * There are four 3 × 3 squares in the input image, so there should be four integers in the
+	 * blurred output. To get the first value: (7 + 4 + 0 + 5 + 6 + 2 + 6 + 10 + 7) = 47 / 9 =
+	 * 5.2222 = 5. The other three integers are obtained the same way, then the surrounding integers
+	 * are cropped from the final result.
+	 */
+	int[][] boxBlur(int[][] image) {
+		for (int i = 0; i < image.length; i++) {
+			for (int x = 0; x < image[i].length; x++) {
+
+			}
+		}
+		return null;
+	}
+
+	/*
+	 * Given an array of integers, replace all the occurrences of elemToReplace with
+	 * substitutionElem.
+	 * 
+	 * Example
+	 * 
+	 * For inputArray = [1, 2, 1], elemToReplace = 1, and substitutionElem = 3, the output should be
+	 * arrayReplace(inputArray, elemToReplace, substitutionElem) = [3, 2, 3].
+	 * 
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] array.integer inputArray
+	 * 
+	 * Guaranteed constraints:
+	 * 2 ≤ inputArray.length ≤ 10,
+	 * 0 ≤ inputArray[i] ≤ 10.
+	 * 
+	 * [input] integer elemToReplace
+	 * 
+	 * Guaranteed constraints:
+	 * 0 ≤ elemToReplace ≤ 10.
+	 * 
+	 * [input] integer substitutionElem
+	 * 
+	 * Guaranteed constraints:
+	 * 0 ≤ substitutionElem ≤ 10.
+	 * 
+	 * [output] array.integer
+	 */
+	int[] arrayReplace(int[] inputArray, int elemToReplace, int substitutionElem) {
+		for (int i = 0; i < inputArray.length; i++) {
+			if (inputArray[i] == elemToReplace) {
+				inputArray[i] = substitutionElem;
+			}
+		}
+		return inputArray;
+	}
+
+	/*
+	 * Check if all digits of the given integer are even.
+	 * 
+	 * Example
+	 * 
+	 * For n = 248622, the output should be
+	 * evenDigitsOnly(n) = true;
+	 * For n = 642386, the output should be
+	 * evenDigitsOnly(n) = false.
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] integer n
+	 * 
+	 * Guaranteed constraints:
+	 * 1 ≤ n ≤ 109.
+	 */
+	boolean evenDigitsOnly(int n) {
+		int length = String.valueOf(n).length();
+		for (int i = 0; i < length; i++) {
+			int digit = n % 10;
+			n = n / 10;
+			if (digit % 2 != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/*
+	 * Correct variable names consist only of English letters, digits and underscores and they can't
+	 * start with a digit.
+	 * 
+	 * Check if the given string is a correct variable name.
+	 * 
+	 * Example
+	 * 
+	 * For name = "var_1__Int", the output should be
+	 * variableName(name) = true;
+	 * For name = "qq-q", the output should be
+	 * variableName(name) = false;
+	 * For name = "2w2", the output should be
+	 * variableName(name) = false.
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] string name
+	 * 
+	 * Guaranteed constraints:
+	 * 1 ≤ name.length ≤ 10.
+	 * 
+	 * [output] boolean
+	 * 
+	 * true if name is a correct variable name, false otherwise.
+	 */
+	boolean variableName(String name) {
+		int count = 0;
+		for (int i = 0; i < name.length(); i++) {
+			if (name.charAt(0) >= 48 && name.charAt(0) <= 57) {
+				return false;
+			}
+			if (name.charAt(i) == 95 || (name.charAt(i) >= 48 && name.charAt(i) <= 57) || (name.charAt(i) >= 65 && name.charAt(i) <= 90)
+					|| (name.charAt(i) >= 97 && name.charAt(i) <= 122)) {
+				count++;
+			}
+			if (count == name.length()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/*
+	 * Given a string, replace each of its character by the next one in the English alphabet (z
+	 * would be replaced by a).
+	 * 
+	 * Example
+	 * 
+	 * For inputString = "crazy", the output should be
+	 * alphabeticShift(inputString) = "dsbaz".
+	 */
+	String alphabeticShift(String inputString) {
+		char[] array = inputString.toCharArray();
+		String newWord = "";
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == 122) {
+				array[i] = 97;
+			} else {
+				int temp = Integer.valueOf(array[i]) + 1;
+				array[i] = (char) temp;
+				newWord = newWord + array[i];
+			}
+		}
+		System.out.println("new word " + newWord);
+		return newWord;
+	}
+
+	/*
+	 * Consider integer numbers from 0 to n - 1 written down along the circle in such a way that the
+	 * distance between any two neighboring numbers is equal (note that 0 and n - 1 are neighboring,
+	 * too).
+	 * 
+	 * Given n and firstNumber, find the number which is written in the radially opposite position
+	 * to firstNumber.
+	 * 
+	 * Example
+	 * 
+	 * For n = 10 and firstNumber = 2, the output should be
+	 * circleOfNumbers(n, firstNumber) = 7.
+	 */
+	int circleOfNumbers(int n, int firstNumber) {
+		int lastNr = 0;
+		if (firstNumber <= n / 2) {
+			lastNr = firstNumber + n / 2;
+		} else {
+			lastNr = firstNumber - n / 2;
+		}
+		return lastNr;
+	}
+
+	/*
+	 * You have deposited a specific amount of money into your bank account. Each year your balance
+	 * increases at the same growth rate. With the assumption that you don't make any additional
+	 * deposits, find out how long it would take for your balance to pass a specific threshold.
+	 * 
+	 * Example
+	 * 
+	 * For deposit = 100, rate = 20, and threshold = 170, the output should be
+	 * depositProfit(deposit, rate, threshold) = 3.
+	 * 
+	 * Each year the amount of money in your account increases by 20%. So throughout the years, your
+	 * balance would be:
+	 * 
+	 * year 0: 100;
+	 * year 1: 120;
+	 * year 2: 144;
+	 * year 3: 172.8.
+	 * Thus, it will take 3 years for your balance to pass the threshold, so the answer is 3.
+	 */
+	int depositProfit(int deposit, int rate, int threshold) {
+		int years = 0;
+		double total = deposit;
+		double dob = rate / 100.00;
+		while (total < threshold) {
+			total = total + (total * dob);
+			years++;
+		}
+		/*
+		 * time consuming
+		 * int years=0;
+		 * double dob=rate/100;
+		 * while(deposit<threshold) {
+		 * deposit = (int) (deposit + (deposit*dob));
+		 * years++;
+		 */
+
+		return years;
+	}
 }
