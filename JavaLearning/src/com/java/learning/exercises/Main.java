@@ -63,8 +63,10 @@ public class Main {
 		ex1.depositProfit(1, 1, 199);
 		int[] sumVal = { 2, 4, 7 };
 		ex1.absoluteValuesSumMinimization(sumVal);
-		int[] sortOdd = { 5, 3, 2, 8, 1, 4 };
+		int[] sortOdd = { 2, 4, 7 };
 		ex1.sortOdd(sortOdd);
+		int[] extractEachKth = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		ex1.extractEachKth(extractEachKth, 3);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

@@ -1814,9 +1814,9 @@ public class Exercises {
 		int index = 0;
 		for (int i = 0; i < a.length; i++) {
 			for (int x = 0; x < a.length; x++) {
-				sum = sum + (a[x] - a[i]);
+				sum = sum + Math.abs((a[x] - a[i]));
 			}
-			System.out.println("sum " + Math.abs(sum));
+			System.out.println("sum " + sum);
 			if (Math.abs(sum) < max) {
 				max = sum;
 				index = i;
@@ -1852,6 +1852,50 @@ public class Exercises {
 				}
 			}
 		}
+		return a;
+	}
+
+	/*
+	 * Given array of integers, remove each kth element from it.
+	 * 
+	 * Example
+	 * 
+	 * For inputArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and k = 3, the output should be
+	 * extractEachKth(inputArray, k) = [1, 2, 4, 5, 7, 8, 10].
+	 * 
+	 * Input/Output
+	 * 
+	 * [execution time limit] 3 seconds (java)
+	 * 
+	 * [input] array.integer inputArray
+	 * 
+	 * Guaranteed constraints:
+	 * 5 ≤ inputArray.length ≤ 15,
+	 * -20 ≤ inputArray[i] ≤ 20.
+	 * 
+	 * [input] integer k
+	 * 
+	 * Guaranteed constraints:
+	 * 1 ≤ k ≤ 10.
+	 * 
+	 * [output] array.integer
+	 * 
+	 * inputArray without elements k - 1, 2k - 1, 3k - 1 etc.
+	 */
+	int[] extractEachKth(int[] inputArray, int k) {
+		List<Integer> finalArray = new ArrayList<>();
+		int index = inputArray.length / k;
+
+//		for (int i = 0; i < inputArray.length; i++) {
+//			if (inputArray[i] % k != 0) {
+//				finalArray.add(inputArray[i]);
+//			}
+//		}
+		int[] a = new int[finalArray.size()];
+		for (int x = 0; x < finalArray.size(); x++) {
+			a[x] = finalArray.get(x);
+		}
+		System.out.println(" array a " + Arrays.toString(a));
 		return a;
 	}
 }
