@@ -61,6 +61,10 @@ public class Main {
 		ex1.variableName("var_1_-Int");
 		ex1.alphabeticShift("aaaabbbccd");
 		ex1.depositProfit(1, 1, 199);
+		int[] sumVal = { 2, 4, 7 };
+		ex1.absoluteValuesSumMinimization(sumVal);
+		int[] sortOdd = { 5, 3, 2, 8, 1, 4 };
+		ex1.sortOdd(sortOdd);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

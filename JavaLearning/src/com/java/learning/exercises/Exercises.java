@@ -1795,4 +1795,63 @@ public class Exercises {
 
 		return years;
 	}
+
+	/*
+	 * Given a sorted array of integers a, find an integer x from a such that the value of
+	 * 
+	 * abs(a[0] - x) + abs(a[1] - x) + ... + abs(a[a.length - 1] - x)
+	 * is the smallest possible (here abs denotes the absolute value).
+	 * If there are several possible answers, output the smallest one.
+	 * 
+	 * Example
+	 * 
+	 * For a = [2, 4, 7], the output should be
+	 * absoluteValuesSumMinimization(a) = 4.
+	 */
+	int absoluteValuesSumMinimization(int[] a) {
+		int sum = 0;
+		int max = Integer.MAX_VALUE;
+		int index = 0;
+		for (int i = 0; i < a.length; i++) {
+			for (int x = 0; x < a.length; x++) {
+				sum = sum + (a[x] - a[i]);
+			}
+			System.out.println("sum " + Math.abs(sum));
+			if (Math.abs(sum) < max) {
+				max = sum;
+				index = i;
+			}
+			sum = 0;
+		}
+		System.out.println("index " + index);
+		return index;
+	}
+
+	/*
+	 * You have an array of numbers.
+	 * Your task is to sort ascending odd numbers but even numbers must be on their places.
+	 * 
+	 * Zero isn't an odd number and you don't need to move it. If you have an empty array, you need
+	 * to return it.
+	 * 
+	 * Example
+	 * 
+	 * sortArray([5, 3, 2, 8, 1, 4]) == [1, 3, 2, 8, 5, 4]
+	 */
+	public int[] sortOdd(int[] a) {
+		for (int i = 0; i < a.length - 1; i++) {
+			if (a[i] % 2 != 0) {
+				for (int x = i + 1; x < a.length; x++) {
+					if (a[x] % 2 != 0) {
+						if (a[i] > a[x]) {
+							int temp = a[i];
+							a[i] = a[x];
+							a[x] = temp;
+						}
+					}
+				}
+			}
+		}
+		return a;
+	}
 }
