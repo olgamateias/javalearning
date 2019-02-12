@@ -67,6 +67,12 @@ public class Main {
 		ex1.sortOdd(sortOdd);
 		int[] extractEachKth = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		ex1.extractEachKth(extractEachKth, 3);
+		ex1.firstDigit("var_21_var");
+		ex1.differentSymbolsNaive("codesignal");
+		int[] maxConsSum = { 2, 3, 5, 1, 6 };
+		ex1.arrayMaxConsecutiveSum(maxConsSum, 1);
+		ex1.growingPlant(100, 10, 910);
+		ex1.knapsackLight(15, 2, 20, 3, 2);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };

@@ -1749,7 +1749,7 @@ public class Exercises {
 	 */
 	int circleOfNumbers(int n, int firstNumber) {
 		int lastNr = 0;
-		if (firstNumber <= n / 2) {
+		if (firstNumber < n / 2) {
 			lastNr = firstNumber + n / 2;
 		} else {
 			lastNr = firstNumber - n / 2;
@@ -1884,18 +1884,208 @@ public class Exercises {
 	 */
 	int[] extractEachKth(int[] inputArray, int k) {
 		List<Integer> finalArray = new ArrayList<>();
-		int index = inputArray.length / k;
+		int count = inputArray.length / k;
 
-//		for (int i = 0; i < inputArray.length; i++) {
-//			if (inputArray[i] % k != 0) {
-//				finalArray.add(inputArray[i]);
-//			}
-//		}
+		for (int i = 0; i < inputArray.length; i++) {
+			finalArray.add(inputArray[i]);
+		}
+		Iterator<Integer> iter = finalArray.iterator();
+
 		int[] a = new int[finalArray.size()];
 		for (int x = 0; x < finalArray.size(); x++) {
 			a[x] = finalArray.get(x);
 		}
 		System.out.println(" array a " + Arrays.toString(a));
 		return a;
+	}
+
+	/*
+	 * Find the leftmost digit that occurs in a given string.
+	 * 
+	 * Example
+	 * 
+	 * For inputString = "var_1__Int", the output should be
+	 * firstDigit(inputString) = '1';
+	 * For inputString = "q2q-q", the output should be
+	 * firstDigit(inputString) = '2';
+	 * For inputString = "0ss", the output should be
+	 * firstDigit(inputString) = '0'.
+	 */
+	char firstDigit(String inputString) {
+		char digit = 0;
+		for (int i = 0; i < inputString.length(); i++) {
+			if (inputString.charAt(i) >= 48 && inputString.charAt(i) <= 57) {
+				digit = inputString.charAt(i);
+				break;
+			}
+		}
+		System.out.println("digit " + digit);
+		return digit;
+	}
+
+	/*
+	 * Given a string, find the number of different characters in it.
+	 * 
+	 * Example
+	 * 
+	 * For s = "cabca", the output should be
+	 * differentSymbolsNaive(s) = 3.
+	 * 
+	 * There are 3 different characters a, b and c.
+	 */
+	int differentSymbolsNaive(String s) {
+		String newStr = "";
+		char[] array = s.toCharArray();
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != 0) {
+				for (int x = i + 1; x < array.length; x++) {
+					if (array[i] == array[x]) {
+						array[x] = 0;
+
+					}
+				}
+				newStr = newStr + String.valueOf(array[i]);
+			}
+
+		}
+		System.out.println("array " + Arrays.toString(array));
+		System.out.println("new string " + newStr + ", diff letter " + newStr.length() + ", orig word size " + s.length());
+		return newStr.length();
+	}
+
+	/*
+	 * Given array of integers, find the maximal possible sum of some of its k consecutive elements.
+	 * 
+	 * Example
+	 * 
+	 * For inputArray = [2, 3, 5, 1, 6] and k = 2, the output should be
+	 * arrayMaxConsecutiveSum(inputArray, k) = 8.
+	 * All possible sums of 2 consecutive elements are:
+	 * 
+	 * 2 + 3 = 5;
+	 * 3 + 5 = 8;
+	 * 5 + 1 = 6;
+	 * 1 + 6 = 7.
+	 * Thus, the answer is 8.
+	 */
+	int arrayMaxConsecutiveSum(int[] inputArray, int k) {
+		int count = 0;
+		int sum = 0;
+		int max = 0;
+		for (int i = 0; i < inputArray.length - (k - 1); i++) {
+			sum = 0;
+			count = 0;
+			sum = sum + inputArray[i];
+			count++;
+			while (count != k) {
+				sum = sum + inputArray[i + k - count];
+				count++;
+			}
+			if (sum > max) {
+				max = sum;
+			}
+		}
+		System.out.println("sum " + sum);
+		System.out.println("max " + max);
+		return max;
+	}
+
+	/*
+	 * Caring for a plant can be hard work, but since you tend to it regularly, you have a plant
+	 * that grows consistently. Each day, its height increases by a fixed amount represented by the
+	 * integer upSpeed. But due to lack of sunlight, the plant decreases in height every night, by
+	 * an amount represented by downSpeed.
+	 * 
+	 * Since you grew the plant from a seed, it started at height 0 initially. Given an integer
+	 * desiredHeight, your task is to find how many days it'll take for the plant to reach this
+	 * height.
+	 * 
+	 * Example
+	 * 
+	 * For upSpeed = 100, downSpeed = 10, and desiredHeight = 910, the output should be
+	 * growingPlant(upSpeed, downSpeed, desiredHeight) = 10.
+	 * The plant first reaches a height of 910 on day 10.
+	 */
+	int growingPlant(int upSpeed, int downSpeed, int desiredHeight) {
+		int height = 0;
+		int count = 0;
+		// count = desiredHeight / (upSpeed - downSpeed);
+		while (height < desiredHeight) {
+			height = height + upSpeed;
+			count++;
+			if (height >= desiredHeight) {
+				System.out.println("count " + count);
+				return count;
+			} else {
+				height = height - downSpeed;
+			}
+		}
+		System.out.println("count " + count);
+		return count;
+	}
+
+	/*
+	 * You found two items in a treasure chest! The first item weighs weight1 and is worth value1,
+	 * and the second item weighs weight2 and is worth value2. What is the total maximum value of
+	 * the items you can take with you, assuming that your max weight capacity is maxW and you can't
+	 * come back for the items later?
+	 * 
+	 * Note that there are only two items and you can't bring more than one item of each type, i.e.
+	 * you can't take two first items or two second items.
+	 * 
+	 * Example
+	 * 
+	 * For value1 = 10, weight1 = 5, value2 = 6, weight2 = 4, and maxW = 8,
+	 * valuePerWeight1 = 10/5=2
+	 * valuePerWeight1=6/4=1,5
+	 * the output should be
+	 * knapsackLight(value1, weight1, value2, weight2, maxW) = 10.
+	 * 
+	 * You can only carry the first item.
+	 * 
+	 * For value1 = 10, weight1 = 5, value2 = 6, weight2 = 4, and maxW = 9,
+	 * valuePerWeight1 = 10/5=2
+	 * valuePerWeight1=6/4=1,5
+	 * the output should be
+	 * knapsackLight(value1, weight1, value2, weight2, maxW) = 16.
+	 * 
+	 * You're strong enough to take both of the items with you.
+	 * 
+	 * For value1 = 5, weight1 = 3, value2 = 7, weight2 = 4, and maxW = 6,
+	 * valuePerWeight1 = 5/3=1,6
+	 * valuePerWeight1=7/4=1,7
+	 * the output should be
+	 * knapsackLight(value1, weight1, value2, weight2, maxW) = 7.
+	 * 
+	 * You can't take both items, but you can take any of them.
+	 * 
+	 * For value1 = 15, weight1 = 2, value2 = 20, weight2 = 3, and maxW = 2,
+	 * valuePerWeight1 = 15/2=7,5
+	 * valuePerWeight2 = 20/3=6,66
+	 * the output should be
+	 * knapsackLight(value1, weight1, value2, weight2, maxW) = 15.
+	 */
+	int knapsackLight(int value1, int weight1, int value2, int weight2, int maxW) {
+		int maxV1 = 0;
+		int maxV2 = 0;
+		if (weight1 < maxW) {
+			maxV1 = value1;
+			if (maxW - weight1 >= weight2) {
+				maxV1 = maxV1 + value2;
+			}
+		} else if (weight1 == maxW) {
+			maxV1 = value1;
+		}
+		if (weight2 < maxW) {
+			maxV2 = value2;
+		} else if (weight2 == maxW) {
+			maxV2 = value2;
+		}
+		if (maxV1 >= maxV2) {
+			System.out.println("max Value1 " + maxV1);
+			return maxV1;
+		}
+		System.out.println("max Value2 " + maxV2);
+		return maxV2;
 	}
 }
