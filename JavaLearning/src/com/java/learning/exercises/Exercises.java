@@ -1883,17 +1883,15 @@ public class Exercises {
 	 * inputArray without elements k - 1, 2k - 1, 3k - 1 etc.
 	 */
 	int[] extractEachKth(int[] inputArray, int k) {
-		List<Integer> finalArray = new ArrayList<>();
 		int count = inputArray.length / k;
-
+		int x = 0;
+		int[] a = new int[inputArray.length - count];
 		for (int i = 0; i < inputArray.length; i++) {
-			finalArray.add(inputArray[i]);
-		}
-		Iterator<Integer> iter = finalArray.iterator();
 
-		int[] a = new int[finalArray.size()];
-		for (int x = 0; x < finalArray.size(); x++) {
-			a[x] = finalArray.get(x);
+			if ((i + 1) % k != 0) {
+				a[x] = inputArray[i];
+				x++;
+			}
 		}
 		System.out.println(" array a " + Arrays.toString(a));
 		return a;

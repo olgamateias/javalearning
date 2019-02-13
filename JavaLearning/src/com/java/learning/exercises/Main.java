@@ -65,8 +65,8 @@ public class Main {
 		ex1.absoluteValuesSumMinimization(sumVal);
 		int[] sortOdd = { 2, 4, 7 };
 		ex1.sortOdd(sortOdd);
-		int[] extractEachKth = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		ex1.extractEachKth(extractEachKth, 3);
+		int[] extractEachKth = { 2, 4, 6, 8, 10 };
+		ex1.extractEachKth(extractEachKth, 2);
 		ex1.firstDigit("var_21_var");
 		ex1.differentSymbolsNaive("codesignal");
 		int[] maxConsSum = { 2, 3, 5, 1, 6 };
