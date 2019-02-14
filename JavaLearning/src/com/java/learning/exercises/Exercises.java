@@ -2212,7 +2212,7 @@ public class Exercises {
 		}
 		count = 0;
 		for (int x = 0; x < votes.length; x++) {
-			if (votes[x] + k > currentW) {
+			if (votes[x] + k >= currentW) {
 				// currentW = votes[x] + k;
 				count++;
 			}
