@@ -2086,4 +2086,140 @@ public class Exercises {
 		System.out.println("max Value2 " + maxV2);
 		return maxV2;
 	}
+
+	/*
+	 * Given a string, output its longest prefix which contains only digits.
+	 * 
+	 * Example
+	 * 
+	 * For inputString="123aa1", the output should be
+	 * longestDigitsPrefix(inputString) = "123".
+	 * 
+	 */
+	String longestDigitsPrefix(String inputString) {
+		String prefix = "";
+		for (int i = 0; i < inputString.length(); i++) {
+			if (inputString.charAt(i) >= 48 && inputString.charAt(i) <= 57) {
+				prefix = prefix + inputString.charAt(i);
+			} else {
+				System.out.println("prefix " + prefix);
+				return prefix;
+			}
+		}
+		System.out.println("prefix " + prefix);
+		return prefix;
+	}
+
+	/*
+	 * Let's define digit degree of some positive integer as the number of times we need to replace
+	 * this number with the sum of its digits until we get to a one digit number.
+	 * 
+	 * Given an integer, find its digit degree.
+	 * 
+	 * Example
+	 * 
+	 * For n = 5, the output should be
+	 * digitDegree(n) = 0;
+	 * For n = 100, the output should be
+	 * digitDegree(n) = 1.
+	 * 1 + 0 + 0 = 1.
+	 * For n = 91, the output should be
+	 * digitDegree(n) = 2.
+	 * 9 + 1 = 10 -> 1 + 0 = 1.
+	 */
+	int digitDegree(int n) {
+		int count = 0;
+
+		while (n > 9) {
+			int length = String.valueOf(n).length();
+			int sum = 0;
+			for (int i = 0; i < length; i++) {
+				sum = sum + n % 10;
+				n = n / 10;
+			}
+			n = sum;
+			count++;
+		}
+		System.out.println("times " + count);
+		return count;
+	}
+
+	/*
+	 * An email address such as "John.Smith@example.com" is made up of a local part ("John.Smith"),
+	 * an "@" symbol, then a domain part ("example.com").
+	 * 
+	 * The domain name part of an email address may only consist of letters, digits, hyphens and
+	 * dots. The local part, however, also allows a lot of different special characters. Here you
+	 * can look at several examples of correct and incorrect email addresses.
+	 * 
+	 * Given a valid email address, find its domain part.
+	 * 
+	 * Example
+	 * 
+	 * For address = "prettyandsimple@example.com", the output should be
+	 * findEmailDomain(address) = "example.com";
+	 * For address = "<>[]:,;@"!#$%&*+-/=?^_{}| ~.a"@example.org", the output should be
+	 * findEmailDomain(address) = "example.org".
+	 */
+	String findEmailDomain(String address) {
+		String domain = address.substring(address.lastIndexOf("@") + 1, address.length());
+		System.out.println("domain " + domain);
+
+		return domain;
+	}
+
+	/*
+	 * Given an array of the numbers of votes given to each of the candidates so far, and an integer
+	 * k equal to the number of voters who haven't cast their vote yet, find the number of
+	 * candidates who still have a chance to win the election.
+	 * 
+	 * The winner of the election must secure strictly more votes than any other candidate. If two
+	 * or more candidates receive the same (maximum) number of votes, assume there is no winner at
+	 * all.
+	 * 
+	 * Example
+	 * 
+	 * For votes = [2, 3, 5, 2] and k = 3, the output should be
+	 * electionsWinners(votes, k) = 2.
+	 * 
+	 * The first candidate got 2 votes. Even if all of the remaining 3 candidates vote for him, he
+	 * will still have only 5 votes, i.e. the same number as the third candidate, so there will be
+	 * no winner.
+	 * The second candidate can win if all the remaining candidates vote for him (3 + 3 = 6 > 5).
+	 * The third candidate can win even if none of the remaining candidates vote for him. For
+	 * example, if each of the remaining voters cast their votes for each of his opponents, he will
+	 * still be the winner (the votes array will thus be [3, 4, 5, 3]).
+	 * The last candidate can't win no matter what (for the same reason as the first candidate).
+	 * Thus, only 2 candidates can win (the second and the third), which is the answer.
+	 * 
+	 */
+	int electionsWinners(int[] votes, int k) {
+		int count = 0;
+		int currentW = 0;
+		for (int i = 0; i < votes.length - 1; i++) {
+			if (votes[i] == votes[i + 1]) {
+				count++;
+				if (count == votes.length - 1 && k == 0) {
+					System.out.println("there are no winners");
+					return 0;
+				}
+			} else if (votes[i] < votes[i + 1]) {
+				currentW = votes[i + 1];
+			} else {
+				currentW = votes[i];
+			}
+
+		}
+		count = 0;
+		for (int x = 0; x < votes.length; x++) {
+			if (votes[x] + k > currentW) {
+				// currentW = votes[x] + k;
+				count++;
+			}
+		}
+		// System.out.println("final votes list " + Arrays.toString(finalVotes));
+		System.out.println("count winners " + count);
+		return count;
+	}
+
 }

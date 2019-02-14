@@ -73,6 +73,11 @@ public class Main {
 		ex1.arrayMaxConsecutiveSum(maxConsSum, 1);
 		ex1.growingPlant(100, 10, 910);
 		ex1.knapsackLight(15, 2, 20, 3, 2);
+		ex1.longestDigitsPrefix(" 123abc1");
+		ex1.digitDegree(91);
+		ex1.findEmailDomain("alfa@example.com");
+		int[] votes = { 2, 1, 1 };
+		ex1.electionsWinners(votes, 0);
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };
