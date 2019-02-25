@@ -80,6 +80,7 @@ public class Main {
 		ex1.electionsWinners(votes, 0);
 		ex1.lineEncoding("abbcabb");
 		ex1.longestWord("ready]]] steady go!");
+		ex1.isMAC48Address("-----------------");
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };
