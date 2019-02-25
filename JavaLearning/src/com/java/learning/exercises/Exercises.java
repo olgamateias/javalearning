@@ -2222,4 +2222,88 @@ public class Exercises {
 		return count;
 	}
 
+	/*
+	 * Determine if the given character is a digit or not.
+	 * 
+	 * Example
+	 * 
+	 * For symbol = '0', the output should be
+	 * isDigit(symbol) = true;
+	 * For symbol = '-', the output should be
+	 * isDigit(symbol) = false.
+	 */
+	boolean isDigit(char symbol) {
+		if (symbol >= 47 && symbol <= 97) {
+			return true;
+		}
+		return false;
+	}
+
+	/*
+	 * Given a string, return its encoding defined as follows:
+	 * 
+	 * First, the string is divided into the least possible number of disjoint substrings consisting
+	 * of identical characters
+	 * for example, "aabbbc" is divided into ["aa", "bbb", "c"]
+	 * Next, each substring with length greater than one is replaced with a concatenation of its
+	 * length and the repeating character
+	 * for example, substring "bbb" is replaced by "3b"
+	 * Finally, all the new strings are concatenated together in the same order and a new string is
+	 * returned.
+	 * Example
+	 * 
+	 * For s = "aabbbc", the output should be
+	 * lineEncoding(s) = "2a3bc".
+	 */
+	String lineEncoding(String s) {
+		List<String> arrayList = new ArrayList<>();
+		String encodedStr = "";
+		for (int i = 0; i < s.length() - 1; i++) {
+			if (s.charAt(i) == s.charAt(i + 1)) {
+				encodedStr = encodedStr + String.valueOf(s.charAt(i));
+			} else {
+				encodedStr = encodedStr + String.valueOf(s.charAt(i));
+				arrayList.add(encodedStr);
+				encodedStr = "";
+			}
+
+		}
+		arrayList.add(encodedStr + String.valueOf(s.charAt(s.length() - 1)));
+		encodedStr = "";
+		for (int x = 0; x < arrayList.size(); x++) {
+			if (arrayList.get(x).length() > 1) {
+				encodedStr = encodedStr + (String.valueOf(arrayList.get(x).length()) + String.valueOf(arrayList.get(x).charAt(0)));
+			} else {
+				encodedStr = encodedStr + String.valueOf(arrayList.get(x).charAt(0));
+			}
+		}
+		System.out.println(encodedStr);
+		return encodedStr;
+	}
+
+	/*
+	 * longest word from a text
+	 */
+	String longestWord(String text) {
+
+		int length = 0;
+		int index = 0;
+
+		for (int i = 0; i < text.length(); i++) {
+			if ((text.charAt(i) < 65 || text.charAt(i) > 90) && (text.charAt(i) < 97 || text.charAt(i) > 122)) {
+				text = text.replace(String.valueOf(text.charAt(i)), " ");
+			}
+		}
+		System.out.println("new text " + text);
+		String[] array = text.split(" ");
+		System.out.println("array " + Arrays.toString(array));
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].length() > length) {
+				length = array[i].length();
+				index = i;
+			}
+		}
+		System.out.println(array[index]);
+		return array[index];
+	}
 }
