@@ -2351,4 +2351,63 @@ public class Exercises {
 		}
 		return true;
 	}
+
+	/*
+	 * Check if the given string is a correct time representation of the 24-hour clock.
+	 * 
+	 * Example
+	 * 
+	 * For time = "13:58", the output should be
+	 * validTime(time) = true;
+	 * For time = "25:51", the output should be
+	 * validTime(time) = false;
+	 * For time = "02:76", the output should be
+	 * validTime(time) = false.
+	 */
+	boolean validTime(String time) {
+		String[] array = time.split(":");
+		if (array.length > 2) {
+			return false;
+		}
+		if (Integer.valueOf(array[0]) > 23) {
+			return false;
+		}
+		if (Integer.valueOf(array[1]) > 59) {
+			return false;
+		}
+		return true;
+	}
+
+	/*
+	 * CodeMaster has just returned from shopping. He scanned the check of the items he bought and
+	 * gave the resulting string to Ratiorg to figure out the total number of purchased items. Since
+	 * Ratiorg is a bot he is definitely going to automate it, so he needs a program that sums up
+	 * all the numbers which appear in the given input.
+	 * 
+	 * Help Ratiorg by writing a function that returns the sum of numbers that appear in the given
+	 * inputString.
+	 * 
+	 * Example
+	 * 
+	 * For inputString = "2 apples, 12 oranges", the output should be
+	 * sumUpNumbers(inputString) = 14.
+	 */
+	int sumUpNumbers(String inputString) {
+		int sum = 0;
+		System.out.println("input string: " + inputString);
+		for (int i = 0; i < inputString.length(); i++) {
+			if ((inputString.charAt(i) < 48 || inputString.charAt(i) > 57) && inputString.charAt(i) != 32) {
+				inputString = inputString.replace(String.valueOf(inputString.charAt(i)), " ");
+			}
+		}
+		String[] array = inputString.split(" ");
+		for (int x = 0; x < array.length; x++) {
+			if (!array[x].isEmpty()) {
+				sum = sum + Integer.valueOf(array[x]);
+			}
+		}
+		System.out.println("new string " + inputString);
+		System.out.println("sum " + sum);
+		return sum;
+	}
 }

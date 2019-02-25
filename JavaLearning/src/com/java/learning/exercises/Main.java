@@ -81,6 +81,7 @@ public class Main {
 		ex1.lineEncoding("abbcabb");
 		ex1.longestWord("ready]]] steady go!");
 		ex1.isMAC48Address("-----------------");
+		ex1.sumUpNumbers("there are some (12) digits 5566 in this 770 string 239");
 //		int[] array = { 100, 22, 4, 11, 31, 103 };
 //		ex1.digitRootSort(array);
 //		int[] array2 = { 13, 20, 7, 4 };
